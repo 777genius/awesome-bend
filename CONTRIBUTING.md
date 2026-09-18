@@ -13,5 +13,6 @@ Please ensure your pull request adheres to the following:
 - A working example or README beats a star count. Empty, generated, or undocumented trees will be closed.
 - If a library publishes to the hub, add the `import 0x…/file.bend` line next to the GitHub link.
 - New categories, or improvements to the existing ones, are welcome.
+- Run `npx awesome-lint` and keep it green.
 
 Thank you for your suggestions.
