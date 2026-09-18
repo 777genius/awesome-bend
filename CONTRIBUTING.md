@@ -1,18 +1,17 @@
-# Contributing
+# Contribution Guidelines
 
-This list is **Bend 2 only**: `bendlang/bend`, `bend 2.0.x`, hub imports of the form `0x<hash>/file.bend`.
+Please ensure your pull request adheres to the following:
 
-Do **not** add:
+- **Current Bend only** (`bendlang/bend`, 2.0.x). Do not add Bend 1 / HVM2 (`HigherOrderCO/Bend`, `cargo install bend-lang`, `bend run-cu`), Bend 1 editor plugins, or unrelated “Bend” projects (Oregon, BendDAO, hardware Bender, …).
+- Search previous suggestions before opening a new one. This is a curation, not a dump of every `bend2-*` repository.
+- Use the format `- [Name](url) - Description.`
+- The description starts with an uppercase character and ends with a period.
+- Keep descriptions short and objective: what the project is, not a tagline.
+- Add new items at the bottom of the relevant category.
+- Check your spelling and grammar. Do not hard-wrap lines.
+- One item per pull request, with a useful title (`Add bolt`, not `Update README.md`).
+- A working example or README beats a star count. Empty, generated, or undocumented trees will be closed.
+- If a library publishes to the hub, add the `import 0x…/file.bend` line next to the GitHub link.
+- New categories, or improvements to the existing ones, are welcome.
 
-- Bend 1 / HVM2 (`HigherOrderCO/Bend`, `cargo install bend-lang`, `bend run-cu`)
-- Editor plugins and LSPs for Bend 1
-- Repos named “Bend” that are unrelated (Oregon, BendDAO, hardware Bender, …)
-- Empty READMEs, generated dumps with no runnable `.bend` entry, or copies of `Base`
-
-A good entry has a one-line job (“RFC 4648 hex”, “Tree-sitter for Bend 2”) and a URL someone can open today. Prefer a working example over a star count.
-
-Open a PR that adds one bullet in the right section. If you maintain a library that just grew a hub hash, add the `import 0x…` line next to the GitHub link.
-
-## This list’s own libraries
-
-When codec (hex / Base64), parse, and time have public GitHub repos, they belong under [Libraries](README.md#libraries). Until then, do not link unpublished trees.
+Thank you for your suggestions.

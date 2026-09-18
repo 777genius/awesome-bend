@@ -1,98 +1,95 @@
-# Awesome Bend 2
+# Awesome Bend [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-A curated list of **[Bend 2](https://bend-lang.com)** — the language, libraries, tools, and demos.
+[<img src="media/logo.png" align="right" width="128" alt="Bend">](https://bend-lang.com)
 
-This is **not** Bend 1 / HVM2 (`HigherOrderCO/Bend`). Older lists and editor plugins from 2024 target that language. The compiler here is `bendlang/bend` (`bend 2.0.x`). Packages on the hub are content hashes (`import 0x…/file.bend`), not names, so GitHub is the catalog.
+> High-level language for massively parallel CPU and GPU programs, with an affine dependent type system.
+
+This list covers current Bend (`bendlang/bend`, 2.0.x). Hub packages are content hashes (`import 0x…/file.bend`); GitHub is the catalog. Bend 1 / HVM2 is out of scope.
 
 ## Contents
 
 - [Official](#official)
-- [Libraries](#libraries)
-- [Editors and language tools](#editors-and-language-tools)
+- [Packages](#packages)
+- [Tools](#tools)
+- [Editor Support](#editor-support)
 - [Packaging](#packaging)
 - [Learning](#learning)
 - [Demos](#demos)
 - [Papers](#papers)
 - [Community](#community)
-- [Contributing](#contributing)
+- [Related](#related)
 
 ## Official
 
-- [bendlang/bend](https://github.com/bendlang/bend) — compiler, `Base`, GUIDE, demos, papers.
-- [bend-lang.com](https://bend-lang.com) — site, install, in-browser lab.
-- [Install](https://bend-lang.com) — `curl -fsSL https://bend-lang.com/install.sh | sh`
-- [Hub](https://hub.bend-lang.com) — publish/fetch by content hash. There is no package search; the import line is the handle.
-- [bend2-landing](https://github.com/VictorTaelin/bend2-landing) — source for the landing page.
-- [HigherOrderCO/Bend2](https://github.com/HigherOrderCO/Bend2) — redirect to `bendlang/bend`.
+- [Bend](https://github.com/bendlang/bend) - Compiler, `Base` library, guide, demos, and papers.
+- [Lab](https://bend-lang.com/#lab) - In-browser playground.
+- [Hub](https://hub.bend-lang.com) - Content-hash package registry.
+- [Guide](https://github.com/bendlang/bend/blob/main/guide/GUIDE.md) - Language guide, also printed by `bend guide`.
+- [Base](https://github.com/bendlang/bend/blob/main/bend2/base.bend) - Standard library, also printed by `bend base`.
+- [Landing](https://github.com/VictorTaelin/bend2-landing) - Source for bend-lang.com.
 
-In the language repo:
+## Packages
 
-- [GUIDE.md](https://github.com/bendlang/bend/blob/main/guide/GUIDE.md) — also `bend guide`
-- [base.bend](https://github.com/bendlang/bend/blob/main/bend2/base.bend) — also `bend base`
-- [demos/](https://github.com/bendlang/bend/tree/main/demos) — apps with `LAWS.bend` / `PROOF.bend`
+Install via Git clone until a project prints a hub `import 0x…` line.
 
-## Libraries
+- [bend-batteries](https://github.com/condensate-dev/bend-batteries) - Pieces `Base` does not ship: JSON today, with HTTP, TLS, fetch, regex, test, and fmt planned, plus laws.
 
-Install via Git clone until a project prints a hub `0x…` import line.
+## Tools
 
-- [bend-batteries](https://github.com/condensate-dev/bend-batteries) — pieces `Base` does not ship: **json** (shipped), http / tls / fetch / regex / test / fmt (planned). Laws and proofs in-tree.
+- [bend2-fuzzer](https://github.com/nicolas-abril/bend2-fuzzer) - Differential fuzzer for the JavaScript and C backends.
 
-Codec (RFC 4648 hex, then Base64), parse, and time libraries from the maintainers of this list will be linked here when they have a public repository.
+## Editor Support
 
-## Editors and language tools
-
-- [bolt](https://github.com/Emerging-Patterns/bolt) — linter, `bend`-shaped checker, and LSP written in Bend 2, with a VS Code extension.
-- [tree-sitter-bend2](https://github.com/nicolas-abril/tree-sitter-bend2) — Tree-sitter grammar, highlight / symbol / indent queries.
-- [bend2-fuzzer](https://github.com/nicolas-abril/bend2-fuzzer) — differential fuzzer for JS vs C backends.
-
-Bend 1 VS Code / LSP crates (`bend-language-server` 0.2.x) do not apply.
+- [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension.
+- [tree-sitter-bend2](https://github.com/nicolas-abril/tree-sitter-bend2) - Tree-sitter grammar with highlight, symbol, and indent queries.
 
 ## Packaging
 
-`nixpkgs` attribute `bend` is **Bend 1**. Use a Bend 2 flake:
-
-- [nicolas-abril/bend2-nix](https://github.com/nicolas-abril/bend2-nix) — flake, pinned upstream source.
-- [y0usaf/bend2-nix](https://github.com/y0usaf/bend2-nix) — flake on the official release tarball + bun.
+- [nicolas-abril/bend2-nix](https://github.com/nicolas-abril/bend2-nix) - Nix flake that builds Bend from pinned upstream source.
+- [y0usaf/bend2-nix](https://github.com/y0usaf/bend2-nix) - Nix flake on the official release tarball and bun.
 
 ## Learning
 
-- Official GUIDE — `bend guide` / [GUIDE.md](https://github.com/bendlang/bend/blob/main/guide/GUIDE.md)
-- [bend2-from-zero](https://github.com/nohzafk/bend2-from-zero) — from-scratch tutorial ([book](https://nohzafk.github.io/bend2-from-zero/)), including probes that are supposed to fail.
-- [aprendendo-bend2](https://github.com/erickweil/aprendendo-bend2) — short examples (Portuguese).
+- [bend2-from-zero](https://github.com/nohzafk/bend2-from-zero) - From-scratch tutorial ([book](https://nohzafk.github.io/bend2-from-zero/)), including probes that are supposed to fail.
+- [aprendendo-bend2](https://github.com/erickweil/aprendendo-bend2) - Short examples in Portuguese.
 
 ## Demos
 
-Official (in `bendlang/bend`):
+### Language repo
 
-- [Winning Is Impossible](https://github.com/bendlang/bend/tree/main/demos/app_win_is_bug_2d) — game plus a proof you cannot win ([play](https://bend-lang.com/#lab)).
-- [Slash Boss](https://github.com/bendlang/bend/tree/main/demos/app_slash_boss_3d)
-- [Rollback netcode](https://github.com/bendlang/bend/tree/main/demos/io_rollback_netcode)
+- [Winning Is Impossible](https://github.com/bendlang/bend/tree/main/demos/app_win_is_bug_2d) - 2D game plus a proof the player cannot win.
+- [Slash Boss](https://github.com/bendlang/bend/tree/main/demos/app_slash_boss_3d) - 3D boss-fight demo.
+- [Rollback netcode](https://github.com/bendlang/bend/tree/main/demos/io_rollback_netcode) - Deterministic multiplayer networking example.
 
-Community:
+### Community
 
-- [metal-bending](https://github.com/AdrielSantana/metal-bending) — verified examples and CPU vs Metal measurements on Apple Silicon.
-- [bend2-tar-demo](https://github.com/nicolas-abril/bend2-tar-demo) — tar / gzip CLI.
-- [bend2-svg-demo](https://github.com/nicolas-abril/bend2-svg-demo) — SVG viewer / editor, native and web.
-- [bend2-bendquest-demo](https://github.com/nicolas-abril/bend2-bendquest-demo) — cooperative multiplayer RPG (Bend server + client).
-- [qmdb-bend2](https://github.com/patrick-ogrady/qmdb-bend2) — QMDB membership-proof check in Bend 2.
+- [metal-bending](https://github.com/AdrielSantana/metal-bending) - Verified examples and CPU vs Metal measurements on Apple Silicon.
+- [bend2-tar-demo](https://github.com/nicolas-abril/bend2-tar-demo) - Tape archive and gzip CLI with a byte-identical C twin.
+- [bend2-svg-demo](https://github.com/nicolas-abril/bend2-svg-demo) - SVG viewer, renderer, and editor for native and web.
+- [bend2-bendquest-demo](https://github.com/nicolas-abril/bend2-bendquest-demo) - Cooperative multiplayer RPG with a Bend server and client.
+- [qmdb-bend2](https://github.com/patrick-ogrady/qmdb-bend2) - QMDB membership-proof check in Bend.
 
 ## Papers
 
-- [BendTT](https://github.com/bendlang/bend/blob/main/paper/BendTT.pdf) — affine dependent type theory.
-- [BendRT](https://github.com/bendlang/bend/blob/main/paper/BendRT.pdf) — parallel runtime for CPUs and GPUs.
-- [bend.lean](https://github.com/bendlang/bend/blob/main/bend2/bend.lean) — core in Lean.
+- [BendTT](https://github.com/bendlang/bend/blob/main/paper/BendTT.pdf) - Affine dependent type theory.
+- [BendRT](https://github.com/bendlang/bend/blob/main/paper/BendRT.pdf) - Parallel runtime for CPUs and GPUs.
+- [bend.lean](https://github.com/bendlang/bend/blob/main/bend2/bend.lean) - Core calculus in Lean.
 
 ## Community
 
-- [Discord](https://discord.bend-lang.com)
-- [X / Twitter](https://x.com/bendlang)
-- [Reddit](https://www.reddit.com/r/bendlang/)
-- [Issues](https://github.com/bendlang/bend/issues)
+- [Discord](https://discord.bend-lang.com) - Official chat.
+- [X](https://x.com/bendlang) - Official account.
+- [Reddit](https://www.reddit.com/r/bendlang/) - Official subreddit.
+- [Issues](https://github.com/bendlang/bend/issues) - Bug reports and language discussion.
+
+## Related
+
+- [awesome-bend (archived)](https://github.com/naoeosavio/awesome-bend) - Tools and editor plugins for Bend 1 / HVM2 (2024).
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Bend 2 only.
+Contributions welcome. See [contributing.md](CONTRIBUTING.md).
 
-## License
+## Footnotes
 
-[CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+The `bend` attribute in nixpkgs is Bend 1.
