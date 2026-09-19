@@ -35,13 +35,17 @@ The hub has no package names, versions, or search. You `import 0x…/file.bend` 
 
 Clone until a project prints a hub `import 0x…` line.
 
-- [bend-batteries](https://github.com/condensate-dev/bend-batteries) - Pieces `Base` does not ship: JSON today; HTTP, TLS, fetch, regex, test, and fmt planned.
+- [gauss](https://github.com/pjdotson/gauss) - Unit-aware engineering calculation engine with SI dimensions.
+- [unsga3-bend](https://github.com/AppSprout-dev/unsga3-bend) - U-NSGA-III optimiser, on the hub as `import 0xcd07e24a626a62e74603d48f436cd679/lib.bend`.
 
 ## Tools
 
 - [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension.
 - [tree-sitter-bend2](https://github.com/nicolas-abril/tree-sitter-bend2) - Tree-sitter grammar with highlight, symbol, and indent queries.
 - [bend2-fuzzer](https://github.com/nicolas-abril/bend2-fuzzer) - Differential fuzzer for the JavaScript and C backends.
+- [bend-fmt-lsp](https://github.com/bendlang/bend/tree/main/tools/bend-fmt-lsp) - Official formatting-only language server (full document, no diagnostics).
+- [bURL](https://github.com/rosdyana/bURL) - HTTP/1.1 and HTTPS client with DNS in Bend and a proof-checked parser.
+- [godot-bend](https://github.com/aricarmo/godot-bend) - Proof-of-concept GDExtension for writing Godot games in Bend.
 
 ## Packaging
 
@@ -71,6 +75,11 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bend2-svg-demo](https://github.com/nicolas-abril/bend2-svg-demo) - SVG viewer, renderer, and editor for native and web.
 - [bend2-bendquest-demo](https://github.com/nicolas-abril/bend2-bendquest-demo) - Cooperative multiplayer RPG with a Bend server and client.
 - [qmdb-bend2](https://github.com/patrick-ogrady/qmdb-bend2) - Membership-proof checker for the QMDB authenticated database.
+- [portal-bend](https://github.com/danielhe4rt/portal-bend) - Raycaster with shootable portals, momentum, and a visible body crossing.
+- [raytracing-bend2](https://github.com/aguspiza/raytracing-bend2) - Ray tracing in a weekend, ported from Nim, with parallel lets.
+- [bend-night-train](https://github.com/kvcop/bend-night-train) - WebGL night-train scene rewritten as a Bend tile rasteriser.
+- [bend2-quantum-simulator](https://github.com/splch/bend2-quantum-simulator) - Quantum circuit simulator with type-indexed amplitudes.
+- [bendoom](https://github.com/eliesgalvira/bendoom) - Doom that reads a WAD at runtime, with laws and a Nix flake.
 
 ## Papers
 
