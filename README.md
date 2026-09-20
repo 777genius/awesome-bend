@@ -42,9 +42,9 @@ Clone until a project prints a hub `import 0x…` line.
 - [scrapanium](https://github.com/0x5f3759df-fs/scrapanium) - HTTP/1.1, HTTP/2, and TLS WebSockets via a native transport.
 - [openai-bend](https://github.com/gouveags/openai-bend) - Typed OpenAI Responses client, on the hub as `import 0xda004b6e25aca0ce4a1c90a4af87bee0/openai.bend`.
 - [anthropic-bend](https://github.com/gouveags/anthropic-bend) - Typed Anthropic Messages client, on the hub as `import 0xf6096dc904e6bf39c5e2b709dd75eabe/anthropic.bend`.
-- [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex and Base64, on the hub as `import 0x6d01c86071ce2c22092b722bcfc6eb98/hex.bend`.
+- [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex, Base64, and UTF-8, on the hub as `import 0x888714bde93f46c139372bb9fdc57a19/hex.bend`.
 - [bend-parse](https://github.com/777genius/bend-parse) - Cursor, digits, and finish, on the hub as `import 0xe49a3e6521e1b71e55654a885f27bcc1/parse.bend`.
-- [bend-time](https://github.com/777genius/bend-time) - Proleptic Gregorian dates and an RFC 3339 subset, on the hub as `import 0x6648eb78d8a978a0e437eabbfbc841cd/format.bend`.
+- [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, RFC 3339 subset, and unix seconds, on the hub as `import 0xa2203fa800985a49e0255336bb562c81/format.bend`.
 
 ## Tools
 
