@@ -4,7 +4,7 @@
 
 > High-level language for massively parallel CPU and GPU programs, with an affine dependent type system.
 
-This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend`, `cargo install bend-lang`, `bend run-cu`).
+This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -37,6 +37,11 @@ Clone until a project prints a hub `import 0x…` line.
 
 - [gauss](https://github.com/pjdotson/gauss) - Unit-aware engineering calculation engine with SI dimensions.
 - [unsga3-bend](https://github.com/AppSprout-dev/unsga3-bend) - U-NSGA-III optimiser, on the hub as `import 0xcd07e24a626a62e74603d48f436cd679/lib.bend`.
+- [bend-lemmas](https://github.com/caiodomingues/bend-lemmas) - Reusable Nat, List, and Bool lemmas for `PROOF.bend` files.
+- [bend-tty](https://github.com/caiodomingues/bend-tty) - Raw-mode terminal effects, escapes, and a proof-checked key decoder.
+- [scrapanium](https://github.com/0x5f3759df-fs/scrapanium) - HTTP/1.1, HTTP/2, and TLS WebSockets via a native transport.
+- [openai-bend](https://github.com/gouveags/openai-bend) - Typed OpenAI Responses client, on the hub as `import 0xda004b6e25aca0ce4a1c90a4af87bee0/openai.bend`.
+- [anthropic-bend](https://github.com/gouveags/anthropic-bend) - Typed Anthropic Messages client, on the hub as `import 0xf6096dc904e6bf39c5e2b709dd75eabe/anthropic.bend`.
 
 ## Tools
 
@@ -46,6 +51,8 @@ Clone until a project prints a hub `import 0x…` line.
 - [bend-fmt-lsp](https://github.com/bendlang/bend/tree/main/tools/bend-fmt-lsp) - Official formatting-only language server (full document, no diagnostics).
 - [bURL](https://github.com/rosdyana/bURL) - HTTP/1.1 and HTTPS client with DNS in Bend and a proof-checked parser.
 - [godot-bend](https://github.com/aricarmo/godot-bend) - Proof-of-concept GDExtension for writing Godot games in Bend.
+- [bendirstat](https://github.com/kirillleventcov/bendirstat) - Disk-usage analyzer with a parallel scan and a zoomable treemap.
+- [teamy-bend](https://github.com/TeamDman/teamy-bend) - Independent Rust implementation of a Bend 2 subset.
 
 ## Packaging
 
@@ -80,6 +87,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bend-night-train](https://github.com/kvcop/bend-night-train) - WebGL night-train scene rewritten as a Bend tile rasteriser.
 - [bend2-quantum-simulator](https://github.com/splch/bend2-quantum-simulator) - Quantum circuit simulator with type-indexed amplitudes.
 - [bendoom](https://github.com/eliesgalvira/bendoom) - Doom that reads a WAD at runtime, with laws and a Nix flake.
+- [crud-api-bend](https://github.com/patote85/crud-api-bend) - In-process HTTP CRUD API with a file-backed store.
 
 ## Papers
 
@@ -96,7 +104,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 
 ## Related
 
-- [Bend 1](https://github.com/HigherOrderCO/Bend) - Previous language (HVM2). Programs do not carry over.
+- [Bend 1](https://github.com/HigherOrderCO/Bend1) - Previous language (HVM2). Programs do not carry over.
 - [awesome-bend (archived)](https://github.com/naoeosavio/awesome-bend) - Tools and editor plugins for Bend 1.
 
 ## Contributing
