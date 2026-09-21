@@ -44,7 +44,7 @@ Clone until a project prints a hub `import 0x…` line.
 - [anthropic-bend](https://github.com/gouveags/anthropic-bend) - Typed Anthropic Messages client, on the hub as `import 0x44dbbb9fe7023c9f8cc89550f8343cd3/anthropic.bend`.
 - [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex, Base64, and UTF-8, on the hub as `import 0x888714bde93f46c139372bb9fdc57a19/hex.bend`.
 - [bend-parse](https://github.com/777genius/bend-parse) - Cursor, digits, and finish, on the hub as `import 0xe49a3e6521e1b71e55654a885f27bcc1/parse.bend`.
-- [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, Instant, Duration, Period, and RFC 3339 subset, on the hub as `import 0x6ce79f1afc193de100ced4c79d7e2350/format.bend`.
+- [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, Instant, Duration, Period, ISO week, `P`/`PT`, and RFC 3339 subset, on the hub as `import 0x9b6a4fc7ceea91864a75396e1b8365e5/date.bend`.
 - [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands.
 - [bend-tui](https://github.com/caiodomingues/bend-tui) - Terminal views, a proof-checked frame shape, and a `Tui.run` loop on bend-tty.
 - [toon_bend](https://github.com/Dicklesworthstone/toon_bend) - JSON ↔ TOON codec and CLI, golden-tested against the original.
