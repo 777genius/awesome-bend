@@ -116,6 +116,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 
 ## Community
 
+- [Bend Packages](https://777genius.github.io/bend-packages/) - Community catalog with search, filters, and copy-import.
 - [Discord](https://discord.bend-lang.com) - Official chat.
 - [X](https://x.com/bendlang) - Official account.
 - [Reddit](https://www.reddit.com/r/bendlang/) - Official subreddit.
