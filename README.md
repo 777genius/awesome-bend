@@ -40,11 +40,14 @@ Clone until a project prints a hub `import 0x…` line.
 - [bend-lemmas](https://github.com/caiodomingues/bend-lemmas) - Reusable Nat, List, and Bool lemmas for `PROOF.bend` files.
 - [bend-tty](https://github.com/caiodomingues/bend-tty) - Raw-mode terminal effects, escapes, and a proof-checked key decoder.
 - [scrapanium](https://github.com/0x5f3759df-fs/scrapanium) - HTTP/1.1, HTTP/2, and TLS WebSockets via a native transport.
-- [openai-bend](https://github.com/gouveags/openai-bend) - Typed OpenAI Responses client, on the hub as `import 0xda004b6e25aca0ce4a1c90a4af87bee0/openai.bend`.
-- [anthropic-bend](https://github.com/gouveags/anthropic-bend) - Typed Anthropic Messages client, on the hub as `import 0xf6096dc904e6bf39c5e2b709dd75eabe/anthropic.bend`.
+- [openai-bend](https://github.com/gouveags/openai-bend) - Typed OpenAI Responses client, on the hub as `import 0x7d1714d98ca88352be07e0302e547a19/openai.bend`.
+- [anthropic-bend](https://github.com/gouveags/anthropic-bend) - Typed Anthropic Messages client, on the hub as `import 0x44dbbb9fe7023c9f8cc89550f8343cd3/anthropic.bend`.
 - [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex, Base64, and UTF-8, on the hub as `import 0x888714bde93f46c139372bb9fdc57a19/hex.bend`.
 - [bend-parse](https://github.com/777genius/bend-parse) - Cursor, digits, and finish, on the hub as `import 0xe49a3e6521e1b71e55654a885f27bcc1/parse.bend`.
 - [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, RFC 3339 subset, and unix seconds, on the hub as `import 0xa2203fa800985a49e0255336bb562c81/format.bend`.
+- [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands.
+- [bend-tui](https://github.com/caiodomingues/bend-tui) - Terminal views, a proof-checked frame shape, and a `Tui.run` loop on bend-tty.
+- [toon_bend](https://github.com/Dicklesworthstone/toon_bend) - JSON ↔ TOON codec and CLI, golden-tested against the original.
 
 ## Tools
 
@@ -56,6 +59,17 @@ Clone until a project prints a hub `import 0x…` line.
 - [godot-bend](https://github.com/aricarmo/godot-bend) - Proof-of-concept GDExtension for writing Godot games in Bend.
 - [bendirstat](https://github.com/kirillleventcov/bendirstat) - Disk-usage analyzer with a parallel scan and a zoomable treemap.
 - [teamy-bend](https://github.com/TeamDman/teamy-bend) - Independent Rust implementation of a Bend 2 subset.
+- [ez](https://github.com/Emerging-Patterns/ez) - Lockfile, ledger, and vendorer for hub hashes and unpublished trees.
+- [snap](https://github.com/Emerging-Patterns/snap) - Process runner (`run` / `start` / `par`), on the hub as `import 0x9bfd9d57916f3439316c2775fd1f10b4/main.bend`.
+- [bend-init](https://github.com/gouveags/bend-init) - CLI that scaffolds a law-backed starter project.
+- [fire-bend](https://github.com/JonasLoos/fire-bend) - Experimental indentation-based syntax that compiles to Bend.
+- [zed-bend](https://github.com/chhoumann/zed-bend) - Syntax highlighting for Zed.
+- [bend-mode.el](https://github.com/davidawad/bend-mode.el) - Emacs major mode with Eglot formatting and Flymake diagnostics.
+- [bend2-language-support](https://github.com/CaioWing/bend2-language-support) - VS Code diagnostics, completions, and snippets.
+- [bend2-vscode](https://github.com/nuxyel/bend2-vscode) - VS Code client with a standalone language server.
+- [davidawad/tree-sitter-bend2](https://github.com/davidawad/tree-sitter-bend2) - Vim/Neovim plugin with a Tree-sitter grammar.
+- [bend-grammar](https://github.com/gouveags/bend-grammar) - TextMate grammar with tokenizer regression tests.
+- [beads_bend](https://github.com/Dicklesworthstone/beads_bend) - Local-first issue tracker port, still early.
 
 ## Packaging
 
@@ -91,6 +105,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bend2-quantum-simulator](https://github.com/splch/bend2-quantum-simulator) - Quantum circuit simulator with type-indexed amplitudes.
 - [bendoom](https://github.com/eliesgalvira/bendoom) - Doom that reads a WAD at runtime, with laws and a Nix flake.
 - [crud-api-bend](https://github.com/patote85/crud-api-bend) - In-process HTTP CRUD API with a file-backed store.
+- [bend-playground](https://github.com/krymancer/bend-playground) - Ray tracing, Game of Life, pi collisions, and a Rubik cube graph.
+- [bend-2-mandelbrot](https://github.com/tomc98/bend-2-mandelbrot) - Mandelbrot explorer on Apple Silicon with Metal and deep zoom.
 
 ## Papers
 
