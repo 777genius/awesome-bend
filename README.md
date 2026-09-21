@@ -10,11 +10,12 @@ This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`Higher
 curl -fsSL https://bend-lang.com/install.sh | sh
 ```
 
-The hub has no package names, versions, or search. You `import 0x…/file.bend` from a project's README, or clone the repo until it publishes a hash.
+The hub has no package names, versions, or search. You `import 0x…/file.bend` from a project's README, or clone the repo until it publishes a hash. To find a published library, use the community catalog below.
 
 ## Contents
 
 - [Official](#official)
+- [Catalog](#catalog)
 - [Packages](#packages)
 - [Tools](#tools)
 - [Packaging](#packaging)
@@ -31,6 +32,10 @@ The hub has no package names, versions, or search. You `import 0x…/file.bend` 
 - [Hub](https://hub.bend-lang.com) - Content-hash registry: publish and fetch, no search.
 - [Base](https://github.com/bendlang/bend/blob/main/bend2/base.bend) - Bundled standard library, also printed by `bend base`.
 
+## Catalog
+
+- [Bend Packages](https://777genius.github.io/bend-packages/) - Community catalog with search, filters, and copy-import. Not the official hub.
+
 ## Packages
 
 Clone until a project prints a hub `import 0x…` line.
@@ -45,13 +50,16 @@ Clone until a project prints a hub `import 0x…` line.
 - [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex, Base64, and UTF-8, on the hub as `import 0x888714bde93f46c139372bb9fdc57a19/hex.bend`.
 - [bend-parse](https://github.com/777genius/bend-parse) - Cursor, digits, and finish, on the hub as `import 0xe49a3e6521e1b71e55654a885f27bcc1/parse.bend`.
 - [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, Instant, Duration, Period, ISO week, `P`/`PT`, and RFC 3339 subset, on the hub as `import 0x9b6a4fc7ceea91864a75396e1b8365e5/date.bend`.
-- [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands.
+- [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands, on the hub as `import 0xebdf72b20ad527103f6efc0d2aa8f1ec/main.bend`.
+- [bend-sha256](https://github.com/Giulio2002/bend-sha256) - SHA-256 with machine-checked proofs against FIPS 180-4, on the hub as `import 0xda83506fb9f059ead7afcfa2f498df5f/sha256.bend`.
+- [bend-json](https://github.com/rootagi/bend-json) - JSON parser and serializer with formal proofs, on the hub as `import 0x1f4d6c03caf955232d0b0dc6e6f36cf4/json.bend`.
+- [bend-net](https://github.com/naoeosavio/bend-net) - HTTP/1.1 and WebSocket over TCP, plus Base64 and SHA-1, on the hub as `import 0xd66ee682d4ce8c656782ca9e0e4634cb/http.bend`.
 - [bend-tui](https://github.com/caiodomingues/bend-tui) - Terminal views, a proof-checked frame shape, and a `Tui.run` loop on bend-tty.
 - [toon_bend](https://github.com/Dicklesworthstone/toon_bend) - JSON ↔ TOON codec and CLI, golden-tested against the original.
 
 ## Tools
 
-- [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension.
+- [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension, on the hub as `import 0x729eecea86ea5a2cdba3a2856a313bca/bolt/main.bend`.
 - [tree-sitter-bend2](https://github.com/nicolas-abril/tree-sitter-bend2) - Tree-sitter grammar with highlight, symbol, and indent queries.
 - [bend2-fuzzer](https://github.com/nicolas-abril/bend2-fuzzer) - Differential fuzzer for the JavaScript and C backends.
 - [bend-fmt-lsp](https://github.com/bendlang/bend/tree/main/tools/bend-fmt-lsp) - Official formatting-only language server (full document, no diagnostics).
@@ -61,7 +69,7 @@ Clone until a project prints a hub `import 0x…` line.
 - [teamy-bend](https://github.com/TeamDman/teamy-bend) - Independent Rust implementation of a Bend 2 subset.
 - [ez](https://github.com/Emerging-Patterns/ez) - Lockfile, ledger, and vendorer for hub hashes and unpublished trees.
 - [snap](https://github.com/Emerging-Patterns/snap) - Process runner (`run` / `start` / `par`), on the hub as `import 0x9bfd9d57916f3439316c2775fd1f10b4/main.bend`.
-- [bend-init](https://github.com/gouveags/bend-init) - CLI that scaffolds a law-backed starter project.
+- [bend-init](https://github.com/gouveags/bend-init) - CLI that scaffolds a law-backed starter project, on the hub as `import 0x1e0cc3677d46304c29af14dfd5553385/main.bend`.
 - [fire-bend](https://github.com/JonasLoos/fire-bend) - Experimental indentation-based syntax that compiles to Bend.
 - [zed-bend](https://github.com/chhoumann/zed-bend) - Syntax highlighting for Zed.
 - [bend-mode.el](https://github.com/davidawad/bend-mode.el) - Emacs major mode with Eglot formatting and Flymake diagnostics.
@@ -116,7 +124,6 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 
 ## Community
 
-- [Bend Packages](https://777genius.github.io/bend-packages/) - Community catalog with search, filters, and copy-import.
 - [Discord](https://discord.bend-lang.com) - Official chat.
 - [X](https://x.com/bendlang) - Official account.
 - [Reddit](https://www.reddit.com/r/bendlang/) - Official subreddit.
