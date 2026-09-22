@@ -54,6 +54,10 @@ Clone until a project prints a hub `import 0x…` line.
 - [bend-sha256](https://github.com/Giulio2002/bend-sha256) - SHA-256 with machine-checked proofs against FIPS 180-4, on the hub as `import 0xda83506fb9f059ead7afcfa2f498df5f/sha256.bend`.
 - [bend-json](https://github.com/rootagi/bend-json) - JSON parser and serializer with formal proofs, on the hub as `import 0x1f4d6c03caf955232d0b0dc6e6f36cf4/json.bend`.
 - [bend-net](https://github.com/naoeosavio/bend-net) - HTTP/1.1 and WebSocket over TCP, plus Base64 and SHA-1, on the hub as `import 0xd66ee682d4ce8c656782ca9e0e4634cb/http.bend`.
+- [eztoml](https://github.com/Emerging-Patterns/eztoml) - TOML for Bend 2, on the hub as `import 0x04b9afdd6d6a56039c5ce6dfb1e55294/main.bend`.
+- [ezjson](https://github.com/Emerging-Patterns/ezjson) - JSON for Bend 2, on the hub as `import 0xa3c2445eb44c5d8406e6229be518fccb/main.bend`.
+- [mylsm](https://github.com/FabianVegaA/mylsm) - Durable LSM key-value store, on the hub as `import 0x05fa0e42448e8e221df592b204de523d/mylsm.bend`.
+- [lapine](https://github.com/developerRafu/lapine) - AMQP consumer SDK, on the hub as `import 0xe135341ec9c8609f01ad79493ae16612/lapine.bend`.
 - [bend-tui](https://github.com/caiodomingues/bend-tui) - Terminal views, a proof-checked frame shape, and a `Tui.run` loop on bend-tty.
 - [toon_bend](https://github.com/Dicklesworthstone/toon_bend) - JSON ↔ TOON codec and CLI, golden-tested against the original.
 
