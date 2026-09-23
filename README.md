@@ -29,7 +29,8 @@ The hub has no package names, versions, or search. You `import 0x…/file.bend` 
 
 - [Bend](https://github.com/bendlang/bend) - Compiler, `Base` library, guide, demos, and papers.
 - [Lab](https://bend-lang.com/#lab) - In-browser playground.
-- [Hub](https://hub.bend-lang.com) - Content-hash registry: publish and fetch, no search.
+- [Hub](https://hub.bend-lang.com) - Content-hash registry: publish, fetch, and a newest-first listing. No names or search. `?hub=` can point a local hub at the same page.
+- [Bender](https://bend-lang.com/bender) - Official proving agent for `LAWS.bend` / `PROOF.bend`.
 - [Base](https://github.com/bendlang/bend/blob/main/bend2/base.bend) - Bundled standard library, also printed by `bend base`.
 
 ## Catalog
@@ -41,7 +42,7 @@ The hub has no package names, versions, or search. You `import 0x…/file.bend` 
 Clone until a project prints a hub `import 0x…` line.
 
 - [gauss](https://github.com/pjdotson/gauss) - Unit-aware engineering calculation engine with SI dimensions.
-- [unsga3-bend](https://github.com/AppSprout-dev/unsga3-bend) - U-NSGA-III optimiser, on the hub as `import 0xcd07e24a626a62e74603d48f436cd679/lib.bend`.
+- [unsga3-bend](https://github.com/AppSprout-dev/unsga3-bend) - U-NSGA-III optimiser, on the hub as `import 0x527a2a4fa91b05a0250d7be0e11d232a/lib.bend`.
 - [bend-lemmas](https://github.com/caiodomingues/bend-lemmas) - Reusable Nat, List, and Bool lemmas for `PROOF.bend` files.
 - [bend-tty](https://github.com/caiodomingues/bend-tty) - Raw-mode terminal effects, escapes, and a proof-checked key decoder.
 - [scrapanium](https://github.com/0x5f3759df-fs/scrapanium) - HTTP/1.1, HTTP/2, and TLS WebSockets via a native transport.
@@ -50,16 +51,19 @@ Clone until a project prints a hub `import 0x…` line.
 - [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex, Base64, and UTF-8, on the hub as `import 0x888714bde93f46c139372bb9fdc57a19/hex.bend`.
 - [bend-parse](https://github.com/777genius/bend-parse) - Cursor, digits, and finish, on the hub as `import 0xe49a3e6521e1b71e55654a885f27bcc1/parse.bend`.
 - [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, Instant, Duration, Period, ISO week, `P`/`PT`, RFC 3339 subset, IANA zones, and RFC 9557. Core `import 0x9b6a4fc7ceea91864a75396e1b8365e5/date.bend`; zone `import 0x5118d7c8d8a6cbdfca48647d1a5a6fde/zone.bend`.
-- [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands, on the hub as `import 0xebdf72b20ad527103f6efc0d2aa8f1ec/main.bend`.
+- [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands, on the hub as `import 0xba6940aab8a335b70bf79944bd9b53c4/main.bend`.
 - [bend-sha256](https://github.com/Giulio2002/bend-sha256) - SHA-256 with machine-checked proofs against FIPS 180-4, on the hub as `import 0xda83506fb9f059ead7afcfa2f498df5f/sha256.bend`.
 - [bend-json](https://github.com/rootagi/bend-json) - JSON parser and serializer with formal proofs, on the hub as `import 0x1f4d6c03caf955232d0b0dc6e6f36cf4/json.bend`.
-- [bend-net](https://github.com/naoeosavio/bend-net) - HTTP/1.1 and WebSocket over TCP, plus Base64 and SHA-1, on the hub as `import 0xd66ee682d4ce8c656782ca9e0e4634cb/http.bend`.
+- [bend-net](https://github.com/naoeosavio/bend-net) - HTTP/1.1, HTTP/2, HTTPS, DNS, TLS, and WebSockets, on the hub as `import 0xd66ee682d4ce8c656782ca9e0e4634cb/http.bend`.
 - [eztoml](https://github.com/Emerging-Patterns/eztoml) - TOML for Bend 2, on the hub as `import 0x04b9afdd6d6a56039c5ce6dfb1e55294/main.bend`.
 - [ezjson](https://github.com/Emerging-Patterns/ezjson) - JSON for Bend 2, on the hub as `import 0xa3c2445eb44c5d8406e6229be518fccb/main.bend`.
 - [mylsm](https://github.com/FabianVegaA/mylsm) - Durable LSM key-value store, on the hub as `import 0x05fa0e42448e8e221df592b204de523d/mylsm.bend`.
-- [lapine](https://github.com/developerRafu/lapine) - AMQP consumer SDK, on the hub as `import 0xe135341ec9c8609f01ad79493ae16612/lapine.bend`.
 - [bend-tui](https://github.com/caiodomingues/bend-tui) - Terminal views, a proof-checked frame shape, and a `Tui.run` loop on bend-tty.
 - [toon_bend](https://github.com/Dicklesworthstone/toon_bend) - JSON ↔ TOON codec and CLI, golden-tested against the original.
+- [ezhttp](https://github.com/Emerging-Patterns/ezhttp) - HTTP client and server with RFC 9110/9112/3986 laws. Install with `ez add Emerging-Patterns/ezhttp`.
+- [ezaudio](https://github.com/Emerging-Patterns/ezaudio) - PCM clips (`s16` / `f32`) for Bend 2. Install with `ez add Emerging-Patterns/ezaudio`.
+- [ezimg](https://github.com/Emerging-Patterns/ezimg) - Raster images for Bend 2. Install with `ez add Emerging-Patterns/ezimg`.
+- [bend-conv](https://github.com/Kaz9487/bend-conv) - FP32 convolution with proofs and a pretrained YOLOv5n example.
 
 ## Tools
 
@@ -81,6 +85,9 @@ Clone until a project prints a hub `import 0x…` line.
 - [davidawad/tree-sitter-bend2](https://github.com/davidawad/tree-sitter-bend2) - Vim/Neovim plugin with a Tree-sitter grammar.
 - [bend-grammar](https://github.com/gouveags/bend-grammar) - TextMate grammar with tokenizer regression tests.
 - [beads_bend](https://github.com/Dicklesworthstone/beads_bend) - Local-first issue tracker port, still early.
+- [bendc](https://github.com/Lulzx/bendc) - Self-hosting Bend 2 compiler, written in Bend 2, targeting C.
+- [bend2-lsp](https://github.com/don2e4/bend2-lsp) - Standalone language server: diagnostics, hover, go-to-definition, and formatting.
+- [Giulio2002/bend-vscode](https://github.com/Giulio2002/bend-vscode) - VS Code highlighting, autocomplete, compiler diagnostics, and `.bend` file icons.
 
 ## Packaging
 
@@ -89,6 +96,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [nicolas-abril/bend2-nix](https://github.com/nicolas-abril/bend2-nix) - Nix flake that builds Bend from pinned upstream source.
 - [y0usaf/bend2-nix](https://github.com/y0usaf/bend2-nix) - Nix flake on the official release tarball and bun.
 - [ez](https://github.com/Emerging-Patterns/ez) - Project management for Bend.
+- [kitevi/homebrew-bend](https://github.com/kitevi/homebrew-bend) - Unofficial Homebrew tap for Bend 2 on macOS (`brew install kitevi/bend/bend`).
 
 ## Learning
 
