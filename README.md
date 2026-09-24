@@ -64,6 +64,13 @@ Clone until a project prints a hub `import 0x…` line.
 - [ezaudio](https://github.com/Emerging-Patterns/ezaudio) - PCM clips (`s16` / `f32`) for Bend 2. Install with `ez add Emerging-Patterns/ezaudio`.
 - [ezimg](https://github.com/Emerging-Patterns/ezimg) - Raster images for Bend 2. Install with `ez add Emerging-Patterns/ezimg`.
 - [bend-conv](https://github.com/Kaz9487/bend-conv) - FP32 convolution with proofs and a pretrained YOLOv5n example.
+- [bend-collections](https://github.com/Giulio2002/bend-collections) - Verified containers (hash map, tree map, heap, deque, LRU) plus SHA-256, on the hub as `import 0x9ee2e9a299991dcc089fe22c7f3ceb5f/src/containers/hash_table.bend`.
+- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked Nat, Bool, List, and equality lemmas, on the hub as `import 0xafc61ca8b7738a6df7f28eddf80168f8/nat.bend`.
+- [BendSR](https://github.com/k3ybladewielder/BendSR) - Parallel symbolic regression, on the hub as `import 0xb1a81026c64fbbc00a8570155d77383d/BendSR.bend`.
+- [bend_tensors](https://hub.bend-lang.com/0x39d8166231e68361eb37e8bef9287b8a/bend_tensors.bend) - Dense linear algebra with shapes in the types, on the hub as `import 0x39d8166231e68361eb37e8bef9287b8a/bend_tensors.bend`.
+- [stiff](https://github.com/fraylabs/stiff) - Experimental HTTP, routing, streaming, and SQLite-backed local state for Bend 2.
+- [bendygrad](https://github.com/KapioKai/bendygrad) - Tinygrad front-end in Bend 2: views, buffers, autodiff, and SGD.
+- [bend-machines](https://hub.bend-lang.com/0x9fc0cec754888f0fecabce899ddf2ee5/main.bend) - Root-of-Lisp, Core, STG, and STG→C in one hub package, `import 0x9fc0cec754888f0fecabce899ddf2ee5/main.bend`.
 
 ## Tools
 
@@ -88,6 +95,11 @@ Clone until a project prints a hub `import 0x…` line.
 - [bendc](https://github.com/Lulzx/bendc) - Self-hosting Bend 2 compiler, written in Bend 2, targeting C.
 - [bend2-lsp](https://github.com/don2e4/bend2-lsp) - Standalone language server: diagnostics, hover, go-to-definition, and formatting.
 - [Giulio2002/bend-vscode](https://github.com/Giulio2002/bend-vscode) - VS Code highlighting, autocomplete, compiler diagnostics, and `.bend` file icons.
+- [bend-idea](https://github.com/dearlordylord/bend-idea) - IntelliJ IDEA plugin: highlighting, completion, and optional compiler diagnostics.
+- [bendler](https://github.com/lukaszsamson/bendler) - Call Bend from Elixir through a supervised port or an experimental NIF.
+- [bend-frontend](https://github.com/ind-igo/bend-frontend) - Checks full Bend and exports a typed `Core.Program` for backends.
+- [bend-evm](https://github.com/ind-igo/bend-evm) - EVM backend: contracts in Bend, certified IR, and Yul lowering.
+- [FabianVegaA/tree-sitter-bend](https://github.com/FabianVegaA/tree-sitter-bend) - Tree-sitter grammar for Bend 2 syntax.
 
 ## Packaging
 
@@ -127,6 +139,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [crud-api-bend](https://github.com/patote85/crud-api-bend) - In-process HTTP CRUD API with a file-backed store.
 - [bend-playground](https://github.com/krymancer/bend-playground) - Ray tracing, Game of Life, pi collisions, and a Rubik cube graph.
 - [bend-2-mandelbrot](https://github.com/tomc98/bend-2-mandelbrot) - Mandelbrot explorer on Apple Silicon with Metal and deep zoom.
+- [bend-voxel](https://github.com/aivv73/bend-voxel) - Destructible voxel demo with a native Vulkan renderer.
+- [bend2craft](https://github.com/lennix1337/bend2craft) - Minecraft-inspired voxel sandbox with seeded terrain and WebGL.
 
 ## Papers
 
@@ -140,6 +154,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [X](https://x.com/bendlang) - Official account.
 - [Reddit](https://www.reddit.com/r/bendlang/) - Official subreddit.
 - [Issues](https://github.com/bendlang/bend/issues) - Bug reports and language discussion.
+- [Built with Bend](https://builtwithbend.com) - Human-reviewed directory of Bend 2 apps and demos ([repo](https://github.com/LVTD-LLC/built-with-bend)).
 
 ## Related
 
