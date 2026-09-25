@@ -10,7 +10,7 @@ This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`Higher
 curl -fsSL https://bend-lang.com/install.sh | sh
 ```
 
-The hub has no package names, versions, or search. You `import 0x…/file.bend` from a project's README, or clone the repo until it publishes a hash. To find a published library, use the community catalog below.
+The hub is still content hashes (`import 0x…/file.bend`). Claimed names are aliases (`import name@version/file.bend`, name ≥12 characters). The site now has search, hot/new, and posts. Clone until a project prints a hub import, or use the community catalog below.
 
 ## Contents
 
@@ -29,7 +29,7 @@ The hub has no package names, versions, or search. You `import 0x…/file.bend` 
 
 - [Bend](https://github.com/bendlang/bend) - Compiler, `Base` library, guide, demos, and papers.
 - [Lab](https://bend-lang.com/#lab) - In-browser playground.
-- [Hub](https://hub.bend-lang.com) - Content-hash registry: publish, fetch, and a newest-first listing. No names or search. `?hub=` can point a local hub at the same page.
+- [Hub](https://hub.bend-lang.com) - Content-hash registry with optional names (`import name@version/file.bend`), search, hot/new, and posts. `?hub=` can point a local hub at the same page.
 - [Bender](https://bend-lang.com/bender) - Official proving agent for `LAWS.bend` / `PROOF.bend`.
 - [Base](https://github.com/bendlang/bend/blob/main/bend2/base.bend) - Bundled standard library, also printed by `bend base`.
 
@@ -46,11 +46,11 @@ Clone until a project prints a hub `import 0x…` line.
 - [bend-lemmas](https://github.com/caiodomingues/bend-lemmas) - Reusable Nat, List, and Bool lemmas for `PROOF.bend` files.
 - [bend-tty](https://github.com/caiodomingues/bend-tty) - Raw-mode terminal effects, escapes, and a proof-checked key decoder.
 - [scrapanium](https://github.com/0x5f3759df-fs/scrapanium) - HTTP/1.1, HTTP/2, and TLS WebSockets via a native transport.
-- [openai-bend](https://github.com/gouveags/openai-bend) - Typed OpenAI Responses client, on the hub as `import 0x7d1714d98ca88352be07e0302e547a19/openai.bend`.
-- [anthropic-bend](https://github.com/gouveags/anthropic-bend) - Typed Anthropic Messages client, on the hub as `import 0x44dbbb9fe7023c9f8cc89550f8343cd3/anthropic.bend`.
-- [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex, Base64, and UTF-8, on the hub as `import bend-codec-lib@0.2.0.0/hex.bend`.
-- [bend-parse](https://github.com/777genius/bend-parse) - Cursor, digits, and finish, on the hub as `import bend-parse-lib@0.1.0.0/parse.bend`.
-- [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, Instant, Duration, Period, ISO week, `P`/`PT`, RFC 3339 subset, IANA zones, and RFC 9557. Core `import bend-time-lib@0.4.0.0/date.bend`; zone `import 0x5118d7c8d8a6cbdfca48647d1a5a6fde/zone.bend`.
+- [openai-bend](https://github.com/gouveags/openai-bend) - Typed OpenAI Responses client, on the hub as `import bend-openai-sdk@0.1.0.0/openai.bend`.
+- [anthropic-bend](https://github.com/gouveags/anthropic-bend) - Typed Anthropic Messages client, on the hub as `import bend-anthropic-sdk@0.1.0.0/anthropic.bend`.
+- [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex, Base64, and UTF-8, on the hub as `import bend-encoding@0.2.0.0/hex.bend`.
+- [bend-parse](https://github.com/777genius/bend-parse) - Cursor, digits, and finish, on the hub as `import bend-scanner@0.1.0.0/parse.bend`.
+- [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, Instant, Duration, Period, ISO week, `P`/`PT`, RFC 3339 subset, IANA zones, and RFC 9557. Core `import bend-datetime@0.4.0.0/date.bend`; zone `import 0x5118d7c8d8a6cbdfca48647d1a5a6fde/zone.bend`.
 - [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands, on the hub as `import 0xba6940aab8a335b70bf79944bd9b53c4/main.bend`.
 - [bend-sha256](https://github.com/Giulio2002/bend-sha256) - SHA-256 with machine-checked proofs against FIPS 180-4, on the hub as `import 0xda83506fb9f059ead7afcfa2f498df5f/sha256.bend`.
 - [bend-json](https://github.com/rootagi/bend-json) - JSON parser and serializer with formal proofs, on the hub as `import 0x1f4d6c03caf955232d0b0dc6e6f36cf4/json.bend`.
@@ -71,6 +71,10 @@ Clone until a project prints a hub `import 0x…` line.
 - [stiff](https://github.com/fraylabs/stiff) - Experimental HTTP, routing, streaming, and SQLite-backed local state for Bend 2.
 - [bendygrad](https://github.com/KapioKai/bendygrad) - Tinygrad front-end in Bend 2: views, buffers, autodiff, and SGD.
 - [bend-machines](https://hub.bend-lang.com/0x9fc0cec754888f0fecabce899ddf2ee5/main.bend) - Root-of-Lisp, Core, STG, and STG→C in one hub package, `import 0x9fc0cec754888f0fecabce899ddf2ee5/main.bend`.
+- [bend-kit](https://github.com/paymog/bend-kit) - Bytes, encoding, JSON, zlib, URL, sockets, DNS, HTTP, and routing. HTTP is `import 0x310b0480ce5b511ff8da9704b3d27ef3/http.bend`.
+- [V](https://github.com/PedroAVJ/v) - Architecture as types (Arc), on the hub as `import near-architecture@0.6.0.0/arc.bend`.
+- [jonlib](https://github.com/jonathanperis/jonlib) - Graphics and game-programming library working toward raylib compatibility.
+- [bend-lawful-stdlib](https://hub.bend-lang.com/n/bend-lawful-stdlib) - Typeclass-style Ord, Semigroup, and Group with their laws, `import bend-lawful-stdlib@0.1.0.0/src/class.bend`.
 
 ## Tools
 
@@ -100,6 +104,7 @@ Clone until a project prints a hub `import 0x…` line.
 - [bend-frontend](https://github.com/ind-igo/bend-frontend) - Checks full Bend and exports a typed `Core.Program` for backends.
 - [bend-evm](https://github.com/ind-igo/bend-evm) - EVM backend: contracts in Bend, certified IR, and Yul lowering.
 - [FabianVegaA/tree-sitter-bend](https://github.com/FabianVegaA/tree-sitter-bend) - Tree-sitter grammar for Bend 2 syntax.
+- [bulkhead](https://github.com/eserilev/bulkhead) - Web3Signer-compatible Ethereum consensus remote signer, with slashing-protection laws.
 
 ## Packaging
 
@@ -141,6 +146,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bend-2-mandelbrot](https://github.com/tomc98/bend-2-mandelbrot) - Mandelbrot explorer on Apple Silicon with Metal and deep zoom.
 - [bend-voxel](https://github.com/aivv73/bend-voxel) - Destructible voxel demo with a native Vulkan renderer.
 - [bend2craft](https://github.com/lennix1337/bend2craft) - Minecraft-inspired voxel sandbox with seeded terrain and WebGL.
+- [birc](https://github.com/angerman/birc) - Formally verified terminal IRC client with a native DNS engine.
 
 ## Papers
 
