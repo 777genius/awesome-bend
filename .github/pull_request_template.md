@@ -5,3 +5,5 @@ Thanks for contributing.
 - [ ] Description starts with an uppercase character and ends with a period
 - [ ] One new item, at the bottom of the relevant category
 - [ ] I have used this or can personally recommend it
+- [ ] Links work, and any hub import resolves to a published file
+- [ ] Description reflects current features and meaningful limitations
