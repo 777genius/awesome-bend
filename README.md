@@ -87,6 +87,7 @@ Imports below identify published packages, not a claim that every package passes
 - [wordlib](https://github.com/Yazington/wordlib) - Machine-word laws on the hub as `import 0xb13667d52aa56e002b4d09883d7fce3e/PROOF.bend`; checkout also includes list laws and a sum prover.
 - [bend-over](https://github.com/subtleGradient/bend-over) - SQLite and JavaScript interop with native, Bun, and browser examples. SQLite `import bend-over-sqlite@0.1.0.0/sqlite.bend`.
 - [bend-trace-context](https://github.com/LucasGois1/bend-trace-context) - W3C Trace Context propagation for Bend, Node, and browsers, with proved protocol rules. Hub `import bend-trace-context@0.1.2.0/trace_context.bend`; this release requires Bend 2.0.34.
+- [bend-csv](https://github.com/nohzafk/bend-csv) - CSV parser with quoted and multiline fields, custom separators, a TypeScript bridge, and machine-checked core laws. Hub `import bend-csv-parser@0.1.0.0/core.bend`; requires Bend 2.0.34.
 
 ## Tools
 
