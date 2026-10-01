@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **30 September 2026**. Latest stable release: [Bend 2.0.34](https://github.com/bendlang/bend/releases/tag/v2.0.34).
+Last checked: **1 October 2026**. Latest stable release: [Bend 2.0.34](https://github.com/bendlang/bend/releases/tag/v2.0.34).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -87,7 +87,7 @@ Imports below identify published packages, not a claim that every package passes
 - [wordlib](https://github.com/Yazington/wordlib) - Machine-word laws on the hub as `import 0xb13667d52aa56e002b4d09883d7fce3e/PROOF.bend`; checkout also includes list laws and a sum prover.
 - [bend-over](https://github.com/subtleGradient/bend-over) - SQLite and JavaScript interop with native, Bun, and browser examples. SQLite `import bend-over-sqlite@0.1.0.0/sqlite.bend`.
 - [bend-trace-context](https://github.com/LucasGois1/bend-trace-context) - W3C Trace Context propagation for Bend, Node, and browsers, with proved protocol rules. Hub `import bend-trace-context@0.1.2.0/trace_context.bend`; this release requires Bend 2.0.34.
-- [bend-csv](https://github.com/nohzafk/bend-csv) - CSV parser with quoted and multiline fields, custom separators, a TypeScript bridge, and machine-checked core laws. Hub `import bend-csv-parser@0.1.0.0/core.bend`; requires Bend 2.0.34.
+- [bend-csv](https://github.com/nohzafk/bend-csv) - CSV parser with quoted and multiline fields, custom separators, a TypeScript bridge, and machine-checked core laws. Hub `import bend-csv-parser@0.1.0.1/core.bend`; requires Bend 2.0.34.
 
 ## Tools
 
@@ -133,6 +133,7 @@ Imports below identify published packages, not a claim that every package passes
 - [ericfode/zed-bend2](https://github.com/ericfode/zed-bend2) - Zed development extension with Tree-sitter highlighting and a bundled compiler-backed language server.
 - [ProofPack State](https://github.com/bkase/proofpack-state) - Read-only Git object reachability, missing-object, and retention queries with a proved set-algebra core.
 - [Bend verdict investigation](https://github.com/leo-guinan/bend-verdict-investigation) - Reproducible probes for Bend 2.0.32's checker and BendTT kernel, including a reported mismatch that the kernel rejects.
+- [bend2-lsp-rs](https://github.com/IlyaGulya/bend2-lsp-rs) - Rust language server with compiler diagnostics, source navigation, rename, formatting, and semantic tokens; requires a local Bend 2 CLI.
 
 ## Packaging
 
@@ -151,6 +152,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [aprendendo-bend2](https://github.com/erickweil/aprendendo-bend2) - Short examples in Portuguese.
 - [Bend, Explained](https://raunak-11.github.io/bend-explainer/) - Interactive beginner explainer of parallelism, laws, and proofs ([repo](https://github.com/raunak-11/bend-explainer)).
 - [bend2.dev](https://bend2.dev/) - Independent notes, syntax primer, and example programs.
+- [bend-math](https://github.com/lilalittle/bend-math) - Small executable example of symbolic differentiation and forward-mode automatic differentiation, with a machine-checked agreement proof.
 
 ## Demos
 
@@ -184,6 +186,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bend-craft](https://github.com/costamatheus97/bend-craft) - Fixed-point voxel game with generated terrain and first-person interaction. GPU measurements use an experimental CUDA-over-HIP compiler fork.
 - [Peggie Bend Lab](https://github.com/absolukie/peggie-bend-lab) - Procedural peg-board generator with a proof that every requested cell produces exactly one target peg.
 - [Rift Chess Bend 2 preview](https://github.com/HaileyStorm/rift-chess-bend2) - Browser preview of a Bend-rendered chess experiment; source and proofs remain in the main Rift Chess repository.
+- [Bendcraft](https://github.com/AdrielSantana/bendcraft) - Walkable voxel world with weather, flowing water, and proofs; currently needs its dedicated Bend compiler branch for the documented performance and features.
 
 ## Benchmarks
 
