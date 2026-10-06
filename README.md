@@ -96,7 +96,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bender-dns](https://github.com/RevCBH/bender-dns) - TCP DNS stub resolver, OS resolver delegation, and a CLI, with proved codec laws; tested on Linux with Bend 2.0.32.
 - [bend-zcash-blake2b](https://github.com/Giulio2002/bend-zcash-blake2b) - Proved parameterized BLAKE2b with a C library and Rust blake2b_simd adapter; incremental buffering and host glue are tested, not proved.
 - [gax-bend](https://github.com/jobstijl/gax-bend) - Geometric algebra with generated kernels proved against a multivector specification, geometric APIs, and a ray-tracing demo; uses Bend 2.0.35, with GPU experiments on the upstream HIP branch.
-- [bend-stream](https://github.com/kbrianps/bend-stream) - RTSP and RTMP clients as sessions that give frames (H.264, H.265, AAC, and G.711 over both), with MPEG-TS and FLV recording, TLS, and reconnection; its laws check RFC vectors and prove that no RTSP request field carries CR or LF; play only, native build only (C effects over OpenSSL), tested with Bend 2.0.35, on the hub as `import 0xd6fc55bf65b187fec4175f80d08c165a/rtsp.bend`.
+- [bend-stream](https://github.com/kbrianps/bend-stream) - RTSP and RTMP clients as sessions that give frames (H.264, H.265, AAC, and G.711 over both), with MPEG-TS and FLV recording, TLS, and reconnection; its laws check RFC vectors and prove that no RTSP request field carries CR or LF; play only, native build only (C effects over OpenSSL), tested with Bend 2.0.35, on the hub as `import 0x549ec15ed24ab103abe18a252f491fa4/rtsp.bend`.
 
 ## Tools
 
