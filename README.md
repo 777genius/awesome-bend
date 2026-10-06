@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **5 October 2026**. Latest stable release: [Bend 2.0.35](https://github.com/bendlang/bend/releases/tag/v2.0.35).
+Last checked: **6 October 2026**. Latest stable release: [Bend 2.0.35](https://github.com/bendlang/bend/releases/tag/v2.0.35).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -64,7 +64,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-net](https://github.com/naoeosavio/bend-net) - HTTP/1.1, HTTP/2, HTTPS, DNS, TLS, and WebSockets, on the hub as `import 0xd66ee682d4ce8c656782ca9e0e4634cb/http.bend`.
 - [eztoml](https://github.com/Emerging-Patterns/eztoml) - TOML parser and renderer for Bend 2, on the hub as `import emerging-eztoml@0.8.0.0/main.bend`.
 - [ezjson](https://github.com/Emerging-Patterns/ezjson) - JSON for Bend 2, on the hub as `import emerging-ezjson@1.1.0.0/main.bend`.
-- [mylsm](https://github.com/FabianVegaA/mylsm) - Durable LSM key-value store, on the hub as `import mylsm-lsm-store@0.3.2.0/mylsm.bend`.
+- [mylsm](https://github.com/FabianVegaA/mylsm) - Experimental durable LSM key-value store, on the hub as `import mylsm-lsm-store@0.4.0.0/mylsm.bend`; requires Bend 2.0.35+ and uses a disk format incompatible with earlier releases.
 - [bend-tui](https://github.com/caiodomingues/bend-tui) - Terminal views, a proof-checked frame shape, and a `Tui.run` loop on bend-tty.
 - [toon_bend](https://github.com/Dicklesworthstone/toon_bend) - JSON ↔ TOON codec and CLI, golden-tested against the original.
 - [ezhttp](https://github.com/Emerging-Patterns/ezhttp) - HTTP/1.1 client and server with auth, cookie, and CORS helpers, on the hub as `import emerging-ezhttp@0.8.0.0/main.bend`.
@@ -74,7 +74,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.7.2.0/nat.bend`.
 - [BendSR](https://github.com/k3ybladewielder/BendSR) - Parallel symbolic regression, on the hub as `import 0x07516e23611e5287ce89bcff661be83f/BendSR.bend`.
 - [bend_tensors](https://hub.bend-lang.com/n/bend-tensors) - Dense linear algebra with shapes in the types, on the hub as `import bend-tensors@0.0.0.2/bend_tensors.bend`.
-- [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.3.0 targets Bend 2.0.35.
+- [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.4.0 targets Bend 2.0.35.
 - [bendygrad](https://github.com/KapioKai/bendygrad) - Tinygrad front-end in Bend 2: views, buffers, autodiff, and SGD.
 - [bend-machines](https://hub.bend-lang.com/0x9fc0cec754888f0fecabce899ddf2ee5/main.bend) - Root-of-Lisp, Core, STG, and STG→C in one hub package, `import 0x9fc0cec754888f0fecabce899ddf2ee5/main.bend`.
 - [bend-kit](https://github.com/paymog/bend-kit) - Independently published Bend 2 packages for codecs, collections, networking, storage, cryptography, and services. Bytes `import bend-kit-bytes@0.3.2.0/bytes.bend`; HTTP `import bend-kit-http@0.30.0.0/http.bend`. The project currently requires Bend 2.0.32 or newer.
@@ -90,8 +90,11 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-csv](https://github.com/nohzafk/bend-csv) - CSV parser with quoted and multiline fields, custom separators, a TypeScript bridge, and machine-checked core laws. Hub `import bend-csv-parser@0.1.0.1/core.bend`; requires Bend 2.0.35.
 - [raptorq-bend](https://github.com/hotschmoe/raptorq-bend) - RFC 6330 RaptorQ encoder and decoder with parallel multi-block object support and Rust reference vectors.
 - [bend-merkle-tree](https://github.com/adust09/bend-merkle-tree) - Hash-generic, capacity-bounded Merkle trees with SHA-256 and independent golden vectors; requires Bend 2.0.34.
-- [bend-ml](https://github.com/nuxyel/bend-ml) - Shape-typed tensors over lists or arrays, automatic differentiation, and byte-level BPE, with CPU MNIST and GPT-2 demos; requires Bend 2.0.35. Tensor `import bend-ml-tensor-array@0.1.3.0/main.bend`.
+- [bend-ml](https://github.com/nuxyel/bend-ml) - Shape-typed tensors over lists or arrays, automatic differentiation, and byte-level BPE, with CPU MNIST and GPT-2 demos; requires Bend 2.0.35. Tensor `import bend-ml-tensor-array@0.1.5.0/main.bend`.
 - [bend-smtp](https://github.com/kbrianps/bend-smtp) - SMTP client with TLS, OAuth, DKIM, SMTPUTF8, and attachments; its pure core has a machine-checked proof that cleaned addresses and headers carry no CR or LF; native build only (C effects over OpenSSL), on the hub as `import 0x00e7af2de246c3a4c341d9ee49e68747/smtp.bend`.
+- [bender-http](https://github.com/RevCBH/bender-http) - HTTP/1.1 and HTTPS client with a proved pure codec; tested on Linux with Bend 2.0.32 and OpenSSL 3.
+- [bender-dns](https://github.com/RevCBH/bender-dns) - TCP DNS stub resolver, OS resolver delegation, and a CLI, with proved codec laws; tested on Linux with Bend 2.0.32.
+- [bend-zcash-blake2b](https://github.com/Giulio2002/bend-zcash-blake2b) - Proved parameterized BLAKE2b with a C library and Rust blake2b_simd adapter; incremental buffering and host glue are tested, not proved.
 
 ## Tools
 
@@ -183,7 +186,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [crud-api-bend](https://github.com/patote85/crud-api-bend) - In-process HTTP CRUD API with a file-backed store.
 - [bend-playground](https://github.com/krymancer/bend-playground) - Ray tracing, Game of Life, pi collisions, and a Rubik cube graph.
 - [bend-2-mandelbrot](https://github.com/tomc98/bend-2-mandelbrot) - Mandelbrot explorer on Apple Silicon with Metal and deep zoom.
-- [bend-voxel](https://github.com/aivv73/bend-voxel) - Destructible voxel demo with a native Vulkan renderer; requires Bend 2.0.34 and Linux with X11 or XWayland.
+- [bend-voxel](https://github.com/aivv73/bend-voxel) - Editable voxel sculpture scene with a native Bend renderer, CPU/GPU execution, and material-aware carving; requires Bend 2.0.34+, with X11 headers on Linux.
 - [bend2craft](https://github.com/lennix1337/bend2craft) - Minecraft-inspired voxel sandbox with shared Bend rules, a WebGL browser client, and a native CPU-rendered client.
 - [birc](https://github.com/angerman/birc) - Formally verified terminal IRC client with a native DNS engine.
 - [Eldergrove Faire](https://github.com/RedLynx101/eldergrove-faire) - RollerCoaster Tycoon-style park sim with sixteen machine-checked laws.
@@ -194,6 +197,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [Rift Chess Bend 2 preview](https://github.com/HaileyStorm/rift-chess-bend2) - Browser preview of a Bend-rendered chess experiment; source and proofs remain in the main Rift Chess repository.
 - [Bendcraft](https://github.com/AdrielSantana/bendcraft) - Walkable voxel world with weather, flowing water, and proofs; currently needs its dedicated Bend compiler branch for the documented performance and features.
 - [Three Bodies](https://github.com/AdrielSantana/three-bodies) - Interactive gravitational simulation with software binary64 physics, GPU rendering, and a checker-verified theorem for a fixed figure-8 integration run; requires Bend 2.0.34+.
+- [bocht](https://github.com/ckluis/bocht) - Native HTTP backend with auth, WAL storage, REST, and MCP; current source targets Bend 2.0.35.
+- [shellOS](https://github.com/ckluis/shellOS) - Desktop shell with rendering and UI state in Bend and native effects; documented macOS arm64 build uses Bend 2.0.35.
 
 ## Benchmarks
 
