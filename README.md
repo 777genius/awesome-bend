@@ -74,7 +74,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.7.2.0/nat.bend`.
 - [BendSR](https://github.com/k3ybladewielder/BendSR) - Parallel symbolic regression, on the hub as `import 0x07516e23611e5287ce89bcff661be83f/BendSR.bend`.
 - [bend_tensors](https://hub.bend-lang.com/n/bend-tensors) - Dense linear algebra with shapes in the types, on the hub as `import bend-tensors@0.0.0.2/bend_tensors.bend`.
-- [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.5.0 targets Bend 2.0.35.
+- [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.6.0 targets Bend 2.0.35.
 - [bendygrad](https://github.com/KapioKai/bendygrad) - Tinygrad front-end in Bend 2: views, buffers, autodiff, and SGD.
 - [bend-machines](https://hub.bend-lang.com/0x9fc0cec754888f0fecabce899ddf2ee5/main.bend) - Root-of-Lisp, Core, STG, and STG→C in one hub package, `import 0x9fc0cec754888f0fecabce899ddf2ee5/main.bend`.
 - [bend-kit](https://github.com/paymog/bend-kit) - Independently published Bend 2 packages for codecs, collections, networking, storage, cryptography, and services. Bytes `import bend-kit-bytes@0.3.2.0/bytes.bend`; HTTP `import bend-kit-http@0.31.0.0/http.bend`. The project currently requires Bend 2.0.35 or newer.
@@ -131,7 +131,7 @@ Imports below identify published packages, not a claim that every package passes
 - [knot](https://github.com/MatheusBBarni/knot-node-tooling) - JavaScript package manager, TypeScript transformer, and bundler written in Bend 2. Published as `@matheusbbarni/knot`; test runner still planned.
 - [jev-fabric](https://github.com/fabric-runtime/jev-fabric) - Native process orchestration with bounded logs and optional typed Jev calls.
 - [bend-ldd](https://github.com/nohzafk/bend-ldd) - Agent skill for law-driven Bend 2: state laws, falsify them, prove them, then mutate the core.
-- [bend-falsify](https://github.com/nohzafk/bend-falsify) - Falsifies Bend 2 laws on literal instances and checks each proof against a mutant.
+- [bend-falsify](https://github.com/nohzafk/bend-falsify) - Falsifies Bend 2 laws on literal instances and checks each proof against a mutant, with optional bounded parallel mutation checks.
 - [bend-emit](https://github.com/nohzafk/bend-emit) - Compiles a pure Bend core to a typed ES module; requires exactly Bend 2.0.35.
 - [BendVerify](https://github.com/kingcharlezz/bendverify) - Proof-carrying compiler optimisation: a Lean-checked equivalence proof before any benchmark.
 - [kbrianps/bend-vscode](https://github.com/kbrianps/bend-vscode) - VS Code highlighting, live diagnostics, hover, and formatting, with bend2-lsp bundled.
