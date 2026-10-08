@@ -83,7 +83,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-lawful-stdlib](https://hub.bend-lang.com/n/bend-lawful-stdlib) - Typeclass-style Ord, Semigroup, and Group with their laws, `import bend-lawful-stdlib@0.1.0.0/src/class.bend`.
 - [ber](https://github.com/FabianVegaA/ber) - Version-controlled data on MyLSM with certified merges, on the hub as `import ber-core-store@0.1.2.0/ber.bend`.
 - [bend-parallel](https://github.com/costamatheus97/bend-parallel) - Parallel prefix sums, histograms, and a stable counting sort, on the hub as `import bend-parallel@0.1.0.0/scan.bend`.
-- [bend-schema](https://github.com/nohzafk/bend-schema) - JSON schema checker whose core is proved in Bend, used from TypeScript or Bend, with an optional Effect v4 codec adapter.
+- [bend-schema](https://github.com/nohzafk/bend-schema) - JSON schema checker whose core is proved in Bend, used from TypeScript or Bend, with an optional Effect v4 codec adapter and tested JSON Schema 2020-12 export; exported schemas omit refinement predicates and runtime budgets.
 - [wordlib](https://github.com/Yazington/wordlib) - Machine-word laws on the hub as `import 0xb13667d52aa56e002b4d09883d7fce3e/PROOF.bend`; checkout also includes list laws and a sum prover.
 - [bend-over](https://github.com/subtleGradient/bend-over) - SQLite and JavaScript interop with native, Bun, and browser examples. SQLite `import bend-over-sqlite@0.1.0.1/sqlite.bend`.
 - [bend-trace-context](https://github.com/LucasGois1/bend-trace-context) - W3C Trace Context propagation for Bend, Node, and browsers, with proved protocol rules and context generation. Hub `import bend-trace-context@0.2.0.0/trace_context.bend`; requires exactly Bend 2.0.34.
@@ -131,10 +131,10 @@ Imports below identify published packages, not a claim that every package passes
 - [FabianVegaA/tree-sitter-bend](https://github.com/FabianVegaA/tree-sitter-bend) - Tree-sitter grammar for Bend 2 syntax.
 - [web3signer_bend](https://github.com/eserilev/web3signer_bend) - Web3Signer-compatible Ethereum consensus remote signer, with slashing-protection laws.
 - [knot](https://github.com/MatheusBBarni/knot-node-tooling) - JavaScript package manager, TypeScript transformer, and bundler written in Bend 2. Published as `@matheusbbarni/knot`; test runner still planned.
-- [jev-fabric](https://github.com/fabric-runtime/jev-fabric) - Native process orchestration with bounded logs and optional typed Jev calls; version 0.5.1 requires Bend 2.0.36 when building from source.
+- [jev-fabric](https://github.com/fabric-runtime/jev-fabric) - Native process orchestration with bounded logs and typed Jev calls; version 0.6.0 adds decision APIs preserving provider JSON, refusals, and provenance. Requires Bend 2.0.36 when building from source.
 - [bend-ldd](https://github.com/nohzafk/bend-ldd) - Agent skill for law-driven Bend 2: state laws, falsify them, prove them, then mutate the core.
 - [bend-falsify](https://github.com/nohzafk/bend-falsify) - Falsifies Bend 2 laws on literal instances and checks each proof against a mutant, with optional bounded parallel mutation checks.
-- [bend-emit](https://github.com/nohzafk/bend-emit) - Compiles a pure Bend core to a typed ES module, including tagged-tree `Map` boundary declarations; requires exactly Bend 2.0.35.
+- [bend-emit](https://github.com/nohzafk/bend-emit) - Compiles a pure Bend core to a typed ES module, including tagged-tree `Map` boundary declarations; requires exactly Bend 2.0.36.
 - [BendVerify](https://github.com/kingcharlezz/bendverify) - Proof-carrying compiler optimisation: a Lean-checked equivalence proof before any benchmark.
 - [kbrianps/bend-vscode](https://github.com/kbrianps/bend-vscode) - VS Code highlighting, live diagnostics, hover, and formatting, with bend2-lsp bundled.
 - [bendcheck](https://github.com/Yazington/bendcheck) - Property-based testing with generators, shrinking, and a `lawcheck` script for `LAWS.bend`. Library `import 0x738b30530890e825e0ab81092b94cbfc/check.bend`.
@@ -149,6 +149,8 @@ Imports below identify published packages, not a claim that every package passes
 - [Bend for Hermes](https://github.com/kvnloo/bend-native) - Hermes plugin for Bend proof verification with hashed receipts and offline replay; requires Bend 2.0.32+ and Lean 4.34.0.
 - [lawcheck](https://github.com/bendlib/bendlib/tree/main/tools/lawcheck) - Finds and shrinks counterexamples to Bend laws, with mutation testing and optional checker/native comparison; tested on Bend 2.0.35.
 - [eco-build](https://github.com/amage-si/eco-build) - Experimental cached, parallel native C build helper for the AMAGE ecosystem; supports official Bend 2.0.35.
+
+- [bend-lint](https://github.com/MattCozendey/bend-lint) - Checker-backed linter and formatter with TypeScript or Bend rules and an AST-checked formatting fix; requires Bun and loads Bend compiler source.
 
 ## Packaging
 
