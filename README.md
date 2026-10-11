@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **10 October 2026**. Latest stable release: [Bend 2.0.36](https://github.com/bendlang/bend/releases/tag/v2.0.36).
+Last checked: **11 October 2026**. Latest stable release: [Bend 2.0.36](https://github.com/bendlang/bend/releases/tag/v2.0.36).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -90,7 +90,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-csv](https://github.com/nohzafk/bend-csv) - CSV parser with quoted and multiline fields, custom separators, a TypeScript bridge, and machine-checked core laws. Hub `import bend-csv-parser@0.1.0.1/core.bend`; requires Bend 2.0.35.
 - [raptorq-bend](https://github.com/hotschmoe/raptorq-bend) - RFC 6330 RaptorQ encoder and decoder with parallel multi-block object support and Rust reference vectors.
 - [bend-merkle-tree](https://github.com/adust09/bend-merkle-tree) - Hash-generic, capacity-bounded Merkle trees with SHA-256 and independent golden vectors; requires Bend 2.0.34.
-- [bend-ml](https://github.com/nuxyel/bend-ml) - Shape-typed tensors over lists or arrays, automatic differentiation, and byte-level BPE, with CPU MNIST and GPT-2 demos; requires Bend 2.0.35. Tensor `import bend-ml-tensor-array@0.1.6.0/main.bend`.
+- [bend-ml](https://github.com/nuxyel/bend-ml) - Shape-typed tensors over lists or arrays, automatic differentiation, and byte-level BPE, with CPU MNIST and GPT-2 demos; requires Bend 2.0.36. Tensor `import bend-ml-tensor-array@0.1.7.0/main.bend`.
 - [bend-smtp](https://github.com/kbrianps/bend-smtp) - SMTP client with TLS, OAuth, DKIM, SMTPUTF8, and attachments; its pure core has a machine-checked proof that cleaned addresses and headers carry no CR or LF; native build only (C effects over OpenSSL), tested with Bend 2.0.36, on the hub as `import 0x650cd729029c76d9f6151ee977dc0ae8/smtp.bend`.
 - [bender-http](https://github.com/RevCBH/bender-http) - HTTP/1.1 and HTTPS client and CLI with a proved pure codec; uses the sibling bender-dns checkout and is tested on Linux with Bend 2.0.32 and OpenSSL 3.
 - [bender-dns](https://github.com/RevCBH/bender-dns) - TCP DNS stub resolver, OS resolver delegation, and a CLI, with proved codec laws; tested on Linux with Bend 2.0.32.
@@ -104,6 +104,9 @@ Imports below identify published packages, not a claim that every package passes
 - [BendKV](https://github.com/littleBro/BendKV) - Experimental Redis-compatible RESP2 key-value server with proved command, storage, and session laws; implements a Redis subset and requires a dedicated patched Bend 2.0.35. No license has been granted yet.
 
 - [Bendvy](https://github.com/dearlordylord/bendvy) - Experimental Bend 2 entity-component system with typed queries, deferred commands, and native/browser examples, including a browser swarm demo whose build is checked on Bend 2.0.36; its API and Bevy parity remain in progress. No license file is provided.
+
+- [Stelliferous](https://github.com/Kaz9487/Stelliferous) - F32 tensor library with source-level convolution proofs against a fixed FP32 specification, on the hub as `import stelliferous@0.0.2.0/tensor_f32.bend`; checked on official Bend 2.0.36.
+- [bend-edit-distance](https://github.com/jware-solutions/bend-edit-distance) - Experimental Edlib-style edit distance and alignment library and CLI, on the hub as `import bend-edit-distance@0.1.0.0/lib.bend`; requires Bend 2.0.36+ and implements only part of Edlib.
 
 ## Tools
 
@@ -215,7 +218,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 ## Benchmarks
 
 - [Official benchmarks](https://github.com/bendlang/bend/tree/main/bench) - Compiler, proof-checker, CPU, and GPU workloads used for Bend's published charts, including a parallel histogram benchmark with C, TypeScript, and Lean comparisons.
-- [bend-bench](https://github.com/wakamex/bend-bench) - Independent CPU/OpenMP and GPU/CUDA comparisons, with reproducible output checks and separate startup and workload measurements. Published results measure Bend 2.0.3, with a separate 2.0.26 comparison.
+- [bend-bench](https://github.com/wakamex/bend-bench) - Independent CPU/OpenMP and GPU/CUDA comparisons, with reproducible output checks and separate startup and workload measurements. Non-ML results measure Bend 2.0.3, with a separate 2.0.26 comparison; newer ML comparisons against PyTorch use pinned upstream main.
 - [eco-bench](https://github.com/amage-si/eco-bench) - Reproducible AMAGE Eco and GPUI comparisons with raw logs and methodology; measured on Bend 2.0.35 with X11/XWayland, without native Wayland results.
 
 ## Papers
