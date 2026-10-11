@@ -178,6 +178,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bend2.dev](https://bend2.dev/) - Independent notes, syntax primer, and example programs.
 - [bend-math](https://github.com/lilalittle/bend-math) - Small executable example of symbolic differentiation and forward-mode automatic differentiation, with a machine-checked agreement proof.
 
+- [Bend 2 pocket workshop](https://np.github.io/bend-workshop/) - Independent browser workshop with the checker, compiler, proof-hole goals, and proof tools in one page, including a phone interface ([repo](https://github.com/np/bend-workshop)); uses a pinned compiler checkout.
+
 ## Demos
 
 ### Official demos
