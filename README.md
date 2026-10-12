@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **11 October 2026**. Latest stable release: [Bend 2.0.36](https://github.com/bendlang/bend/releases/tag/v2.0.36).
+Last checked: **12 October 2026**. Latest stable release: [Bend 2.0.36](https://github.com/bendlang/bend/releases/tag/v2.0.36).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -71,7 +71,7 @@ Imports below identify published packages, not a claim that every package passes
 - [ezaudio](https://github.com/Emerging-Patterns/ezaudio) - PCM clips, WAV codecs, and limited MPEG-1 Layer III support for Bend 2, on the hub as `import emerging-ezaudio@0.4.0.0/main.bend`.
 - [ezimg](https://github.com/Emerging-Patterns/ezimg) - PNG and baseline JPEG codecs for Bend 2, on the hub as `import emerging-ezimg@1.2.0.0/main.bend`.
 - [bend-collections](https://github.com/Giulio2002/bend-collections) - Verified containers, numeric utilities, and cryptography, on the hub as `import bend-collections@1.0.0.0/src/containers/hash_table.bend`.
-- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.7.2.0/nat.bend`.
+- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.7.3.0/nat.bend`.
 - [BendSR](https://github.com/k3ybladewielder/BendSR) - Parallel symbolic regression, on the hub as `import 0x07516e23611e5287ce89bcff661be83f/BendSR.bend`.
 - [bend_tensors](https://hub.bend-lang.com/n/bend-tensors) - Dense linear algebra with shapes in the types, on the hub as `import bend-tensors@0.0.0.2/bend_tensors.bend`.
 - [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.6.1 targets Bend 2.0.36 (0.6.0 remains for Bend 2.0.35).
@@ -157,7 +157,7 @@ Imports below identify published packages, not a claim that every package passes
 - [lawcheck](https://github.com/bendlib/bendlib/tree/main/tools/lawcheck) - Finds and shrinks counterexamples to Bend laws, with mutation testing and optional checker/native comparison; tested on Bend 2.0.36.
 - [eco-build](https://github.com/amage-si/eco-build) - Experimental cached, parallel native C build helper for the AMAGE ecosystem; supports official Bend 2.0.35.
 
-- [bend-lint](https://github.com/MattCozendey/bend-lint) - Checker-backed linter and formatter with TypeScript or Bend rules and an AST-checked formatting fix; requires Bun and loads Bend compiler source.
+- [bend-lint](https://github.com/MattCozendey/bend-lint) - Checker-backed linter and formatter with Bend rule programs and performance diagnostics; requires Bun and Bend compiler source, and most fixes need `--fix-dangerously`.
 
 ## Packaging
 
