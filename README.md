@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **12 October 2026**. Latest stable release: [Bend 2.0.36](https://github.com/bendlang/bend/releases/tag/v2.0.36).
+Last checked: **13 October 2026**. Latest stable release: [Bend 2.0.36](https://github.com/bendlang/bend/releases/tag/v2.0.36).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -64,7 +64,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-net](https://github.com/naoeosavio/bend-net) - HTTP/1.1, HTTP/2, HTTPS, DNS, TLS, and WebSockets, on the hub as `import 0xd66ee682d4ce8c656782ca9e0e4634cb/http.bend`.
 - [eztoml](https://github.com/Emerging-Patterns/eztoml) - TOML parser and renderer for Bend 2, on the hub as `import emerging-eztoml@0.8.0.0/main.bend`.
 - [ezjson](https://github.com/Emerging-Patterns/ezjson) - JSON for Bend 2, on the hub as `import emerging-ezjson@1.1.0.0/main.bend`.
-- [mylsm](https://github.com/FabianVegaA/mylsm) - Experimental durable LSM key-value store with scoped durable sessions, on the hub as `import mylsm-lsm-store@0.5.0.0/mylsm.bend`; requires Bend 2.0.36+. Sessions group individually durable operations, not transactions; its disk format is incompatible with versions before 0.4.0.0.
+- [mylsm](https://github.com/FabianVegaA/mylsm) - Experimental durable LSM key-value store; source 0.6.0.0 alpha adds cursors, snapshots, backups, and a coordinated local owner, with explicit migration from 0.5 storage. The released Hub package remains `import mylsm-lsm-store@0.5.0.0/mylsm.bend`; requires Bend 2.0.36+.
 - [bend-tui](https://github.com/caiodomingues/bend-tui) - Terminal views, a proof-checked frame shape, and a `Tui.run` loop on bend-tty.
 - [toon_bend](https://github.com/Dicklesworthstone/toon_bend) - JSON ↔ TOON codec and CLI, golden-tested against the original.
 - [ezhttp](https://github.com/Emerging-Patterns/ezhttp) - HTTP/1.1 client and server with auth, cookie, and CORS helpers, on the hub as `import emerging-ezhttp@0.8.0.0/main.bend`.
@@ -77,7 +77,7 @@ Imports below identify published packages, not a claim that every package passes
 - [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.6.1 targets Bend 2.0.36 (0.6.0 remains for Bend 2.0.35).
 - [bendygrad](https://github.com/KapioKai/bendygrad) - Tinygrad front-end in Bend 2: views, buffers, autodiff, and SGD.
 - [bend-machines](https://hub.bend-lang.com/0x9fc0cec754888f0fecabce899ddf2ee5/main.bend) - Root-of-Lisp, Core, STG, and STG→C in one hub package, `import 0x9fc0cec754888f0fecabce899ddf2ee5/main.bend`.
-- [bend-kit](https://github.com/paymog/bend-kit) - Independently published Bend 2 packages for codecs, collections, networking, storage, cryptography, services, proto3 codecs with typed `protoc` generation, and binary64 soft-float. Bytes `import bend-kit-bytes@0.3.2.0/bytes.bend`; HTTP `import bend-kit-http@0.32.0.0/http.bend`. The project currently requires Bend 2.0.36 or newer.
+- [bend-kit](https://github.com/paymog/bend-kit) - Independently published Bend 2 packages for codecs, collections, networking, storage, cryptography, services, proto3 codecs with typed `protoc` generation, and binary64 soft-float. Bytes `import bend-kit-bytes@0.3.2.0/bytes.bend`; HTTP `import bend-kit-http@0.33.0.0/http.bend`. The project currently requires Bend 2.0.36 or newer.
 - [V](https://github.com/PedroAVJ/n) - Data structures and architecture as types. Arc `import near-architecture@0.9.1.0/arc.bend`; V `import near-v-framework@0.7.0.0/v.bend`.
 - [jonlib](https://github.com/jonathanperis/jonlib) - Graphics, image-codec, and math library working toward raylib 6.0 parity; requires its pinned Bend 2.0.27 Metal overlay.
 - [bend-lawful-stdlib](https://hub.bend-lang.com/n/bend-lawful-stdlib) - Typeclass-style Ord, Semigroup, and Group with their laws, `import bend-lawful-stdlib@0.1.0.0/src/class.bend`.
@@ -106,7 +106,7 @@ Imports below identify published packages, not a claim that every package passes
 - [Bendvy](https://github.com/dearlordylord/bendvy) - Experimental Bend 2 entity-component system with typed queries, deferred commands, and native/browser examples, including a browser swarm demo whose build is checked on Bend 2.0.36; its API and Bevy parity remain in progress. No license file is provided.
 
 - [Stelliferous](https://github.com/Kaz9487/Stelliferous) - F32 tensor library with source-level convolution proofs against a fixed FP32 specification, on the hub as `import stelliferous@0.0.2.0/tensor_f32.bend`; checked on official Bend 2.0.36.
-- [bend-edit-distance](https://github.com/jware-solutions/bend-edit-distance) - Experimental Edlib-style edit distance and alignment library and CLI, on the hub as `import bend-edit-distance@0.1.0.0/lib.bend`; requires Bend 2.0.36+ and implements only part of Edlib.
+- [bend-edit-distance](https://github.com/jware-solutions/bend-edit-distance) - Experimental Edlib-style edit distance and alignment library and CLI, on the hub as `import bend-edit-distance@0.2.1.0/lib.bend`; requires Bend 2.0.36+ and implements only part of Edlib.
 
 ## Tools
 
@@ -138,7 +138,7 @@ Imports below identify published packages, not a claim that every package passes
 - [FabianVegaA/tree-sitter-bend](https://github.com/FabianVegaA/tree-sitter-bend) - Tree-sitter grammar for Bend 2 syntax.
 - [web3signer_bend](https://github.com/eserilev/web3signer_bend) - Web3Signer-compatible Ethereum consensus remote signer, with slashing-protection laws.
 - [knot](https://github.com/MatheusBBarni/knot-node-tooling) - JavaScript package manager, TypeScript transformer, and bundler written in Bend 2. Published as `@matheusbbarni/knot`; test runner still planned.
-- [jev-fabric](https://github.com/fabric-runtime/jev-fabric) - Native process orchestration with bounded logs and typed Jev calls; version 0.6.0 adds decision APIs preserving provider JSON, refusals, and provenance. Requires Bend 2.0.36 when building from source.
+- [jev-fabric](https://github.com/fabric-runtime/jev-fabric) - Native process orchestration with bounded logs and typed Jev calls; version 0.7.0 adds a SubQ Snap route with inline images, alongside decision APIs preserving provider JSON, refusals, and provenance. Requires Bend 2.0.36 when building from source.
 - [bend-ldd](https://github.com/nohzafk/bend-ldd) - Agent skill for law-driven Bend 2: state laws, falsify them, prove them, then mutate the core.
 - [bend-falsify](https://github.com/nohzafk/bend-falsify) - Falsifies Bend 2 laws on literal instances and checks each proof against a mutant, with optional bounded parallel mutation checks.
 - [bend-emit](https://github.com/nohzafk/bend-emit) - Compiles a pure Bend core to a typed ES module, including tagged-tree `Map` boundary declarations; source version 0.3.8 also emits runtime definitions from laws/facts files after stripping recognized proofs and proof-only dependencies; recognized Bool-selector calls become lazy branches. Requires exactly Bend 2.0.36.
