@@ -216,6 +216,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [Rift Chess Bend 2 preview](https://github.com/HaileyStorm/rift-chess-bend2) - Browser preview of a Bend-rendered chess experiment; source and proofs remain in the main Rift Chess repository.
 - [Bendcraft](https://github.com/AdrielSantana/bendcraft) - Walkable voxel world with weather, flowing water, and proofs; currently needs its dedicated Bend compiler branch for the documented performance and features.
 - [Three Bodies](https://github.com/AdrielSantana/three-bodies) - Interactive gravitational simulation with software binary64 physics, GPU rendering, and a checker-verified theorem for a fixed figure-8 integration run; requires Bend 2.0.34+.
+- [kbrianps/bendoom](https://github.com/kbrianps/bendoom) - Doom and Doom II with menus, saves, OPL and General MIDI music, and PWADs, whose demos play tic for tic as in Chocolate Doom; native build, or in the browser at [kbrianps.com/bendoom](https://kbrianps.com/bendoom/); tested with Bend 2.0.36.
 - [bocht](https://github.com/ckluis/bocht) - Native HTTP backend with auth, WAL storage, REST, and MCP; current source targets Bend 2.0.35.
 - [shellOS](https://github.com/ckluis/shellOS) - Desktop shell with rendering and UI state in Bend and native effects; documented macOS arm64 build uses Bend 2.0.35.
 
