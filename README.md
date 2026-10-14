@@ -182,6 +182,9 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 
 - [Bend 2 pocket workshop](https://np.github.io/bend-workshop/) - Independent browser workshop with the checker, compiler, proof-hole goals, and proof tools in one page, including a phone interface ([repo](https://github.com/np/bend-workshop)); uses a pinned compiler checkout.
 
+- [bend-tutorial](https://github.com/Ivo-Balbaert/Bend-Tutorial) - Bend hands-on tutorial for beginners coming from Python.
+
+
 ## Demos
 
 ### Official demos
