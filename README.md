@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **15 October 2026**. Latest stable release: [Bend 2.0.37](https://github.com/bendlang/bend/releases/tag/v2.0.37).
+Last checked: **17 October 2026**. Latest stable release: [Bend 2.0.37](https://github.com/bendlang/bend/releases/tag/v2.0.37).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -110,6 +110,7 @@ Imports below identify published packages, not a claim that every package passes
 
 - [bend-sat](https://github.com/sebastian-griego/bend-sat) - Experimental SAT solver with watched literals, first-UIP learning, and a proved result checker with DPLL fallback; validated on a pinned Bend 2.0.37 macOS arm64 setup. No license file is provided.
 - [bendtorch](https://github.com/aaaxn/bendtorch) - Experimental CPU F32 tensor library with shape-indexed storage, tensor operations, and scalar autograd; numerical results are tested against PyTorch, and model training is not implemented. Requires its pinned Bend compiler checkout.
+- [bend2-libs](https://github.com/nicolas-abril/bend2-libs) - Text, XML, CSS, PNG, JPEG, TrueType, SVG-render, byte, and archive libraries unpacked from nicolas-abril's demos onto the hub under the `gralha-` prefix (for example `import gralha-text-scan@0.1.0.0/scan.bend` and `import gralha-ustar@0.1.0.0/ustar.bend`); requires Bend 2.0.37+.
 
 ## Tools
 
@@ -163,6 +164,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-lint](https://github.com/MattCozendey/bend-lint) - Checker-backed linter and formatter with Bend rule programs and performance diagnostics; uses Bun and an automatically downloaded tested compiler. Windows uses a Bend fork; most fixes need `--fix-dangerously`.
 
 - [bend-tools](https://github.com/viridale/bend-tools) - Shell and Python helpers for emitted-C reference counts, per-law checks, proof diagnostics, and native benchmarks; pinned to Bend 2.0.36.
+- [baton-cli](https://github.com/Flip-Engineering/baton-cli) - Agent harness written in Bend 2 that runs one agent seat: model turns, a minimal file/shell tool set, and session persistence.
 
 ## Packaging
 
@@ -186,6 +188,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [Bend 2 pocket workshop](https://np.github.io/bend-workshop/) - Independent browser workshop with the checker, compiler, proof-hole goals, and proof tools in one page, including a phone interface ([repo](https://github.com/np/bend-workshop)); uses a pinned compiler checkout.
 
 - [bend-tutorial](https://github.com/Ivo-Balbaert/Bend-Tutorial) - Bend hands-on tutorial for beginners coming from Python.
+- [bend2-intro-with-life](https://github.com/Nasu726/bend2-intro-with-life) - Japanese beginner's book that teaches Bend 2 by building a Game of Life, with downloadable PDF and sample code.
 
 
 ## Demos
