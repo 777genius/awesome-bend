@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **17 October 2026**. Latest stable release: [Bend 2.0.37](https://github.com/bendlang/bend/releases/tag/v2.0.37).
+Last checked: **19 October 2026**. Latest stable release: [Bend 2.0.37](https://github.com/bendlang/bend/releases/tag/v2.0.37).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -90,7 +90,7 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-csv](https://github.com/nohzafk/bend-csv) - CSV parser with quoted and multiline fields, custom separators, a TypeScript bridge, and machine-checked core laws. Hub `import bend-csv-parser@0.1.0.1/core.bend`; requires Bend 2.0.35.
 - [raptorq-bend](https://github.com/hotschmoe/raptorq-bend) - RFC 6330 RaptorQ encoder and decoder with parallel multi-block object support and Rust reference vectors.
 - [bend-merkle-tree](https://github.com/adust09/bend-merkle-tree) - Hash-generic, capacity-bounded Merkle trees with SHA-256 and independent golden vectors; requires Bend 2.0.34.
-- [bend-ml](https://github.com/nuxyel/bend-ml) - Shape-typed tensors over lists or arrays, automatic differentiation, and byte-level BPE, with CPU MNIST and GPT-2 demos; requires Bend 2.0.37. Tensor `import bend-ml-tensor-array@0.1.7.0/main.bend`.
+- [bend-ml](https://github.com/nuxyel/bend-ml) - Shape-typed tensors over lists or arrays, automatic differentiation, and byte-level BPE, with CPU MNIST and GPT-2 demos; requires Bend 2.0.37. Tensor `import bend-ml-tensor-array@0.1.14.0/main.bend`; its hub packages now include a GPU tensor package (`import bend-ml-tensor-gpu@0.1.2.1/main.bend`) and a Llama-model package (`import bend-ml-llama@0.1.1.0/main.bend`).
 - [bend-smtp](https://github.com/kbrianps/bend-smtp) - SMTP client with TLS, OAuth, DKIM, SMTPUTF8, and attachments; its pure core has a machine-checked proof that cleaned addresses and headers carry no CR or LF; native build only (C effects over OpenSSL), tested with Bend 2.0.36, on the hub as `import 0x650cd729029c76d9f6151ee977dc0ae8/smtp.bend`.
 - [bender-http](https://github.com/RevCBH/bender-http) - HTTP/1.1 and HTTPS client and CLI with a proved pure codec; uses the sibling bender-dns checkout and is tested on Linux with Bend 2.0.32 and OpenSSL 3.
 - [bender-dns](https://github.com/RevCBH/bender-dns) - TCP DNS stub resolver, OS resolver delegation, and a CLI, with proved codec laws; tested on Linux with Bend 2.0.32.
@@ -110,6 +110,7 @@ Imports below identify published packages, not a claim that every package passes
 
 - [bend-sat](https://github.com/sebastian-griego/bend-sat) - Experimental SAT solver with watched literals, first-UIP learning, and a proved result checker with DPLL fallback; validated on a pinned Bend 2.0.37 macOS arm64 setup. No license file is provided.
 - [bendtorch](https://github.com/aaaxn/bendtorch) - Experimental CPU F32 tensor library with shape-indexed storage, tensor operations, and scalar autograd; numerical results are tested against PyTorch, and model training is not implemented. Requires its pinned Bend compiler checkout.
+- [bend-osdev](https://github.com/ScottMoore0/bend-osdev) - MIT-licensed operating-system libraries: file systems, archives, compression, ELF, partition tables, network headers, capability and LSM policy models, and kernel data structures, each with laws, `--verdict`-accepted proofs, and differential tests; pinned to Bend 2.0.37 and published incrementally on the hub as `bend-osdev-<package>` (for example `import bend-osdev-bytes@0.1.0.0/bytes.bend`).
 - [bend2-libs](https://github.com/nicolas-abril/bend2-libs) - Text, XML, CSS, PNG, JPEG, TrueType, SVG-render, byte, and archive libraries unpacked from nicolas-abril's demos onto the hub under the `gralha-` prefix (for example `import gralha-text-scan@0.1.0.0/scan.bend` and `import gralha-ustar@0.1.0.0/ustar.bend`); requires Bend 2.0.37+.
 
 ## Tools
