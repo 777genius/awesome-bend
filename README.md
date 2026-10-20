@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **19 October 2026**. Latest stable release: [Bend 2.0.37](https://github.com/bendlang/bend/releases/tag/v2.0.37).
+Last checked: **20 October 2026**. Latest stable release: [Bend 2.0.37](https://github.com/bendlang/bend/releases/tag/v2.0.37).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -112,6 +112,8 @@ Imports below identify published packages, not a claim that every package passes
 - [bendtorch](https://github.com/aaaxn/bendtorch) - Experimental CPU F32 tensor library with shape-indexed storage, tensor operations, and scalar autograd; numerical results are tested against PyTorch, and model training is not implemented. Requires its pinned Bend compiler checkout.
 - [bend-osdev](https://github.com/ScottMoore0/bend-osdev) - MIT-licensed operating-system libraries: file systems, archives, compression, ELF, partition tables, network headers, capability and LSM policy models, and kernel data structures, each with laws, `--verdict`-accepted proofs, and differential tests; pinned to Bend 2.0.37 and published incrementally on the hub as `bend-osdev-<package>` (for example `import bend-osdev-bytes@0.1.0.0/bytes.bend`).
 - [bend2-libs](https://github.com/nicolas-abril/bend2-libs) - Text, XML, CSS, PNG, JPEG, TrueType, SVG-render, byte, and archive libraries unpacked from nicolas-abril's demos onto the hub under the `gralha-` prefix (for example `import gralha-text-scan@0.1.0.0/scan.bend` and `import gralha-ustar@0.1.0.0/ustar.bend`); requires Bend 2.0.37+.
+- [bentdelta](https://github.com/michaelsproul/bentdelta) - VCDIFF (RFC 3284) delta encoder and decoder compatible with xdelta3, with a machine-checked round-trip law covering targets under 2 GiB less 1 MiB; no license file is provided.
+- [MailBend](https://github.com/albertc71/MailBend) - IMAP/SMTP connector for AI agents with a CLI and MCP server; its mail-safety rules are proved laws, a Rust helper handles TLS, and it pins Bend 2.0.35.
 
 ## Tools
 
@@ -165,7 +167,12 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-lint](https://github.com/MattCozendey/bend-lint) - Checker-backed linter and formatter with Bend rule programs and performance diagnostics; uses Bun and an automatically downloaded tested compiler. Windows uses a Bend fork; most fixes need `--fix-dangerously`.
 
 - [bend-tools](https://github.com/viridale/bend-tools) - Shell and Python helpers for emitted-C reference counts, per-law checks, proof diagnostics, and native benchmarks; pinned to Bend 2.0.36.
-- [baton-cli](https://github.com/Flip-Engineering/baton-cli) - Agent harness written in Bend 2 that runs one agent seat: model turns, a minimal file/shell tool set, and session persistence.
+- [baton](https://github.com/Flip-Engineering/baton) - Deterministic coordinator that drives vendor CLI coding agents (Claude Code, Codex, Grok, GLM) as trust-gated session workers, written in Bend 2.
+- [bend-python](https://github.com/lucaswiman/bend-python) - Builds CPython extension modules from Bend 2 code with laws proved during the build; published on PyPI and pins Bend 2.0.28.
+- [cha](https://github.com/mintktkr/cha) - Forge CLI for Gitea, Forgejo, and GitHub with issue, pull-request, and run commands, written in Bend 2 with proved laws; requires Bend 2.0.34.
+- [bird](https://github.com/bangedorrunt/bird) - Command-line client for reading and posting to X, rewritten in Bend 2 with a pure law-proved core and shell/network effects at the edge.
+- [reflex](https://github.com/monotykamary/reflex) - Mac menu-bar and phone companion for monitoring and routing terminal coding-agent sessions, with a Bend 2 routing core and proved safety laws; requires Apple Silicon and Bend 2.0.37.
+- [bend-cad](https://github.com/Phylliida/bend-cad) - Experimental CAD sketch-solver design with Bend source for geometry and constraint solving, machine-checked with a `PROOF.bend` gate against a local Bend checkout.
 
 ## Packaging
 
@@ -190,7 +197,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 
 - [bend-tutorial](https://github.com/Ivo-Balbaert/Bend-Tutorial) - Bend hands-on tutorial for beginners coming from Python.
 - [bend2-intro-with-life](https://github.com/Nasu726/bend2-intro-with-life) - Japanese beginner's book that teaches Bend 2 by building a Game of Life, with downloadable PDF and sample code.
-
+- [bend2-spike](https://github.com/YSRKEN/bend2-spike) - Japanese Bend 2 verification notes: a small proved HTTP server, language probes, benchmark data, and slides covering Bend 2.0.34-2.0.36.
+- [bend-pitfalls](https://github.com/rofrol/bend-pitfalls) - Single-file list of Bend 2 language and compiler pitfalls found in real projects, each entry tagged with the compiler version it was seen with.
 
 ## Demos
 
@@ -230,6 +238,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [shellOS](https://github.com/ckluis/shellOS) - Desktop shell with rendering and UI state in Bend and native effects; documented macOS arm64 build uses Bend 2.0.35.
 
 - [llama.bend](https://github.com/nuxyel/llama.bend) - CPU SmolLM2 inference with shape-typed weights and cache laws, tested against Transformers; requires Bend 2.0.37.
+- [rubend](https://github.com/yuzyayvri/rubend) - 3×3 Rubik's cube solver written in Bend 2 with proved cube rules and pruning-table generators, plus a Three.js workbench; requires Nix and Bend 2.0.37.
+- [bendSVM](https://github.com/CrocSwap/bendSVM) - Bounded Bend 2 to Solana SBF compiler and SDK exercised by token, vesting, exchange, and AMM applications with proved laws; requires a pinned Bend checkout and platform-tools.
 
 ## Benchmarks
 
