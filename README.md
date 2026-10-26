@@ -250,7 +250,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bocht](https://github.com/ckluis/bocht) - Native HTTP backend with auth, WAL storage, REST, and MCP; current source targets Bend 2.0.35.
 - [shellOS](https://github.com/ckluis/shellOS) - Desktop shell with rendering and UI state in Bend and native effects; documented macOS arm64 build uses Bend 2.0.35.
 
-- [llama.bend](https://github.com/nuxyel/llama.bend) - CPU SmolLM2 inference with shape-typed weights and cache laws, tested against Transformers; requires Bend 2.0.37.
+- [llama.bend](https://github.com/nuxyel/llama.bend) - SmolLM2 inference (135M, 360M, 1.7B) with shape-typed weights and cache laws, read from the downloaded `model.safetensors` and tested against Transformers, on the CPU and the GPU; on the hub as `import bend-ml-llama@0.2.0.0/main.bend`; requires Bend 2.0.39.
 - [rubend](https://github.com/yuzyayvri/rubend) - 3×3 Rubik's cube solver written in Bend 2 with proved cube rules and pruning-table generators, plus a Three.js workbench; requires Nix and Bend 2.0.37.
 - [bendSVM](https://github.com/CrocSwap/bendSVM) - Bounded Bend 2 to Solana SBF compiler and SDK exercised by token, vesting, exchange, and AMM applications with proved laws; requires a pinned Bend checkout and platform-tools.
 
