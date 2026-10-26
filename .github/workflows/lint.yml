@@ -5,6 +5,11 @@ on:
   push:
     branches: [main]
 
+# Replace stale code checks; keep diagnostic runs independent.
+concurrency:
+  group: lint-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   awesome-lint:
     runs-on: ubuntu-latest
