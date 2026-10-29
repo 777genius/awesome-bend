@@ -13,9 +13,10 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 from check_bendhub import (
-    HASH, HUB, VERSION, CheckError, Failure, HubClient, Reference,
+    HASH, HUB, VERSION, CheckError, Failure, HubClient, Reference, UnavailableError,
     escape_annotation, parse_references, read_manifest,
 )
 
@@ -78,11 +79,12 @@ def check_name(refs: list[Reference], fetch) -> tuple[list[Update], list[Failure
         # Most runs need metadata only. Inspect one manifest per newer package.
         manifest = read_manifest(package_hash, fetch(f"{package_hash}/manifest")) if older else {}
     except CheckError as error:
-        return [], [Failure(ref.line, f"{name}: {error}") for ref in refs]
+        return [], [Failure(ref.line, f"{name}: {error}", isinstance(error, UnavailableError))
+                    for ref in refs]
 
     updates = []
     for ref in older:
-        detail = (f"{ref.path} is present; review compatibility before updating"
+        detail = (f"{ref.path} is present"
                   if ref.path in manifest else
                   f"{ref.path} is absent; find the new entrypoint before updating")
         updates.append(Update(ref.line, name, ref.package.split("@", 1)[1],
@@ -107,6 +109,8 @@ def parse_release_pointer(text: str) -> tuple[int, str]:
 
 def check_release(pointer: tuple[int, str], data: bytes) -> list[Update]:
     release = load_json(data)
+    if release.get("_unavailable") is True:
+        raise UnavailableError("GitHub release metadata is unavailable after retries; inspect the fetch logs and retry, without editing README")
     tag = release.get("tag_name")
     if (release.get("draft") is not False or release.get("prerelease") is not False
             or not isinstance(tag, str) or not re.fullmatch("v" + RELEASE_VERSION, tag)):
@@ -127,33 +131,56 @@ def cell(value: str) -> str:
     }))
 
 
+def location(line: int, readme: Path) -> str:
+    repository = os.environ.get("GITHUB_REPOSITORY", "")
+    commit = os.environ.get("GITHUB_SHA", "")
+    if (os.environ.get("GITHUB_ACTIONS") == "true"
+            and re.fullmatch(r"[A-Za-z0-9-]+/[A-Za-z0-9_.-]+", repository)
+            and re.fullmatch(r"[0-9a-fA-F]{40}", commit)
+            and not readme.is_absolute() and ".." not in readme.parts):
+        url = f"https://github.com/{repository}/blob/{commit}/{quote(readme.as_posix(), safe='/')}#L{line}"
+        return f"[{line}]({url})"
+    return str(line)
+
+
 def report(refs: list[Reference], package_count: int, checked: int, release_status: str,
-           updates: list[Update], failures: list[Failure]) -> str:
+           updates: list[Update], failures: list[Failure], readme: Path = Path("README.md")) -> str:
     named_count = sum(not HASH.fullmatch(ref.package) for ref in refs)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    lines = ["# Version freshness", "",
-             f"**Audit {'incomplete' if failures else 'complete'}.** {stamp}", "",
-             f"- Named imports: {named_count}; package names checked: {checked}/{package_count}.",
-             f"- Hash-only imports excluded from version ordering: {len(refs) - named_count}.",
-             f"- Official Bend release pointer: {release_status}.", "",
-             "This report finds review candidates, not compatible upgrades. Hash-only imports, "
-             "renamed packages, source-release prose, and project compiler pins need manual review. "
-             "No packages are installed or executed, and README's Last checked date is unchanged.", "",
-             "## Updates to review", ""]
+    lines = ["# Version freshness", ""]
+    if failures:
+        lines.extend(["**Audit incomplete.** Missing evidence is not an up-to-date result.", ""])
+        if all(failure.transient for failure in failures):
+            lines.extend(["Upstream information could not be retrieved. Inspect the diagnostic and retry later; "
+                          "there is no reason to change README to clear this result.", ""])
+    else:
+        count = len({item.name for item in updates})
+        result = (f"{count} update{'s' if count != 1 else ''} available."
+                  if updates else "No update candidates found within the checked scope.")
+        lines.extend([f"**Audit complete.** {result}", ""])
     if updates:
-        lines.extend(["| README line | Package | Documented | Published latest | Review |",
+        lines.extend(["## Available updates", "",
+                      "Review compatibility before updating. Keeping a documented older pin is allowed; "
+                      "this report does not need to be empty.", "",
+                      "| README line | Package | Documented | Published latest | Entrypoint / action |",
                       "| --- | --- | --- | --- | --- |"])
         for item in sorted(updates, key=lambda item: (item.line, item.name)):
-            lines.append(f"| {item.line} | {cell(item.name)} | {cell(item.current)} | "
+            lines.append(f"| {location(item.line, readme)} | {cell(item.name)} | {cell(item.current)} | "
                          f"[{cell(item.latest)}]({item.url}) | {cell(item.detail)} |")
-    else:
-        lines.append("No update candidates found in the successfully checked metadata."
-                     if failures else "No update candidates found within the checked scope.")
     if failures:
-        lines.extend(["", "## Audit errors", "", "Missing evidence is not an up-to-date result.", "",
-                      "| README line | Error |", "| --- | --- |"])
+        lines.extend(["", "## Incomplete checks", "",
+                      "| README line | Result | Next action |", "| --- | --- | --- |"])
         for failure in sorted(failures, key=lambda item: item.line):
-            lines.append(f"| {failure.line} | {cell(failure.message)} |")
+            action = "Retry later; keep README unchanged" if failure.transient else "Inspect this input or upstream response"
+            lines.append(f"| {location(failure.line, readme)} | {cell(failure.message)} | {action} |")
+    lines.extend(["", "## Coverage", "",
+                  f"- Named imports: {named_count}; package names checked: {checked}/{package_count}.",
+                  f"- Hash-only imports excluded from version ordering: {len(refs) - named_count}.",
+                  f"- Official Bend release pointer: {release_status}.",
+                  f"- Checked at: {stamp}.", "",
+                  "Hash-only imports, renamed packages, source-release prose, and project compiler pins "
+                  "need manual review. No packages are installed or executed. "
+                  "README's Last checked date is unchanged."])
     return "\n".join(lines) + "\n"
 
 
@@ -173,8 +200,11 @@ def main(argv=None) -> int:
         refs, failures, _ = parse_references(text)
     except (OSError, UnicodeError) as error:
         failures.append(Failure(1, str(error)))
+    invalid_readme = bool(failures)
+    if invalid_readme and args.bend_release:
+        release_status = "not checked because README input is invalid"
 
-    if args.bend_release:
+    if args.bend_release and not invalid_readme:
         release_status = "incomplete"
         pointer = None
         if text is not None:
@@ -183,25 +213,27 @@ def main(argv=None) -> int:
                 updates.extend(check_release(pointer, args.bend_release.read_bytes()))
                 release_status = "checked against the official latest release"
             except (OSError, CheckError) as error:
-                failures.append(Failure(pointer[0] if pointer else 1, f"Bend release: {error}"))
+                failures.append(Failure(pointer[0] if pointer else 1, f"Bend release: {error}",
+                                        isinstance(error, UnavailableError)))
 
     for ref in refs:
         if not HASH.fullmatch(ref.package):
             groups.setdefault(ref.package.split("@", 1)[0], []).append(ref)
-    client = HubClient()
-    with ThreadPoolExecutor(max_workers=4) as executor:
-        for candidates, errors in executor.map(lambda group: check_name(group, client.fetch), groups.values()):
-            updates.extend(candidates)
-            failures.extend(errors)
-            checked += not errors
+    if not invalid_readme:
+        client = HubClient()
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            for candidates, errors in executor.map(lambda group: check_name(group, client.fetch), groups.values()):
+                updates.extend(candidates)
+                failures.extend(errors)
+                checked += not errors
 
-    filename = escape_annotation(str(args.readme), property=True)
-    for item in updates:
-        message = f"{item.name}: {item.current} -> {item.latest}. {item.detail}"
-        print(f"::notice file={filename},line={item.line}::{escape_annotation(message)}")
-    for failure in failures:
-        print(f"::error file={filename},line={failure.line}::{escape_annotation(failure.message)}")
-    summary = report(refs, len(groups), checked, release_status, updates, failures)
+    temporary_only = bool(failures) and all(failure.transient for failure in failures)
+    if failures and os.environ.get("GITHUB_ACTIONS") == "true":
+        level = "warning" if temporary_only else "error"
+        message = ("Upstream service unavailable; retry later without changing README."
+                   if temporary_only else "Inspect the incomplete checks in the job summary.")
+        print(f"::{level}::Version freshness is incomplete. {escape_annotation(message)}")
+    summary = report(refs, len(groups), checked, release_status, updates, failures, args.readme)
     print(summary)
     if path := os.environ.get("GITHUB_STEP_SUMMARY"):
         try:
@@ -210,7 +242,7 @@ def main(argv=None) -> int:
         except OSError as error:
             print(f"Cannot write job summary: {error}", file=sys.stderr)
             return 1
-    return int(bool(failures))
+    return 3 if temporary_only else int(bool(failures))
 
 
 if __name__ == "__main__":

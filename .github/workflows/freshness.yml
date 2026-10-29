@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
     paths:
-      - README.md
       - scripts/check_bendhub.py
       - scripts/check_freshness.py
       - tests/test_check_bendhub.py
@@ -35,10 +34,30 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if ! gh api repos/bendlang/bend/releases/latest > "$RUNNER_TEMP/bend-release.json"; then
-            echo "::warning::Could not fetch official Bend release metadata; continuing Hub checks with an incomplete audit."
-            # Discard even a valid-looking partial response so the audit must fail.
-            echo '{}' > "$RUNNER_TEMP/bend-release.json"
-          fi
+          for attempt in 1 2 3; do
+            fetch_status=0
+            timeout --kill-after=5s 20s gh api repos/bendlang/bend/releases/latest > "$RUNNER_TEMP/bend-release.json" || fetch_status=$?
+            case "$fetch_status" in
+              0) exit 0 ;;
+              1|124) ;;
+              *)
+                echo "::error::Bend release lookup could not run (exit $fetch_status). Inspect the fetch logs and runner configuration."
+                exit "$fetch_status"
+                ;;
+            esac
+            if [[ "$attempt" -lt 3 ]]; then
+              sleep "$((attempt * 2))"
+            fi
+          done
+          # Discard any partial response; the checker reports this as unavailable.
+          echo "Bend release metadata is unavailable after retries; inspect the fetch logs and retry later."
+          echo '{"_unavailable":true}' > "$RUNNER_TEMP/bend-release.json"
       - name: Report newer published versions
-        run: python3 scripts/check_freshness.py --bend-release "$RUNNER_TEMP/bend-release.json"
+        run: |
+          audit_status=0
+          python3 scripts/check_freshness.py --bend-release "$RUNNER_TEMP/bend-release.json" || audit_status=$?
+          if [[ "$audit_status" -eq 3 ]]; then
+            echo "Freshness check is incomplete because a source is temporarily unavailable. Retry this audit later."
+            exit 0
+          fi
+          exit "$audit_status"

@@ -21,25 +21,35 @@ Please ensure your pull request adheres to the following:
 
 Keep concrete imports pinned to an exact published version or content hash. A newer package is a candidate for review, not an automatic replacement: check its entrypoint, compiler requirements, and upstream documentation before updating the example. Compare versions within the same Hub package name; a repository release tag can differ from its published Hub version. Do not infer package renames or a newer release from a content hash.
 
+Keeping a reviewed pin is fine. Explain a meaningful compatibility reason in the entry; contributors and agents do not need to empty the freshness report or update a working example just to remove a candidate. The report does not create issues, pull requests, or a notice for each outdated import.
+
 Avoid repeating a release number in prose when the import already conveys it. Keep versions that explain a source-versus-Hub difference, minimum or exact compiler requirement, compiler patch, or tested configuration. Do not replace these with the latest compiler number. Update `Last checked` only after reviewing the list's descriptions and sources; a metadata-only freshness run is not a full audit.
 
 ## Validation
 
 ```sh
-npx --yes awesome-lint@2.3.0
 python3 -m unittest discover -s tests -v
+python3 scripts/check_bendhub.py --offline
+npx --yes awesome-lint@2.3.0
+```
+
+The Python checks run offline and need only Python 3.10+ and its standard library. The validator checks Hub reference syntax and accepts the catalog's abbreviated package/file references. In Bend source, add `as Name` to a non-Base import; this check does not compile or type-check a program. Ordinary `Base` and local imports, and the generic `name@version/file.bend` and `0x…/file.bend` examples, are outside Hub verification.
+
+To check publication and integrity across the entire list, run:
+
+```sh
 python3 scripts/check_bendhub.py
 ```
 
-The BendHub check uses Python 3.10+ and its standard library. It resolves every concrete `import` reference in README, verifies the package manifest, and checks the referenced file's SHA-256. It reads published files without executing them; a passing check confirms publication and integrity, not compiler compatibility or proof correctness. The generic `name@version/file.bend` and `0x…/file.bend` examples are excluded.
+This resolves the aliases, verifies the package manifests, and checks the referenced files' SHA-256 without executing packages. Use `--base-readme PATH` to check only imports added or changed since a previous README; the whole current README still receives syntax validation. A description-only edit needs no Hub requests. Publication and integrity do not establish compiler compatibility or proof correctness.
 
-CI runs this check on relevant pull requests, after changes reach `main`, and weekly. Network errors are retried briefly; an unavailable package remains a failed check with its README line, so retry after a temporary Hub outage rather than hiding the reference.
+PRs and pushes check added or changed imports. Changes to the integrity checker or its workflow, weekly runs, and manual runs check the whole catalog. If the base README is unavailable or cannot be parsed, CI explicitly falls back to a full check of the current catalog. A temporary source failure leaves a PR or push check unsuccessful so a changed import is never silently accepted without verification. Scheduled and manual audits report temporary outages as incomplete without requiring a README edit.
 
 ## Version freshness
 
-The separate **Version freshness** workflow checks named Hub imports and the README's explicit `Latest stable release` claim for Bend. It runs weekly, manually, and after relevant changes reach `main`; pull requests run its offline regression tests without extra live freshness requests. It reads metadata without installing, compiling, or running packages, and writes its findings to the Actions job summary.
+The separate **Version freshness** workflow checks named Hub imports and the README's explicit `Latest stable release` claim for Bend. It runs weekly, manually, and when its checker, tests, or workflow change on `main`. Routine README edits do not launch another freshness audit, and PRs run only its offline regression tests. It reads metadata without installing, compiling, or running packages, and writes optional update candidates to the Actions job summary.
 
-Newer published versions produce notices and a successful audit, so an intentionally older working pin does not fail CI. Missing metadata, network failures, or invalid response data fail the audit as incomplete. Hash-only imports have no version ordering and are counted as outside this check. Compatibility prose and repository release versions are not compared automatically.
+Newer versions are successful audit results. Temporary source failures leave an explicit incomplete report and one grouped warning; they do not block this maintenance workflow. Invalid metadata or input, missing published references, and checksum failures still fail the relevant check. Hash-only imports have no version ordering and are counted as outside freshness coverage. Compatibility prose and repository release versions need manual review.
 
 Run the Hub-only audit locally; without `--bend-release`, the compiler release check is explicitly skipped:
 
@@ -53,5 +63,20 @@ To also check the official Bend release claim, supply GitHub's latest-release re
 curl -fsS --retry 2 --max-time 30 https://api.github.com/repos/bendlang/bend/releases/latest -o /tmp/bend-release.json && \
   python3 scripts/check_freshness.py --bend-release /tmp/bend-release.json
 ```
+
+## Reading results
+
+Open **Actions → BendHub imports** or **Actions → Version freshness** to inspect a run or choose **Run workflow** for a manual audit. The summary states what was checked, what needs review, and whether any source could not be checked. A completed maintenance job can contain an incomplete audit; read that result before treating references as verified or current.
+
+The import and freshness scripts use these exit codes, including when run by an agent:
+
+| Exit | Result | What to do |
+| --- | --- | --- |
+| `0` | Requested check completed, possibly with optional updates. | Review update candidates when useful; retain intentional pins. |
+| `1` | Invalid input or metadata, missing published content, or failed integrity. | Fix the reported problem before accepting the change. |
+| `2` | Invalid command arguments. | Check the command's `--help`. |
+| `3` | A required source is temporarily unavailable. | Retry later; the audit is incomplete. |
+
+CI keeps real errors and unexpected failures unsuccessful. Only the documented temporary-unavailability result is advisory for freshness and for scheduled or manual catalog audits.
 
 Thank you for your suggestions.
