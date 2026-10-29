@@ -1,0 +1,44 @@
+name: Version freshness
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - README.md
+      - scripts/check_bendhub.py
+      - scripts/check_freshness.py
+      - tests/test_check_bendhub.py
+      - tests/test_check_freshness.py
+      - .github/workflows/freshness.yml
+  schedule:
+    - cron: '41 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: freshness-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  version-freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test the validators without network access
+        run: python3 -m unittest discover -s tests -v
+      - name: Fetch official Bend release metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh api repos/bendlang/bend/releases/latest > "$RUNNER_TEMP/bend-release.json"; then
+            echo "::warning::Could not fetch official Bend release metadata; continuing Hub checks with an incomplete audit."
+            # Discard even a valid-looking partial response so the audit must fail.
+            echo '{}' > "$RUNNER_TEMP/bend-release.json"
+          fi
+      - name: Report newer published versions
+        run: python3 scripts/check_freshness.py --bend-release "$RUNNER_TEMP/bend-release.json"

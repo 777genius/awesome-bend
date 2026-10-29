@@ -5,15 +5,21 @@ on:
     paths:
       - README.md
       - scripts/check_bendhub.py
+      - scripts/check_freshness.py
       - tests/test_check_bendhub.py
+      - tests/test_check_freshness.py
       - .github/workflows/bendhub.yml
+      - .github/workflows/freshness.yml
   push:
     branches: [main]
     paths:
       - README.md
       - scripts/check_bendhub.py
+      - scripts/check_freshness.py
       - tests/test_check_bendhub.py
+      - tests/test_check_freshness.py
       - .github/workflows/bendhub.yml
+      - .github/workflows/freshness.yml
   schedule:
     - cron: '23 6 * * 1'
   workflow_dispatch:
