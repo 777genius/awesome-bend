@@ -121,7 +121,7 @@ Imports below identify published packages, not a claim that every package passes
 - [mlbend-metrics](https://github.com/adeerkhan/mlbend-metrics) - Regression and classification metrics (MSE, MAE, RMSE, accuracy, precision, recall, F1) with an `ALL PROOFS CHECK` gate and no `@unsafe`, on the hub as `import mlbend-metrics@0.1.0.0/main.bend`.
 - [bend-env](https://github.com/adeerkhan/bend-env) - Project and environment manager: a manifest, lockfile, and pinned package environment resolved and verified against BendHub; no package-hub release of its own.
 - [Bendo](https://github.com/opencoredev/bendo) - Pre-alpha Hono-style web framework with routing, parsing, JSON, and validation proved in `LAWS.bend`, plus a typed TypeScript client; not published on the hub.
-- [BendTorch](https://github.com/nuxyel/BendTorch) - Typed layers with forward and backward passes, losses, optimizers and checkpoints over bend-ml's tensors, trained step for step against PyTorch twins on MNIST, a two-layer Llama and SmolLM2 (135M to 1.7B), with structural laws checked by `--verdict` and parallel CPU and GPU builds of the same layers, on the hub as `import bendtorch@1.1.1.0/main.bend`; requires Bend 2.0.39.
+- [BendTorch](https://github.com/nuxyel/BendTorch) - Typed layers with forward and backward passes, losses, optimizers and checkpoints over bend-ml's tensors, trained step for step against PyTorch twins on MNIST, a two-layer Llama and SmolLM2 (135M to 1.7B), with structural laws checked by `--verdict` and parallel CPU and GPU builds of the same layers, on the hub as `import bendtorch@1.2.0.0/main.bend`; requires Bend 2.0.39.
 
 ## Tools
 
