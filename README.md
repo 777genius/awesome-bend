@@ -46,7 +46,7 @@ Bend 2.0.32 changed `TCP.listen` and `UDP.bind` to take a bind address, and `IO.
 
 ## Packages
 
-Imports below identify published packages, not a claim that every package passes on the latest compiler. The Tools section includes compatibility matrices.
+Imports below pin published packages for reproducible examples, not a claim that every package passes on the latest compiler. Newer published versions are reported by the [version freshness workflow](https://github.com/777genius/awesome-bend/actions/workflows/freshness.yml) for review; compiler requirements and tested versions remain specific to each project. The Tools section includes compatibility matrices.
 
 - [gauss](https://github.com/pjdotson/gauss) - Experimental unit-aware engineering calculation engine with SI dimensions.
 - [unsga3-bend](https://github.com/AppSprout-dev/unsga3-bend) - U-NSGA-III optimiser with constrained problems, on the hub as `import unified-nsga-iii@0.2.2.0/lib.bend`.
