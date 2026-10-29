@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
     paths:
-      - README.md
       - scripts/check_bendhub.py
       - scripts/check_freshness.py
       - tests/test_check_bendhub.py
@@ -23,7 +22,7 @@ concurrency:
 
 jobs:
   version-freshness:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -35,10 +34,66 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if ! gh api repos/bendlang/bend/releases/latest > "$RUNNER_TEMP/bend-release.json"; then
-            echo "::warning::Could not fetch official Bend release metadata; continuing Hub checks with an incomplete audit."
-            # Discard even a valid-looking partial response so the audit must fail.
-            echo '{}' > "$RUNNER_TEMP/bend-release.json"
-          fi
+          for attempt in 1 2 3; do
+            fetch_status=0
+            response_meta=$(curl --silent --show-error --max-time 20 \
+              --header 'Accept: application/vnd.github+json' \
+              --header "Authorization: Bearer $GH_TOKEN" \
+              --output "$RUNNER_TEMP/bend-release.json" \
+              --write-out '%{http_code}|%header{x-ratelimit-remaining}|%header{retry-after}' \
+              https://api.github.com/repos/bendlang/bend/releases/latest) || fetch_status=$?
+            IFS='|' read -r http_status remaining retry_after <<< "$response_meta"
+            if [[ "$fetch_status" -eq 0 ]]; then
+              # GitHub also uses 403 for rate limits; an ordinary 403 stays an error.
+              if [[ "$http_status" == "403" ]]; then
+                if [[ "$remaining" == "0" || -n "$retry_after" ]] ||
+                  python3 -c 'import json, sys; message = json.load(open(sys.argv[1])).get("message"); sys.exit(not isinstance(message, str) or "secondary rate limit" not in message.lower())' \
+                    "$RUNNER_TEMP/bend-release.json" 2>/dev/null; then
+                  echo "GitHub API rate limit reached; defer the release check."
+                  break
+                fi
+              fi
+              case "$http_status" in
+                200) exit 0 ;;
+                429)
+                  echo "GitHub API rate limit reached; defer the release check."
+                  break
+                  ;;
+                408|425|5[0-9][0-9])
+                  if [[ -n "$retry_after" ]]; then
+                    echo "GitHub requested a later retry; defer the release check."
+                    break
+                  fi
+                  ;;
+                *)
+                  echo "::error::Bend release lookup returned HTTP $http_status. Check the source and access permissions."
+                  exit 1
+                  ;;
+              esac
+            else
+              case "$fetch_status" in
+                # DNS, connection, timeout, partial transfer, and HTTP/2 failures.
+                5|6|7|16|18|28|35|52|55|56|92) ;;
+                *)
+                  echo "::error::Bend release lookup could not run (curl exit $fetch_status). Inspect the fetch logs and runner configuration."
+                  exit "$fetch_status"
+                  ;;
+              esac
+            fi
+            echo "Bend release lookup did not complete (HTTP $http_status, curl exit $fetch_status; attempt $attempt/3)."
+            if [[ "$attempt" -lt 3 ]]; then
+              sleep "$((attempt * 2))"
+            fi
+          done
+          # Discard any partial response; the checker reports this as unavailable.
+          echo "Bend release metadata is unavailable; inspect the fetch logs and retry later."
+          echo '{"_unavailable":true}' > "$RUNNER_TEMP/bend-release.json"
       - name: Report newer published versions
-        run: python3 scripts/check_freshness.py --bend-release "$RUNNER_TEMP/bend-release.json"
+        run: |
+          audit_status=0
+          python3 scripts/check_freshness.py --bend-release "$RUNNER_TEMP/bend-release.json" || audit_status=$?
+          if [[ "$audit_status" -eq 3 ]]; then
+            echo "Freshness check is incomplete because a source is temporarily unavailable. Retry this audit later."
+            exit 0
+          fi
+          exit "$audit_status"

@@ -27,19 +27,50 @@ on:
 permissions:
   contents: read
 
+# Keep every push delta; only newer PR runs replace checks against the same base.
 concurrency:
-  group: bendhub-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: bendhub-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   bendhub-imports:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0
       - name: Test the validator without network access
         run: python3 -m unittest discover -s tests -v
       - name: Verify published imports and checksums
-        run: python3 scripts/check_bendhub.py
+        env:
+          AUDIT_EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          scope_args=()
+          if [[ "$AUDIT_EVENT" == "pull_request" || "$AUDIT_EVENT" == "push" ]]; then
+            if [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]] && git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null; then
+              if git diff --quiet "$BASE_SHA" HEAD -- scripts/check_bendhub.py .github/workflows/bendhub.yml; then
+                if git show "$BASE_SHA:README.md" > "$RUNNER_TEMP/bendhub-base.md"; then
+                  scope_args=(--base-readme "$RUNNER_TEMP/bendhub-base.md")
+                  echo "Checking added or changed imports against $BASE_SHA."
+                else
+                  echo "Previous README is unavailable; checking the full catalog."
+                fi
+              else
+                echo "Checker/workflow changed or comparison failed; checking the full catalog."
+              fi
+            else
+              echo "A usable base commit is unavailable; checking the full catalog."
+            fi
+          else
+            echo "Checking the full catalog."
+          fi
+          audit_status=0
+          python3 scripts/check_bendhub.py "${scope_args[@]}" || audit_status=$?
+          if [[ "$audit_status" -eq 3 && ( "$AUDIT_EVENT" == "schedule" || "$AUDIT_EVENT" == "workflow_dispatch" ) ]]; then
+            echo "Catalog check is incomplete because a source is temporarily unavailable. Retry this audit later."
+            exit 0
+          fi
+          exit "$audit_status"

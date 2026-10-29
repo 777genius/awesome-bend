@@ -133,7 +133,7 @@ class ReleaseTests(unittest.TestCase):
 
 
 class CommandTests(unittest.TestCase):
-    def run_audit(self, readme, fetch, release=RELEASE):
+    def run_audit(self, readme, fetch, release=RELEASE, *, actions=False):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source, summary = root / "README.md", root / "summary.md"
@@ -145,7 +145,8 @@ class CommandTests(unittest.TestCase):
                 args.extend(["--bend-release", str(release_path)])
             stdout = io.StringIO()
             with patch.object(checker, "HubClient", return_value=Mock(fetch=fetch)), \
-                    patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": str(summary)}), redirect_stdout(stdout):
+                    patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": str(summary),
+                                            "GITHUB_ACTIONS": "true" if actions else "false"}), redirect_stdout(stdout):
                 code = checker.main(args)
             self.assertEqual(source.read_text(encoding="utf-8"), readme)
             return code, stdout.getvalue(), summary.read_text(encoding="utf-8")
@@ -157,7 +158,9 @@ class CommandTests(unittest.TestCase):
         fetch = Mock(side_effect=responses.__getitem__)
         code, stdout, summary = self.run_audit(POINTER + "\n" + "\n".join(refs), fetch)
         self.assertEqual(code, 0)
-        self.assertIn("::notice file=", stdout)
+        self.assertNotIn("::notice", stdout)
+        self.assertIn("1 update available", summary)
+        self.assertIn("this report does not need to be empty", summary)
         self.assertIn("**Audit complete.**", summary)
         self.assertIn("Named imports: 2; package names checked: 1/1", summary)
         self.assertIn("Hash-only imports excluded from version ordering: 12", summary)
@@ -167,11 +170,12 @@ class CommandTests(unittest.TestCase):
         problem = "bad%\r\n::warning::injected | [link](https://example.com) <img>"
         code, stdout, summary = self.run_audit(
             POINTER + "\n`import example@0.9.0.0/main.bend`",
-            Mock(side_effect=checker.CheckError(problem)))
+            Mock(side_effect=checker.CheckError(problem)), actions=True)
         self.assertEqual(code, 1)
         self.assertIn("**Audit incomplete.**", summary)
         self.assertIn("package names checked: 0/1", summary)
-        self.assertIn("bad%25%0D%0A::warning::", stdout)
+        self.assertEqual(stdout.count("::error::"), 1)
+        self.assertNotIn("\n::warning::", stdout)
         for raw in ["\n::warning::", "[link]", "<img>"]:
             self.assertNotIn(raw, summary)
         self.assertIn("&#124;", summary)
@@ -183,6 +187,56 @@ class CommandTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("package names checked: 1/1", summary)
         self.assertIn("Official Bend release pointer: incomplete", summary)
+
+    def test_optional_updates_have_no_actions_annotations(self):
+        _, responses = publication()
+        code, stdout, summary = self.run_audit(
+            POINTER + "\n`import example@0.9.0.0/main.bend`",
+            Mock(side_effect=responses.__getitem__), actions=True)
+        self.assertEqual(code, 0)
+        for annotation in ["::notice", "::warning", "::error"]:
+            self.assertNotIn(annotation, stdout)
+        self.assertIn("0.10.0.0", summary)
+
+    def test_temporary_outage_is_distinct_and_has_one_actions_warning(self):
+        for actions in [False, True]:
+            with self.subTest(actions=actions):
+                code, stdout, summary = self.run_audit(
+                    POINTER + "\n`import example@0.9.0.0/main.bend`\n"
+                    "`import example@0.9.0.0/other.bend`",
+                    Mock(side_effect=checker.UnavailableError("Hub HTTP 503")), actions=actions)
+                self.assertEqual(code, 3)
+                self.assertEqual(stdout.count("::warning::"), int(actions))
+                self.assertNotIn("::error", stdout)
+                self.assertIn("**Audit incomplete.**", summary)
+                self.assertIn("package names checked: 0/1", summary)
+                self.assertIn("Retry later; keep README unchanged", summary)
+
+    def test_failed_github_acquisition_preserves_reason_and_hub_results(self):
+        _, responses = publication()
+        code, stdout, summary = self.run_audit(
+            POINTER + "\n`import example@0.10.0.0/main.bend`",
+            Mock(side_effect=responses.__getitem__), release={"_unavailable": True}, actions=True)
+        self.assertEqual(code, 3)
+        self.assertIn("GitHub release metadata is unavailable", summary)
+        self.assertNotIn("non-prerelease", summary)
+        self.assertIn("package names checked: 1/1", summary)
+        self.assertEqual(stdout.count("::warning::"), 1)
+
+    def test_hard_failure_is_not_softened_by_an_unavailable_source(self):
+        code, stdout, _ = self.run_audit(
+            POINTER + "\n`import example@0.9.0.0/main.bend`",
+            Mock(side_effect=checker.UnavailableError("Hub unavailable")), release={}, actions=True)
+        self.assertEqual(code, 1)
+        self.assertEqual(stdout.count("::error::"), 1)
+
+    def test_syntax_error_stops_network_requests_for_other_valid_imports(self):
+        fetch = Mock()
+        code, _, summary = self.run_audit(
+            POINTER + "\n`import example@0.9.0.0/main.bend`\n`import broken@1.0/file.bend`", fetch)
+        self.assertEqual(code, 1)
+        self.assertIn("package names checked: 0/1", summary)
+        fetch.assert_not_called()
 
     def test_hub_only_mode_explicitly_discloses_skipped_release_check(self):
         _, responses = publication()
@@ -211,6 +265,24 @@ class CommandTests(unittest.TestCase):
                 self.assertEqual(code, 1)
                 self.assertIn("**Audit incomplete.**", summary)
                 fetch.assert_not_called()
+
+
+class LocationTests(unittest.TestCase):
+    def test_actions_locations_point_to_the_checked_commit(self):
+        env = {"GITHUB_ACTIONS": "true", "GITHUB_REPOSITORY": "777genius/awesome-bend",
+               "GITHUB_SHA": "a" * 40}
+        with patch.dict(os.environ, env):
+            self.assertEqual(checker.location(12, Path("README.md")),
+                             f"[12](https://github.com/777genius/awesome-bend/blob/{'a' * 40}/README.md#L12)")
+            for path in [Path("/tmp/README.md"), Path("../README.md")]:
+                self.assertEqual(checker.location(12, path), "12")
+        with patch.dict(os.environ, {**env, "GITHUB_ACTIONS": "false"}):
+            self.assertEqual(checker.location(12, Path("README.md")), "12")
+
+    def test_invalid_actions_context_does_not_create_a_link(self):
+        with patch.dict(os.environ, {"GITHUB_ACTIONS": "true", "GITHUB_REPOSITORY": "invalid/name/extra",
+                                     "GITHUB_SHA": "not-a-commit"}):
+            self.assertEqual(checker.location(1, Path("README.md")), "1")
 
 
 if __name__ == "__main__":
