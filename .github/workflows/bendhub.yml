@@ -1,0 +1,39 @@
+name: BendHub imports
+
+on:
+  pull_request:
+    paths:
+      - README.md
+      - scripts/check_bendhub.py
+      - tests/test_check_bendhub.py
+      - .github/workflows/bendhub.yml
+  push:
+    branches: [main]
+    paths:
+      - README.md
+      - scripts/check_bendhub.py
+      - tests/test_check_bendhub.py
+      - .github/workflows/bendhub.yml
+  schedule:
+    - cron: '23 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bendhub-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bendhub-imports:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test the validator without network access
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify published imports and checksums
+        run: python3 scripts/check_bendhub.py
