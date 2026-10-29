@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **24 October 2026**. Latest stable release: [Bend 2.0.39](https://github.com/bendlang/bend/releases/tag/v2.0.39).
+Last checked: **29 October 2026**. Latest stable release: [Bend 2.0.39](https://github.com/bendlang/bend/releases/tag/v2.0.39).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -58,32 +58,32 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-codec](https://github.com/777genius/bend-codec) - RFC 4648 hex, Base64, and UTF-8, on the hub as `import bend-encoding@0.2.0.0/hex.bend`.
 - [bend-parse](https://github.com/777genius/bend-parse) - Cursor, digits, and finish, on the hub as `import bend-scanner@0.1.0.0/parse.bend`.
 - [bend-time](https://github.com/777genius/bend-time) - Gregorian dates, Instant, Duration, Period, ISO week, `P`/`PT`, RFC 3339 subset, IANA zones, and RFC 9557. Release v0.6.0 adds calendar quarter bounds and day-of-year helpers in its source checkout; the Hub core remains `import bend-datetime@0.4.0.1/date.bend`, checked on Bend 2.0.28, 2.0.34, and 2.0.36; zone `import 0x5118d7c8d8a6cbdfca48647d1a5a6fde/zone.bend` still depends on the older core.
-- [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands, on the hub as `import shake@0.7.0.0/main.bend`.
+- [shake](https://github.com/Emerging-Patterns/shake) - CLI argument parser for flags, options, and nested commands, on the hub as `import shake@0.8.0.0/main.bend`.
 - [bend-sha256](https://github.com/Giulio2002/bend-sha256) - SHA-256 with machine-checked proofs against FIPS 180-4, on the hub as `import 0xda83506fb9f059ead7afcfa2f498df5f/sha256.bend`.
-- [bend-json](https://github.com/rootagi/bend-json) - JSON parser and serializer with formal proofs, on the hub as `import 0xf776c27e08f75fc19a070c691bcbb111/json.bend`.
+- [bend-json](https://github.com/rootagi/bend-json) - JSON parser and serializer with JSON Pointer, NDJSON, machine-checked laws, and regression examples, on the hub as `import 0xf776c27e08f75fc19a070c691bcbb111/json.bend`.
 - [bend-net](https://github.com/naoeosavio/bend-net) - HTTP/1.1, HTTP/2, HTTPS, DNS, TLS, and WebSockets, on the hub as `import 0xd66ee682d4ce8c656782ca9e0e4634cb/http.bend`.
-- [eztoml](https://github.com/Emerging-Patterns/eztoml) - TOML parser and renderer for Bend 2, on the hub as `import emerging-eztoml@0.9.0.0/main.bend`.
-- [ezjson](https://github.com/Emerging-Patterns/ezjson) - JSON for Bend 2, on the hub as `import emerging-ezjson@1.3.0.0/main.bend`.
-- [mylsm](https://github.com/FabianVegaA/mylsm) - Experimental durable LSM key-value store; source 0.6.0.0 alpha adds cursors, snapshots, backups, and a coordinated local owner, with explicit migration from 0.5 storage. Current source requires Bend 2.0.37; the released Hub package remains `import mylsm-lsm-store@0.5.0.0/mylsm.bend`, requiring Bend 2.0.36+.
+- [eztoml](https://github.com/Emerging-Patterns/eztoml) - TOML parser and renderer for Bend 2, on the hub as `import emerging-eztoml@0.10.0.0/main.bend`.
+- [ezjson](https://github.com/Emerging-Patterns/ezjson) - JSON for Bend 2, on the hub as `import ezjson@1.4.0.0/main.bend`.
+- [mylsm](https://github.com/FabianVegaA/mylsm) - Experimental durable LSM key-value store; source 0.6.0.0 alpha adds cursors, snapshots, backups, and a coordinated local owner, with explicit migration from 0.5 storage. Current source requires Bend 2.0.39; the released Hub package remains `import mylsm-lsm-store@0.5.0.0/mylsm.bend`, requiring Bend 2.0.36+.
 - [bend-tui](https://github.com/caiodomingues/bend-tui) - Terminal views, a proof-checked frame shape, and a `Tui.run` loop on bend-tty.
 - [toon_bend](https://github.com/Dicklesworthstone/toon_bend) - JSON ↔ TOON codec and CLI, golden-tested against the original.
-- [ezhttp](https://github.com/Emerging-Patterns/ezhttp) - HTTP/1.1 client and server with auth, cookie, and CORS helpers, on the hub as `import emerging-ezhttp@0.21.0.0/main.bend`.
-- [ezaudio](https://github.com/Emerging-Patterns/ezaudio) - PCM clips, WAV codecs, and limited MPEG-1 Layer III support for Bend 2, on the hub as `import emerging-ezaudio@0.4.0.0/main.bend`.
-- [ezimg](https://github.com/Emerging-Patterns/ezimg) - PNG and baseline JPEG codecs for Bend 2, on the hub as `import emerging-ezimg@1.2.0.0/main.bend`.
+- [ezhttp](https://github.com/Emerging-Patterns/ezhttp) - HTTP/1.1 client and server with auth, cookie, and CORS helpers, on the hub as `import ezhttp@0.22.0.0/main.bend`; requires Bend 2.0.38+.
+- [ezaudio](https://github.com/Emerging-Patterns/ezaudio) - PCM clips, WAV codecs, and limited MPEG-1 Layer III support for Bend 2, on the hub as `import emerging-ezaudio@0.5.0.0/main.bend`.
+- [ezimg](https://github.com/Emerging-Patterns/ezimg) - PNG and baseline JPEG codecs for Bend 2, on the hub as `import emerging-ezimg@1.3.0.0/main.bend`.
 - [bend-collections](https://github.com/Giulio2002/bend-collections) - Verified containers, numeric utilities, and growing proved cryptography (SHA-3, BLAKE2/BLAKE3, Argon2id, ChaCha20-Poly1305, AES-GCM, X25519, Ed25519, secp256k1), on the hub as `import bend-collections@1.0.0.0/src/containers/hash_table.bend`.
-- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.7.5.0/nat.bend`.
+- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.8.0.0/nat.bend`.
 - [BendSR](https://github.com/k3ybladewielder/BendSR) - Parallel symbolic regression, on the hub as `import 0x07516e23611e5287ce89bcff661be83f/BendSR.bend`.
 - [bend_tensors](https://hub.bend-lang.com/n/bend-tensors) - Dense linear algebra with shapes in the types, on the hub as `import bend-tensors@0.0.0.2/bend_tensors.bend`.
 - [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.6.1 targets Bend 2.0.36 (0.6.0 remains for Bend 2.0.35).
 - [bendygrad](https://github.com/KapioKai/bendygrad) - Tinygrad front-end in Bend 2: views, buffers, autodiff, and SGD.
 - [bend-machines](https://hub.bend-lang.com/0x9fc0cec754888f0fecabce899ddf2ee5/main.bend) - Root-of-Lisp, Core, STG, and STG→C in one hub package, `import 0x9fc0cec754888f0fecabce899ddf2ee5/main.bend`.
-- [bend-kit](https://github.com/paymog/bend-kit) - Independently published Bend 2 packages for codecs, collections, networking, storage, cryptography, services, proto3 codecs with typed `protoc` generation, and binary64 soft-float. Bytes `import bend-kit-bytes@0.3.2.0/bytes.bend`; HTTP `import bend-kit-http@0.37.0.0/http.bend`. The project currently requires Bend 2.0.38 or newer.
-- [V](https://hub.bend-lang.com/n/near-v-framework) - Data structures and architecture as types. Arc `import near-architecture@0.9.1.0/arc.bend`; V `import near-v-framework@0.7.0.0/v.bend`. The source repository is no longer accessible, so this entry links its hub package.
-- [jonlib](https://github.com/jonathanperis/jonlib) - Graphics, image-codec, and math library working toward raylib 6.0 parity; requires its pinned Bend 2.0.27 Metal overlay.
+- [bend-kit](https://github.com/paymog/bend-kit) - Independently published Bend 2 packages for codecs, collections, networking, storage, cryptography, services, proto3 codecs with typed `protoc` generation, and binary64 soft-float. Bytes `import bend-kit-bytes@0.3.3.0/bytes.bend`; HTTP `import bend-kit-http@0.38.2.0/http.bend`. The project currently requires Bend 2.0.38 or newer.
+- [V](https://hub.bend-lang.com/n/near-v-framework) - Data structures and architecture as types. Arc `import near-architecture@0.9.1.0/arc.bend`; V `import near-v-framework@0.7.0.0/v.bend`.
+- [jonlib](https://github.com/jonathanperis/jonlib) - Graphics, image-codec, and math library inspired by raylib; requires its pinned Bend 2.0.39 checkout and compiler overlay.
 - [bend-lawful-stdlib](https://hub.bend-lang.com/n/bend-lawful-stdlib) - Typeclass-style Ord, Semigroup, and Group with their laws, `import bend-lawful-stdlib@0.1.0.0/src/class.bend`.
 - [ber](https://github.com/FabianVegaA/ber) - Version-controlled data on MyLSM with certified merges, on the hub as `import ber-core-store@0.1.2.0/ber.bend`.
 - [bend-parallel](https://github.com/costamatheus97/bend-parallel) - Parallel prefix sums, histograms, and a stable counting sort, on the hub as `import bend-parallel@0.1.0.0/scan.bend`.
-- [bend-schema](https://github.com/nohzafk/bend-schema) - JSON schema checker whose core is proved in Bend, used from TypeScript or Bend, with an optional Effect v4 codec adapter and tested JSON Schema 2020-12 export; exported schemas omit refinement predicates and runtime budgets.
+- [bend-schema](https://github.com/nohzafk/bend-schema) - JSON schema checker whose core is proved in Bend, used from TypeScript or Bend, with an optional Effect v4 codec adapter and tested JSON Schema 2020-12 export; exported schemas omit refinement predicates and runtime budgets. Hub `import bend-schema-lib@0.4.1.0/core.bend`.
 - [wordlib](https://github.com/Yazington/wordlib) - Machine-word laws on the hub as `import 0xb13667d52aa56e002b4d09883d7fce3e/PROOF.bend`; checkout also includes list laws and a sum prover.
 - [bend-over](https://github.com/subtleGradient/bend-over) - SQLite and JavaScript interop with native, Bun, and browser examples. SQLite `import bend-over-sqlite@0.1.0.1/sqlite.bend`.
 - [bend-trace-context](https://github.com/LucasGois1/bend-trace-context) - W3C Trace Context propagation for Bend, Node, and browsers, with proved protocol rules and context generation. Hub `import bend-trace-context@0.2.0.0/trace_context.bend`; requires exactly Bend 2.0.34.
@@ -97,93 +97,93 @@ Imports below identify published packages, not a claim that every package passes
 - [bend-zcash-blake2b](https://github.com/Giulio2002/bend-zcash-blake2b) - Proved parameterized BLAKE2b with a C library and Rust blake2b_simd adapter; incremental buffering and host glue are tested, not proved.
 - [gax-bend](https://github.com/jobstijl/gax-bend) - Geometric algebra with generated kernels proved against a multivector specification, geometric APIs, and a ray-tracing demo; uses Bend 2.0.35, with GPU experiments on the upstream HIP branch.
 - [bend-stream](https://github.com/kbrianps/bend-stream) - RTSP and RTMP clients as sessions that give frames (H.264, H.265, AAC, and G.711 over both), with MPEG-TS and FLV recording, TLS, and reconnection; its laws check RFC vectors and prove that no RTSP request field carries CR or LF; play only, native build only (C effects over OpenSSL), requires Bend 2.0.36+, on the hub as `import 0x2355f41b6f5561f50104a75ccca27cf7/rtsp.bend`.
-- [Chromi](https://github.com/amage-si/chromi) - Experimental AMAGE 2D renderer with a CPU reference, retained frames, and a Vulkan GPU path through Voltra; tested on Bend 2.0.35 with Linux X11/XWayland.
+- [Chromi](https://github.com/amage-si/chromi) - Experimental AMAGE 2D renderer with a CPU reference, retained frames, and a Vulkan GPU path through Voltra; tested on Bend 2.0.37 with Linux X11/XWayland.
 
 - [chelokot/bend-math](https://github.com/chelokot/bend-math) - Experimental exact mathematics with checked rational ordered-field, polynomial-identity, and inequality-certificate laws; its general Cauchy-real model remains incomplete.
 
-- [BendKV](https://github.com/littleBro/BendKV) - Experimental Redis-compatible RESP2/RESP3 key-value server with proved command, storage, and session laws; implements a Redis subset and requires a dedicated patched Bend 2.0.35. No license has been granted yet.
+- [BendKV](https://github.com/littleBro/BendKV) - Experimental Redis-compatible RESP2/RESP3 key-value server with proved command, storage, and session laws; implements a Redis subset and requires a dedicated patched Bend 2.0.35. Licensed Apache-2.0.
 
-- [Bendvy](https://github.com/dearlordylord/bendvy) - Experimental Bend 2 entity-component system with typed queries, deferred commands, and native/browser examples, including a browser swarm demo whose build is checked on Bend 2.0.36; its API and Bevy parity remain in progress. No license file is provided.
+- [Bendvy](https://github.com/dearlordylord/bendvy) - Experimental Bend 2 entity-component system with typed queries, schedules, deferred commands, and native/browser examples; its API remains in progress. Licensed MIT or Apache-2.0.
 
-- [Stelliferous](https://github.com/Kaz9487/Stelliferous) - F32 tensor library with source-level convolution proofs against a fixed FP32 specification, on the hub as `import stelliferous@0.0.3.0/tensor_f32.bend`; checked on official Bend 2.0.36. Its training package (convolution, batch norm, activation, and pool layers) is in the same package as `import stelliferous@0.0.3.0/tensor_training.bend`.
+- [Stelliferous](https://github.com/Kaz9487/Stelliferous) - F32 tensor library with source-level convolution proofs against a fixed FP32 specification, on the hub as `import stelliferous@0.0.3.0/tensor_f32.bend`; checked on official Bend 2.0.37. Its training package (convolution, batch norm, activation, and pool layers) is in the same package as `import stelliferous@0.0.3.0/tensor_training.bend`.
 - [bend-edit-distance](https://github.com/jware-solutions/bend-edit-distance) - Experimental Edlib-style edit distance and alignment library and CLI, on the hub as `import bend-edit-distance@0.2.2.0/lib.bend`; requires Bend 2.0.37+ and implements only part of Edlib.
 
 - [bend-sat](https://github.com/sebastian-griego/bend-sat) - Experimental SAT solver with watched literals, first-UIP learning, and a proved result checker with DPLL fallback; validated on a pinned Bend 2.0.37 macOS arm64 setup. No license file is provided.
-- [bendtorch](https://github.com/aaaxn/bendtorch) - Experimental CPU F32 tensor library with shape-indexed storage, tensor operations, and scalar autograd; numerical results are tested against PyTorch, and model training is not implemented. Requires its pinned Bend compiler checkout.
-- [bend-osdev](https://github.com/ScottMoore0/bend-osdev) - MIT-licensed operating-system libraries: file systems, archives, compression, ELF, partition tables, network headers, capability and LSM policy models, and kernel data structures, each with laws, `--verdict`-accepted proofs, and differential tests; pinned to Bend 2.0.37 and published incrementally on the hub as `bend-osdev-<package>` (for example `import bend-osdev-bytes@0.1.0.0/bytes.bend`).
-- [bend2-libs](https://github.com/nicolas-abril/bend2-libs) - Text, XML, CSS, PNG, JPEG, TrueType, SVG-render, byte, and archive libraries unpacked from nicolas-abril's demos onto the hub under the `gralha-` prefix (for example `import gralha-text-scan@0.1.0.0/scan.bend` and `import gralha-ustar@0.1.0.0/ustar.bend`); requires Bend 2.0.37+.
+- [bendtorch](https://github.com/aaaxn/bendtorch) - Experimental F32 tensor library with shape-indexed storage, tensor autograd, losses, and SGD, with MNIST training checked against PyTorch. Hub `import bendtorch-core@0.1.0.0/src/tensor/core.bend`; requires its pinned Bend compiler checkout.
+- [bend-osdev](https://github.com/ScottMoore0/bend-osdev) - MIT-licensed operating-system libraries: file systems, archives, compression, ELF, partition tables, network headers, capability and LSM policy models, and kernel data structures, each with laws, `--verdict`-accepted proofs, and differential tests; pinned to Bend 2.0.39 and published incrementally on the hub as `bend-osdev-<package>` (for example `import bend-osdev-bytes@0.1.1.1/bytes.bend`).
+- [bend2-libs](https://github.com/nicolas-abril/bend2-libs) - Text, XML, CSS, PNG, JPEG, TrueType, SVG-render, byte, and archive libraries unpacked from nicolas-abril's demos onto the hub under the `gralha-` prefix (for example `import gralha-text-scan@0.1.0.1/scan.bend` and `import gralha-ustar@0.1.0.0/ustar.bend`); requires Bend 2.0.37+.
 - [bentdelta](https://github.com/michaelsproul/bentdelta) - VCDIFF (RFC 3284) delta encoder and decoder compatible with xdelta3, with a machine-checked round-trip law covering targets under 2 GiB less 1 MiB; no license file is provided.
 - [MailBend](https://github.com/albertc71/MailBend) - IMAP/SMTP connector for AI agents with a CLI and MCP server; its mail-safety rules are proved laws, a Rust helper handles TLS, and it pins Bend 2.0.35.
 - [bend-keccak](https://github.com/Giulio2002/bend-keccak) - Ethereum Keccak-256 with packed arrays and a kernel-checked sponge refinement proof, on the hub as `import 0x48cee57f42dae6ba4c727fbf982cdd4d/keccak.bend`.
-- [bend-visgraph](https://github.com/aaaxn/bend-visgraph) - Visibility graphs of time series ported from ts2vg, natural and horizontal with directed and weighted edges, on the hub as `import 0xe3a7f78ee5245da17fe27e3556f94e74/bend_visgraph.bend`; requires Bend 2.0.37.
+- [bend-visgraph](https://github.com/aaaxn/bend-visgraph) - Visibility graphs of time series ported from ts2vg, natural and horizontal with directed and weighted edges, on the hub as `import bend-visgraph@2.0.0.0/visgraph.bend`; requires Bend 2.0.37.
 - [mlbend-hf](https://github.com/adeerkhan/mlbend-huggingface) - Hugging Face dataset client with dataset metadata, file trees, file bytes, and rows-server reads over JSON HTTP, on the hub as `import mlbend-huggingface@0.1.1.0/main.bend`.
-- [mlbend-datasets](https://github.com/adeerkhan/mlbend-datasets) - scikit-learn's benchmark datasets fetched from Hugging Face at run time, with pure estimators over the returned values, on the hub as `import mlbend-datasets@0.1.4.0/main.bend`.
+- [mlbend-datasets](https://github.com/adeerkhan/mlbend-datasets) - scikit-learn's benchmark datasets fetched from Hugging Face at run time, with pure estimators over the returned values, on the hub as `import mlbend-datasets@0.1.6.0/main.bend`.
 - [mlbend-metrics](https://github.com/adeerkhan/mlbend-metrics) - Regression and classification metrics (MSE, MAE, RMSE, accuracy, precision, recall, F1) with an `ALL PROOFS CHECK` gate and no `@unsafe`, on the hub as `import mlbend-metrics@0.1.0.0/main.bend`.
 - [bend-env](https://github.com/adeerkhan/bend-env) - Project and environment manager: a manifest, lockfile, and pinned package environment resolved and verified against BendHub; no package-hub release of its own.
-- [Bendo](https://github.com/opencoredev/bendo) - Pre-alpha Hono-style web framework with routing, parsing, JSON, and validation proved in `LAWS.bend`, plus a typed TypeScript client; not published on the hub.
+- [Bendo](https://github.com/opencoredev/bendo) - Pre-alpha Hono-style web framework with routing, parsing, JSON, and validation proved in `LAWS.bend`, plus a typed TypeScript client; pins Bend 2.0.38 and is not published on the hub.
 - [BendTorch](https://github.com/nuxyel/BendTorch) - Typed layers with forward and backward passes, losses, optimizers and checkpoints over bend-ml's tensors, trained step for step against PyTorch twins on MNIST, a two-layer Llama and SmolLM2 (135M to 1.7B), with structural laws checked by `--verdict` and parallel CPU and GPU builds of the same layers, on the hub as `import bendtorch@1.2.0.0/main.bend`; requires Bend 2.0.39.
 
 ## Tools
 
-- [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension, on the hub as `import bolt@1.18.0.0/main.bend`.
+- [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension, on the hub as `import bolt@1.21.0.0/main.bend`.
 - [tree-sitter-bend2](https://github.com/nicolas-abril/tree-sitter-bend2) - Tree-sitter grammar with highlight, symbol, and indent queries.
-- [bend2-fuzzer](https://github.com/nicolas-abril/bend2-fuzzer) - Differential fuzzer for the JavaScript and C backends.
+- [bend2-fuzzer](https://github.com/nicolas-abril/bend2-fuzzer) - Differential fuzzer for Bend's interpreter, JavaScript and C backends, with optional Metal and CUDA checks.
 - [bend-fmt-lsp](https://github.com/bendlang/bend/tree/main/tools/bend-fmt-lsp) - Official formatting-only language server (full document, no diagnostics).
 - [bURL](https://github.com/rosdyana/bURL) - HTTP/1.1 and HTTPS client with DNS in Bend and a proof-checked parser.
 - [godot-bend](https://github.com/aricarmo/godot-bend) - Proof-of-concept GDExtension for writing Godot games in Bend.
 - [bendirstat](https://github.com/kirillleventcov/bendirstat) - Disk-usage analyzer with a parallel scan and a zoomable treemap.
 - [teamy-bend](https://github.com/TeamDman/teamy-bend) - Independent Rust implementation of a Bend 2 subset.
-- [snap](https://github.com/Emerging-Patterns/snap) - Process runner (`run` / `start` / `par`), on the hub as `import snap@1.3.0.0/main.bend`.
+- [snap](https://github.com/Emerging-Patterns/snap) - Process runner (`run` / `start` / `par`), on the hub as `import snap@1.5.0.0/main.bend`.
 - [bend-init](https://github.com/gouveags/bend-init) - CLI that scaffolds a law-backed starter project, on the hub as `import 0x1e0cc3677d46304c29af14dfd5553385/main.bend`.
 - [fire-bend](https://github.com/JonasLoos/fire-bend) - Experimental indentation-based syntax that compiles to Bend.
-- [zed-bend](https://github.com/chhoumann/zed-bend) - Syntax highlighting for Zed.
+- [zed-bend](https://github.com/chhoumann/zed-bend) - Zed development extension with Tree-sitter highlighting and diagnostics, completion, navigation, and rename through `bolt lsp`.
 - [bend-mode.el](https://github.com/davidawad/bend-mode.el) - Emacs major mode with Eglot formatting and Flymake diagnostics.
 - [bend2-language-support](https://github.com/CaioWing/bend2-language-support) - VS Code diagnostics, completions, and snippets.
 - [bend2-vscode](https://github.com/nuxyel/bend2-vscode) - VS Code client with a standalone language server.
-- [davidawad/tree-sitter-bend2](https://github.com/davidawad/tree-sitter-bend2) - Vim/Neovim plugin with a Tree-sitter grammar.
+- [davidawad/tree-sitter-bend2](https://github.com/davidawad/tree-sitter-bend2) - Tree-sitter grammar and queries for Bend 2, shared by Helix, Neovim, and the separate bend.vim plugin.
 - [bend-grammar](https://github.com/gouveags/bend-grammar) - TextMate grammar with tokenizer regression tests.
 - [beads_bend](https://github.com/Dicklesworthstone/beads_bend) - Local-first issue tracker port, golden-tested against the original, still early.
 - [bendc](https://github.com/Lulzx/bendc) - Self-hosting Bend 2 compiler targeting C, with a type checker, parallel CPU runtime, and Metal GPU backend.
 - [bend2-lsp](https://github.com/don2e4/bend2-lsp) - Standalone language server: diagnostics, hover, go-to-definition, and formatting.
 - [Giulio2002/bend-vscode](https://github.com/Giulio2002/bend-vscode) - VS Code highlighting, autocomplete, compiler diagnostics, and `.bend` file icons.
 - [bend-idea](https://github.com/dearlordylord/bend-idea) - IntelliJ IDEA plugin with completion, navigation, refactoring, formatting, proof workflows, and optional compiler diagnostics.
-- [bendler](https://github.com/lukaszsamson/bendler) - Call Bend from Elixir through a supervised port or an experimental NIF.
+- [bendler](https://github.com/lukaszsamson/bendler) - Call Bend from Elixir through a supervised CPU port or an experimental NIF; supports exactly Bend 2.0.36.
 - [bend-frontend](https://github.com/ind-igo/bend-frontend) - Checks full Bend and exports a typed `Core.Program` for backends.
 - [bend-evm](https://github.com/ind-igo/bend-evm) - EVM backend: contracts in Bend, certified IR, and Yul lowering.
 - [FabianVegaA/tree-sitter-bend](https://github.com/FabianVegaA/tree-sitter-bend) - Tree-sitter grammar for Bend 2 syntax.
 - [web3signer_bend](https://github.com/eserilev/web3signer_bend) - Web3Signer-compatible Ethereum consensus remote signer, with slashing-protection laws.
 - [knot](https://github.com/MatheusBBarni/knot-node-tooling) - JavaScript package manager, TypeScript transformer, and bundler written in Bend 2. Published as `@matheusbbarni/knot`; test runner still planned.
-- [jev-fabric](https://github.com/fabric-runtime/jev-fabric) - Native process orchestration with bounded logs and typed Jev calls; version 0.8.0 adds experimental TypeSafe image references, Box questions, and opt-in long context, alongside decision APIs preserving provider JSON, refusals, and provenance. Requires Bend 2.0.37 when building from source.
+- [jev-fabric](https://github.com/fabric-runtime/jev-fabric) - Native process orchestration with bounded logs and typed Jev decisions, preserving provider JSON, refusals, and provenance, with opt-in image references and long context; version 0.8.1 requires Bend 2.0.38 when building from source.
 - [bend-ldd](https://github.com/nohzafk/bend-ldd) - Agent skill for law-driven Bend 2: state laws, falsify them, prove them, then mutate the core.
 - [bend-falsify](https://github.com/nohzafk/bend-falsify) - Falsifies Bend 2 laws on literal instances and checks each proof against a mutant, with optional bounded parallel mutation checks.
-- [bend-emit](https://github.com/nohzafk/bend-emit) - Compiles a pure Bend core to a typed ES module, including tagged-tree `Map` boundary declarations; source version 0.3.9 also emits runtime definitions from laws/facts files after stripping recognized proofs and proof-only dependencies; recognized Bool-selector calls become lazy branches. Requires exactly Bend 2.0.37.
+- [bend-emit](https://github.com/nohzafk/bend-emit) - Compiles a pure Bend core to a typed ES module with named exports and TypeScript declarations; version 0.4.3 requires Bun and exactly Bend 2.0.39.
 - [BendVerify](https://github.com/kingcharlezz/bendverify) - Proof-carrying compiler optimisation: a Lean-checked equivalence proof before any benchmark.
 - [kbrianps/bend-vscode](https://github.com/kbrianps/bend-vscode) - VS Code highlighting, live diagnostics, hover, and formatting, with bend2-lsp bundled.
 - [bendcheck](https://github.com/Yazington/bendcheck) - Property-based testing with generators, shrinking, and a `lawcheck` script for `LAWS.bend`. Library `import 0x738b30530890e825e0ab81092b94cbfc/check.bend`.
 - [PedroVIOliv/bend-crater](https://github.com/PedroVIOliv/bend-crater) - Hub package type-checking matrix across Bend releases; records errors, timeouts, and missing dependencies.
 - [costamatheus97/bend-crater](https://github.com/costamatheus97/bend-crater) - Nightly Hub compatibility matrix for recent releases and upstream main, with checker timings and CPU/JS lane comparisons.
 - [bend2-nvim](https://github.com/nuxyel/bend2-nvim) - Neovim completion, navigation, diagnostics, formatting, and a compiler-backed Proof Explorer.
-- [IlyaGulya/bend2-zed](https://github.com/IlyaGulya/bend2-zed) - Zed development extension with Bend 2 highlighting and the Rust bend2-lsp-rs language server, pinned to v0.6.1 with import completion and indexed symbol auto-import.
+- [IlyaGulya/bend2-zed](https://github.com/IlyaGulya/bend2-zed) - Zed development extension with Bend 2 highlighting and the Rust bend2-lsp-rs language server, pinned to v0.6.2 with import completion and indexed symbol auto-import.
 - [ericfode/zed-bend2](https://github.com/ericfode/zed-bend2) - Zed development extension with Tree-sitter highlighting and a bundled compiler-backed language server.
 - [ProofPack State](https://github.com/bkase/proofpack-state) - Read-only Git object reachability, missing-object, and retention queries with a proved set-algebra core.
 - [Bend verdict investigation](https://github.com/leo-guinan/bend-verdict-investigation) - Reproducible probes for Bend 2.0.32's checker and BendTT kernel, including a reported mismatch that the kernel rejects.
-- [bend2-lsp-rs](https://github.com/IlyaGulya/bend2-lsp-rs) - Rust language server with compiler diagnostics, source navigation, rename, formatting, and semantic tokens; version 0.6.1 discovers workspace files in the background for navigation and auto-import. Native multi-error diagnostics are verified only on Apple Silicon with Bend 2.0.32-2.0.36; other compiler/platform combinations use CLI text diagnostics. Requires a local Bend 2 CLI.
+- [bend2-lsp-rs](https://github.com/IlyaGulya/bend2-lsp-rs) - Rust language server with navigation, completion, diagnostics, and formatting; version 0.6.2 supports multiple compiler diagnostics on verified Bend 2.0.37 builds across macOS, Linux, and Windows on x86_64 and ARM64. Windows needs the documented native source build; other compiler builds use CLI diagnostics, and Bend is installed separately.
 - [Bend for Hermes](https://github.com/kvnloo/bend-native) - Hermes plugin for Bend proof verification with hashed receipts and offline replay; requires Bend 2.0.32+ and Lean 4.34.0.
-- [lawcheck](https://github.com/bendlib/bendlib/tree/main/tools/lawcheck) - Finds and shrinks counterexamples to Bend laws, with mutation testing and optional checker/native comparison; tested on Bend 2.0.36.
+- [lawcheck](https://github.com/bendlib/bendlib/tree/main/tools/lawcheck) - Finds and shrinks counterexamples to Bend laws, with mutation testing and optional checker/native comparison; tested on Bend 2.0.39.
 - [eco-build](https://github.com/amage-si/eco-build) - Experimental cached, parallel native C build helper for the AMAGE ecosystem; supports official Bend 2.0.37.
 
 - [bend-lint](https://github.com/MattCozendey/bend-lint) - Checker-backed linter and formatter with Bend rule programs and performance diagnostics; uses Bun and an automatically downloaded tested compiler. Windows uses a Bend fork; most fixes need `--fix-dangerously`.
 
 - [bend-tools](https://github.com/viridale/bend-tools) - Shell and Python helpers for emitted-C reference counts, per-law checks, proof diagnostics, and native benchmarks; pinned to Bend 2.0.36.
-- [baton](https://github.com/Flip-Engineering/baton) - Deterministic coordinator that drives vendor CLI coding agents (Claude Code, Codex, Grok, GLM) as trust-gated session workers, written in Bend 2.
-- [bend-python](https://github.com/lucaswiman/bend-python) - Builds CPython extension modules from Bend 2 code with laws proved during the build; published on PyPI and pins Bend 2.0.28.
-- [cha](https://github.com/mintktkr/cha) - Forge CLI for Gitea, Forgejo, and GitHub with issue, pull-request, and run commands, written in Bend 2 with proved laws; requires Bend 2.0.34.
+- [baton](https://github.com/Flip-Engineering/baton) - Command-line coordinator for native Claude Code, Codex, DeepSeek Harness, Muse, and OMP sessions, with agent teams, Git worktrees, and shared knowledge, written in Bend 2.
+- [bend-python](https://github.com/lucaswiman/bend-python) - Experimental CPython extensions from Bend 2, with laws checked during the build; published on PyPI, tested on Linux x86_64, and pinned to Bend 2.0.28.
+- [cha](https://github.com/mintktkr/cha) - Forge CLI for Gitea, Forgejo, and GitHub with issue, pull-request, and run commands, written in Bend 2 with proved laws; source builds require Bend 2.0.39.
 - [bird](https://github.com/bangedorrunt/bird) - Command-line client for reading and posting to X, rewritten in Bend 2 with a pure law-proved core and shell/network effects at the edge.
 - [reflex](https://github.com/monotykamary/reflex) - Mac menu-bar and phone companion for monitoring and routing terminal coding-agent sessions, with a Bend 2 routing core and proved safety laws; requires Apple Silicon and Bend 2.0.37.
 - [bend-cad](https://github.com/Phylliida/bend-cad) - Experimental CAD sketch-solver design with Bend source for geometry and constraint solving, machine-checked with a `PROOF.bend` gate against a local Bend checkout.
 - [helix-bend](https://github.com/davidawad/helix-bend) - Helix language entry, highlight queries, and install script for the pinned Bend 2 grammar; Helix has no plugin system, so it is configuration rather than a plugin.
 - [bend.vim](https://github.com/davidawad/bend.vim) - Vim and Neovim plugin with a classic syntax layer and optional Tree-sitter highlighting built from the pinned `tree-sitter-bend2` grammar.
-- [bend-cli](https://github.com/viridale/bend-cli) - Command-line interface library: one declaration yields help, typed argument decoding, shell completions, and man pages, with the behavior stated as Bend laws; on the hub as `import cli@0.1.0.0/cli.bend`, requires Bend 2.0.38+.
+- [bend-cli](https://github.com/viridale/bend-cli) - Command-line interface library: one declaration yields help, typed argument decoding, shell completions, and man pages, with the behavior stated as Bend laws; on the hub as `import cli@0.2.0.0/cli.bend`, requires Bend 2.0.39+.
 - [bend-ipp](https://github.com/davidawad/bend-ipp) - Pure IPP (RFC 8010/8011) codec over byte lists, tested against Bend 2.0.38; not published on the hub.
 - [bend-iac](https://github.com/erayack/bend-iac) - Proof-oriented infrastructure-as-code planner for Cloudflare that returns an authorized, ordered plan or a blocked explanation, with three safety laws checked by `PROOF.bend`; uses a pinned Bend checkout.
 
@@ -192,8 +192,8 @@ Imports below identify published packages, not a claim that every package passes
 Do not use nixpkgs `bend`. That package is Bend 1.
 
 - [nicolas-abril/bend2-nix](https://github.com/nicolas-abril/bend2-nix) - Nix flake that builds Bend from pinned upstream source.
-- [y0usaf/bend2-nix](https://github.com/y0usaf/bend2-nix) - Nix flake on the official release tarball and bun.
-- [ez](https://github.com/Emerging-Patterns/ez) - Project management for Bend, on the hub as `import ezx@1.9.0.0/main.bend`.
+- [y0usaf/bend2-nix](https://github.com/y0usaf/bend2-nix) - Nix flake wrapping the official Bend 2.0.5 archive and Bun, with a script to update the pin; verified on x86_64 Linux.
+- [ez](https://github.com/Emerging-Patterns/ez) - Project management for Bend, on the hub as `import ezx@1.13.0.0/main.bend`.
 - [bend.nix](https://github.com/lukasl-dev/bend.nix) - Unofficial Nix flake tracking Bend 2 `main`, with NixOS and Home Manager modules, an overlay, and optional CUDA support.
 - [Official Nix flake](https://github.com/bendlang/bend/blob/main/flake.nix) - Installs verified Bend release archives on Linux and macOS (`nix profile install github:bendlang/bend`).
 
@@ -231,13 +231,13 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [portal-bend](https://github.com/danielhe4rt/portal-bend) - Raycaster with shootable portals, momentum, and a visible body crossing.
 - [raytracing-bend2](https://github.com/aguspiza/raytracing-bend2) - Ray tracing in a weekend, ported from Nim, with parallel lets.
 - [bend-night-train](https://github.com/kvcop/bend-night-train) - WebGL night-train scene rewritten as a Bend tile rasteriser.
-- [bendoom](https://github.com/eliesgalvira/bendoom) - Doom that reads a WAD at runtime, with laws and a Nix flake.
+- [bendoom](https://github.com/eliesgalvira/bendoom) - Playable Doom shareware episode with bundled assets, native releases, a browser build, and a Nix flake; Freedoom support beyond the first episode is incomplete.
 - [crud-api-bend](https://github.com/patote85/crud-api-bend) - In-process HTTP CRUD API with a file-backed store.
-- [bend-playground](https://github.com/krymancer/bend-playground) - Ray tracing, Game of Life, pi collisions, and a Rubik cube graph.
+- [bend-playground](https://github.com/krymancer/bend-playground) - Interactive Bend 2 simulations and browser essays covering ray tracing, physics, neural networks, neuroevolution, and reinforcement learning.
 - [bend-2-mandelbrot](https://github.com/tomc98/bend-2-mandelbrot) - Mandelbrot explorer on Apple Silicon with Metal and deep zoom.
-- [bend-voxel](https://github.com/aivv73/bend-voxel) - Editable voxel sculpture scene with a native Bend renderer, CPU/GPU execution, and material-aware carving; requires Bend 2.0.34+, with X11 headers on Linux.
+- [bend-voxel](https://github.com/aivv73/bend-voxel) - Editable voxel sculpture scene with native CPU/GPU rendering, material-aware carving, and an additional Vulkan renderer; requires Bend 2.0.39, with X11 headers on Linux.
 - [bend2craft](https://github.com/lennix1337/bend2craft) - Minecraft-inspired voxel sandbox with shared Bend rules, a WebGL browser client, and a native CPU-rendered client.
-- [birc](https://github.com/angerman/birc) - Formally verified terminal IRC client with a native DNS engine.
+- [birc](https://github.com/zw3rk/birc) - Terminal IRC client written in Bend 2, with TLS, IRCv3 history, tabs, and inline media.
 - [Eldergrove Faire](https://github.com/RedLynx101/eldergrove-faire) - RollerCoaster Tycoon-style park sim with sixteen machine-checked laws.
 - [bend-voxel-bench](https://github.com/OkeyAmy/bend-voxel-bench) - Luanti terrain ported to Bend, with a CPU voxel world and a live race against C++.
 - [BendJVM](https://github.com/MatheusBBarni/bendJVM) - Java 8 class-file interpreter in Bend, with bounded reflection, annotations, and interface proxies, differentially tested against `java`.
