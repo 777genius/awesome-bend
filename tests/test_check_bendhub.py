@@ -2,7 +2,7 @@
 
 import hashlib
 import io
-from http.client import IncompleteRead
+from http.client import BadStatusLine, IncompleteRead
 import sys
 import unittest
 from pathlib import Path
@@ -162,9 +162,15 @@ class TransportTests(unittest.TestCase):
         self.assertEqual(checker.HubClient(opener, Mock()).fetch("example"), b"complete")
         self.assertEqual(opener.open.call_count, 2)
 
+    def test_other_http_protocol_errors_are_retried(self):
+        opener = Mock()
+        opener.open.side_effect = [BadStatusLine("invalid response"), io.BytesIO(b"complete")]
+        self.assertEqual(checker.HubClient(opener, Mock()).fetch("example"), b"complete")
+        self.assertEqual(opener.open.call_count, 2)
+
     def test_retry_exhaustion_fails(self):
         for error in [URLError("timeout"), HTTPError("url", 404, "not found", {}, None),
-                      IncompleteRead(b"partial", 20)]:
+                      IncompleteRead(b"partial", 20), BadStatusLine("invalid response")]:
             with self.subTest(error=error):
                 opener = Mock()
                 opener.open.side_effect = error

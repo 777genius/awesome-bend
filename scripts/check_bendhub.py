@@ -11,7 +11,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from functools import cache
-from http.client import IncompleteRead
+from http.client import HTTPException
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
@@ -112,7 +112,7 @@ class HubClient:
                 detail = f"HTTP {error.code}"
                 retry_after = error.headers.get("Retry-After", "") if error.headers else ""
                 error.close()
-            except (URLError, OSError, IncompleteRead) as error:
+            except (URLError, OSError, HTTPException) as error:
                 retryable = True
                 detail = str(error)
                 retry_after = ""
