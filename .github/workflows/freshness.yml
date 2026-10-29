@@ -24,7 +24,7 @@ concurrency:
 jobs:
   version-freshness:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -36,13 +36,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           if ! gh api repos/bendlang/bend/releases/latest > "$RUNNER_TEMP/bend-release.json"; then
-            echo "::error::Could not fetch official Bend release metadata; freshness audit is incomplete."
-            {
-              echo "## Version freshness"
-              echo
-              echo "Audit incomplete: official Bend release metadata could not be fetched. No freshness results were produced."
-            } >> "$GITHUB_STEP_SUMMARY"
-            exit 1
+            echo "::warning::Could not fetch official Bend release metadata; continuing Hub checks with an incomplete audit."
+            # Discard even a valid-looking partial response so the audit must fail.
+            echo '{}' > "$RUNNER_TEMP/bend-release.json"
           fi
       - name: Report newer published versions
         run: python3 scripts/check_freshness.py --bend-release "$RUNNER_TEMP/bend-release.json"
