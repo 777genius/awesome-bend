@@ -110,7 +110,7 @@ def parse_release_pointer(text: str) -> tuple[int, str]:
 def check_release(pointer: tuple[int, str], data: bytes) -> list[Update]:
     release = load_json(data)
     if release.get("_unavailable") is True:
-        raise UnavailableError("GitHub release metadata is unavailable after retries; inspect the fetch logs and retry, without editing README")
+        raise UnavailableError("GitHub release metadata is unavailable; inspect the fetch logs and retry, without editing README")
     tag = release.get("tag_name")
     if (release.get("draft") is not False or release.get("prerelease") is not False
             or not isinstance(tag, str) or not re.fullmatch("v" + RELEASE_VERSION, tag)):
