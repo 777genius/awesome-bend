@@ -6,8 +6,7 @@ on:
       - README.md
       - scripts/check_bendhub.py
       - scripts/check_freshness.py
-      - tests/test_check_bendhub.py
-      - tests/test_check_freshness.py
+      - tests/**
       - .github/workflows/bendhub.yml
       - .github/workflows/freshness.yml
   push:
@@ -16,8 +15,7 @@ on:
       - README.md
       - scripts/check_bendhub.py
       - scripts/check_freshness.py
-      - tests/test_check_bendhub.py
-      - tests/test_check_freshness.py
+      - tests/**
       - .github/workflows/bendhub.yml
       - .github/workflows/freshness.yml
   schedule:
