@@ -1,5 +1,7 @@
 # Contribution Guidelines
 
+You can edit README directly on GitHub and open a pull request. CI checks the change automatically; installing local tools is optional.
+
 Please ensure your pull request adheres to the following:
 
 - **Current Bend only** (`bendlang/bend`, 2.0.x). Do not add Bend 1 / HVM2 (`HigherOrderCO/Bend`, `cargo install bend-lang`, `bend run-cu`), Bend 1 editor plugins, or unrelated “Bend” projects (Oregon, BendDAO, hardware Bender, …).
@@ -9,13 +11,12 @@ Please ensure your pull request adheres to the following:
 - Keep descriptions short and objective: what the project is, not a tagline.
 - Add new items at the bottom of the relevant category.
 - Check your spelling and grammar. Do not hard-wrap lines.
-- One item per pull request, with a useful title (`Add bolt`, not `Update README.md`).
+- For new entries, add one item per pull request, with a useful title (`Add bolt`, not `Update README.md`). Related corrections or maintenance changes can be grouped in one PR.
 - A working example or README beats a star count. Empty, generated, or undocumented trees will be closed.
 - If a library publishes to the hub, add its documented `import name@version/file.bend` or `import 0x…/file.bend` line next to the GitHub link. Verify that the version resolves and the file exists in its published manifest.
 - State meaningful limitations, such as a development-only editor extension or a planned feature. A published package is not evidence that it works on every compiler release.
-- When refreshing an existing entry, check its README and the live hub; remove inaccessible projects instead of preserving broken links.
+- When refreshing an entry, check its README and published imports. Fix moved links and remove only confirmed unavailable projects; temporary network errors or rate limits are not a reason to remove an entry.
 - New categories, or improvements to the existing ones, are welcome.
-- Run the checks below and keep them green.
 
 ## Version policy
 
@@ -27,21 +28,34 @@ Avoid repeating a release number in prose when the import already conveys it. Ke
 
 ## Validation
 
+For a README edit, the PR checks validate formatting and any added or changed Hub references. An unrelated existing package does not need to be reachable for a description-only change. You do not need to run a full catalog or freshness audit before contributing.
+
+For optional local checks, run these commands from the repository root:
+
 ```sh
-python3 -m unittest discover -s tests -v
 python3 scripts/check_bendhub.py --offline
 npx --yes awesome-lint@2.3.0
 ```
 
-The Python checks run offline and need only Python 3.10+ and its standard library. The validator checks Hub reference syntax and accepts the catalog's abbreviated package/file references. In Bend source, add `as Name` to a non-Base import; this check does not compile or type-check a program. Ordinary `Base` and local imports, and the generic `name@version/file.bend` and `0x…/file.bend` examples, are outside Hub verification.
+The syntax check needs only Python 3.10+ and its standard library; `npx` needs Node.js/npm and can download the pinned linter. The validator accepts the catalog's abbreviated package/file references. In Bend source, add `as Name` to a non-Base import; this check does not compile or type-check a program. Ordinary `Base` and aliased local imports, and the generic `name@version/file.bend` and `0x…/file.bend` examples, are outside Hub verification.
 
-To check publication and integrity across the entire list, run:
+If you change the validators or workflows, also run their offline regression tests:
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+CI obtains the base README automatically. For a local or agent comparison, `--base-readme PATH` accepts a real previous README and verifies only added or changed import targets; the whole current README still receives syntax validation.
+
+### Optional full-catalog check
+
+For maintenance, check publication and integrity across the entire list with:
 
 ```sh
 python3 scripts/check_bendhub.py
 ```
 
-This resolves the aliases, verifies the package manifests, and checks the referenced files' SHA-256 without executing packages. Use `--base-readme PATH` to check only imports added or changed since a previous README; the whole current README still receives syntax validation. A description-only edit needs no Hub requests. Publication and integrity do not establish compiler compatibility or proof correctness.
+This resolves the aliases, verifies the package manifests, and checks the referenced files' SHA-256 without executing packages. It can report problems in entries unrelated to your change. Publication and integrity do not establish compiler compatibility or proof correctness.
 
 PRs and pushes check added or changed imports. Changes to the integrity checker or its workflow, weekly runs, and manual runs check the whole catalog. If the base README is unavailable or cannot be parsed, CI explicitly falls back to a full check of the current catalog. A temporary source failure leaves a PR or push check unsuccessful so a changed import is never silently accepted without verification. Scheduled and manual audits report temporary outages as incomplete without requiring a README edit.
 
@@ -51,7 +65,7 @@ The separate **Version freshness** workflow checks named Hub imports and the REA
 
 Newer versions are successful audit results. Temporary source failures leave an explicit incomplete report and one grouped warning; they do not block this maintenance workflow. Invalid metadata or input, missing published references, and checksum failures still fail the relevant check. Hash-only imports have no version ordering and are counted as outside freshness coverage. Compatibility prose and repository release versions need manual review.
 
-Run the Hub-only audit locally; without `--bend-release`, the compiler release check is explicitly skipped:
+For an optional local maintenance audit, run the Hub-only check; without `--bend-release`, the compiler release check is explicitly skipped:
 
 ```sh
 python3 scripts/check_freshness.py
@@ -66,7 +80,9 @@ curl -fsS --retry 2 --max-time 30 https://api.github.com/repos/bendlang/bend/rel
 
 ## Reading results
 
-Open **Actions → BendHub imports** or **Actions → Version freshness** to inspect a run or choose **Run workflow** for a manual audit. The summary states what was checked, what needs review, and whether any source could not be checked. A completed maintenance job can contain an incomplete audit; read that result before treating references as verified or current.
+On a PR, open **Checks** and select the relevant job to see its result. For a maintenance audit, open [BendHub imports](https://github.com/777genius/awesome-bend/actions/workflows/bendhub.yml) or [Version freshness](https://github.com/777genius/awesome-bend/actions/workflows/freshness.yml), then select a run or choose **Run workflow** if you have write access. Contributors can use the existing reports and PR checks without running a workflow manually.
+
+The summary states what was checked, what needs review, and whether any source could not be checked. A completed maintenance job can contain an incomplete audit; read that result before treating references as verified or current. After a temporary failure, a maintainer can use **Re-run failed jobs** on an unsuccessful PR check, or **Run workflow** for a completed but incomplete maintenance audit. If these controls are unavailable to you, ask a maintainer to retry; no README change is needed just to trigger a new run.
 
 The import and freshness scripts use these exit codes, including when run by an agent:
 
