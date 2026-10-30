@@ -26,7 +26,7 @@ NAMED_PACKAGE = re.compile(r"[a-z][a-z0-9-]{0,63}@" + VERSION + r"\Z")
 PATH_PART = re.compile(r"[A-Za-z0-9_.-]+\Z")
 IMPORT_FILE = r"(?:[A-Za-z_][A-Za-z0-9_-]*/)*[A-Za-z_][A-Za-z0-9_-]*\.bend"
 IMPORT_PATH = re.compile(IMPORT_FILE + r"\Z")
-RELATIVE_PATH = re.compile(r"(?:\./(?:\.\./)*|(?:\.\./)+)" + IMPORT_FILE + r"\Z")
+LOCAL_PATH = re.compile(r"(?:\./)?(?:/|(?:\.\./)*)" + IMPORT_FILE + r"\Z")
 FILE_HASH = re.compile(r"[0-9a-f]{64}\Z")
 PLACEHOLDERS = {"name@version/file.bend", "0x…/file.bend"}
 MAX_BYTES = 4 * 1024 * 1024
@@ -72,15 +72,15 @@ def parse_references(text: str, *, allow_empty: bool = False) -> tuple[list[Refe
         if re.match(r"^\s*import(?:\s|$)", line):
             snippets.append(line.strip())
         for snippet in snippets:
-            match = re.fullmatch(r"import\s+(\S+)(?:\s+as\s+([A-Za-z_][A-Za-z0-9_]*))?(?:\s+#.*)?", snippet)
+            match = re.fullmatch(r"import\s+(\S+)(?:\s+as\s+([A-Za-z_][A-Za-z0-9_]*))?\s*(?:#.*)?", snippet)
             if match is None:
                 failures.append(Failure(number, f"Invalid BendHub import: {snippet!r}"))
                 continue
             target = match.group(1)
-            # Bend's book_load accepts Base and explicit relative paths with an alias.
-            # Exclude only these known local forms; malformed Hub references still fail.
+            # Match book_load's bare, relative, and absolute local paths with an alias.
+            # Their plain-name grammar cannot hide malformed named/hash Hub references.
             if (target == "Base" and match.group(2) is None
-                    or RELATIVE_PATH.fullmatch(target) and match.group(2) is not None):
+                    or LOCAL_PATH.fullmatch(target) and match.group(2) is not None):
                 continue
             if target in PLACEHOLDERS:
                 placeholders += 1
@@ -135,7 +135,17 @@ class HubClient:
             if not retryable or attempt == 2:
                 error_type = UnavailableError if transient else CheckError
                 raise error_type(f"Could not verify {url}: {detail} (after {attempt + 1} attempt(s))")
-            delay = min(int(retry_after), 10) if retry_after.isascii() and retry_after.isdigit() else attempt + 1
+            delay = attempt + 1
+            if retry_after := retry_after.strip():
+                seconds = retry_after.lstrip("0") or "0"
+                if (seconds.isascii() and seconds.isdigit() and len(seconds) <= 2
+                        and int(seconds) <= 10):
+                    delay = int(seconds)
+                else:
+                    # Defer longer, dated, or unrecognized waits rather than retrying early.
+                    error_type = UnavailableError if transient else CheckError
+                    raise error_type(f"Could not verify {url}: {detail} (after {attempt + 1} attempt(s)); "
+                                     f"retry deferred for Retry-After: {retry_after!r}")
             self.sleep(delay)
         raise AssertionError("unreachable")
 

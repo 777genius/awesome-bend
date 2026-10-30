@@ -74,17 +74,30 @@ class ReferenceTests(unittest.TestCase):
     def test_empty_inventory_is_not_a_success(self):
         self.assertEqual(len(checker.parse_references("No imports here.")[1]), 1)
 
-    def test_known_base_and_explicit_local_imports_are_not_hub_references(self):
+    def test_known_base_and_local_imports_are_not_hub_references(self):
         text = "\n".join(["import Base # Standard library", "import ./local.bend as Local # Local module",
                           "import ../shared/lib.bend as Shared", "import ./../upper.bend as Upper",
+                          "import local.bend as Local", "import src/local.bend as Local",
+                          "import /tmp/local.bend as Local",
                           "`import tensor@1.2.3.4/main.bend`"])
         refs, errors, examples = checker.parse_references(text)
         self.assertEqual(([ref.target for ref in refs], errors, examples),
                          (["tensor@1.2.3.4/main.bend"], [], 0))
-        for target in ["Base as Alias", "./local.bend", "./package@bad/main.bend as P",
-                       "../foo/../main.bend as P", "./file.bend?x=1 as P", "./1file.bend as P"]:
+        for target in ["Base as Alias", "./local.bend", "local.bend", "src/local.bend", "/tmp/local.bend",
+                       "./package@bad/main.bend as P", "package@bad/main.bend as P", "0x1234/main.bend as P",
+                       "../foo/../main.bend as P", "/tmp/../main.bend as P", "./file.bend?x=1 as P",
+                       "./1file.bend as P"]:
             with self.subTest(target=target):
-                self.assertEqual(len(checker.parse_references("import " + target)[1]), 1)
+                _, errors, _ = checker.parse_references("`import tensor@1.2.3.4/main.bend`\nimport " + target)
+                self.assertEqual(len(errors), 1)
+                self.assertIn("Invalid BendHub", errors[0].message)
+
+    def test_comment_can_immediately_follow_an_alias(self):
+        refs, errors, examples = checker.parse_references(
+            "import tensor@1.2.3.4/main.bend as Tensor# Package\n"
+            "import src/local.bend as Local# Local module\n")
+        self.assertEqual(([ref.target for ref in refs], errors, examples),
+                         (["tensor@1.2.3.4/main.bend"], [], 0))
 
 
 class PackageTests(unittest.TestCase):
@@ -177,12 +190,28 @@ class TransportTests(unittest.TestCase):
         sleep.assert_called_once_with(1)
         self.assertTrue(opener.open.call_args.args[0].full_url.startswith(checker.HUB + "/"))
 
-    def test_retry_after_is_bounded(self):
-        opener = Mock()
-        opener.open.side_effect = [HTTPError("url", 429, "rate limited", {"Retry-After": "999"}, None), io.BytesIO(b"ok")]
-        sleep = Mock()
-        checker.HubClient(opener, sleep).fetch("example")
-        sleep.assert_called_once_with(10)
+    def test_short_retry_after_is_honored(self):
+        for value, expected in [("0", 0), ("2", 2), ("10", 10), ("0005", 5), (" 5 ", 5)]:
+            with self.subTest(value=value):
+                opener = Mock()
+                opener.open.side_effect = [HTTPError("url", 429, "rate limited", {"Retry-After": value}, None),
+                                          io.BytesIO(b"ok")]
+                sleep = Mock()
+                self.assertEqual(checker.HubClient(opener, sleep).fetch("example"), b"ok")
+                sleep.assert_called_once_with(expected)
+
+    def test_long_or_date_retry_after_defers_without_early_requests(self):
+        for code in [429, 503, 404]:
+            for value in ["60", "Fri, 31 Dec 9999 23:59:59 GMT"]:
+                with self.subTest(code=code, value=value):
+                    opener = Mock()
+                    opener.open.side_effect = HTTPError("url", code, "unavailable", {"Retry-After": value}, None)
+                    sleep = Mock()
+                    with self.assertRaisesRegex(checker.CheckError, "retry deferred for Retry-After") as caught:
+                        checker.HubClient(opener, sleep).fetch("example")
+                    self.assertEqual(isinstance(caught.exception, checker.UnavailableError), code != 404)
+                    self.assertEqual(opener.open.call_count, 1)
+                    sleep.assert_not_called()
 
     def test_truncated_http_body_is_retried(self):
         opener = Mock()
