@@ -104,6 +104,10 @@ class PublicationTests(unittest.TestCase):
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_catalog_release_pointer_is_consistent(self):
+        readme = Path(__file__).resolve().parents[1] / "README.md"
+        checker.parse_release_pointer(readme.read_text(encoding="utf-8"))
+
     def test_only_explicit_release_pointer_is_compared(self):
         text = "Requires exactly Bend 2.0.34.\nLast checked: today. " + POINTER
         pointer = checker.parse_release_pointer(text)
