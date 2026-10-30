@@ -6,8 +6,7 @@ on:
     paths:
       - scripts/check_bendhub.py
       - scripts/check_freshness.py
-      - tests/test_check_bendhub.py
-      - tests/test_check_freshness.py
+      - tests/**
       - .github/workflows/freshness.yml
   schedule:
     - cron: '41 6 * * 1'
