@@ -44,6 +44,8 @@ Compiler behavior and APIs change between releases. Check each package's documen
 - [bend-catalog](https://kbrianps.github.io/bend-catalog/) - Live hub index: every hash, laws, size, and import line ([repo](https://github.com/kbrianps/bend-catalog)).
 - [Bend Docs](https://bendlib.github.io/bendlib/) - Generated API docs, checker status, and law search for BendHub packages ([repo](https://github.com/bendlib/bendlib)).
 
+- [JendHub](https://jend.leeeet.dev) - Search engine for BendHub and Base definitions, with package and usage filters and plain-text results ([repo](https://github.com/LeeeeT/JendHub)).
+
 ## Packages
 
 Entries below identify pinned Hub packages and files. When using a reference in Bend source, add a module alias: `import name@version/file.bend as Lib`. Check each project's compiler requirements and tested versions; the Tools section includes compatibility matrices.
