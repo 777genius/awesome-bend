@@ -227,6 +227,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 
 ### Community demos
 
+- [bend-vmm](https://github.com/chenhunghan/bend-vmm) - ARM64 virtual machine monitor with Bend device models and a C host layer for Hypervisor.framework and KVM; building requires Bend 2.0.40 and macOS Apple Silicon or Linux ARM64.
 - [metal-bending](https://github.com/AdrielSantana/metal-bending) - Verified examples and CPU vs Metal measurements on Apple Silicon.
 - [bend2-tar-demo](https://github.com/nicolas-abril/bend2-tar-demo) - Tape archive and gzip CLI with a byte-identical C twin.
 - [bend2-svg-demo](https://github.com/nicolas-abril/bend2-svg-demo) - SVG viewer, renderer, and editor for native and web.
