@@ -44,6 +44,8 @@ Compiler behavior and APIs change between releases. Check each package's documen
 - [bend-catalog](https://kbrianps.github.io/bend-catalog/) - Live hub index: every hash, laws, size, and import line ([repo](https://github.com/kbrianps/bend-catalog)).
 - [Bend Docs](https://bendlib.github.io/bendlib/) - Generated API docs, checker status, and law search for BendHub packages ([repo](https://github.com/bendlib/bendlib)).
 
+- [JendHub](https://jend.leeeet.dev) - Search engine for BendHub and Base definitions, with package and usage filters and plain-text results ([repo](https://github.com/LeeeeT/JendHub)).
+
 ## Packages
 
 Entries below identify pinned Hub packages and files. When using a reference in Bend source, add a module alias: `import name@version/file.bend as Lib`. Check each project's compiler requirements and tested versions; the Tools section includes compatibility matrices.
@@ -257,6 +259,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bendSVM](https://github.com/CrocSwap/bendSVM) - Bounded Bend 2 to Solana SBF compiler and SDK exercised by token, vesting, exchange, and AMM applications with proved laws; requires a pinned Bend checkout and platform-tools.
 
 - [framebender](https://github.com/luiscleto/framebender) - VCF variant normalizer with machine-checked laws and comparisons against bcftools; requires Bend 2.0.40+, clang, libdeflate, and samtools.
+- [episteme](https://github.com/Emerging-Patterns/episteme) - Local retrieval over books, chats, and Git history, returning cited source paragraphs selected by reader models; its MCP server has no built-in authorization, and the default reader needs a CUDA GPU.
 
 ## Benchmarks
 
