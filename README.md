@@ -256,6 +256,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [rubend](https://github.com/yuzyayvri/rubend) - 3×3 Rubik's cube solver written in Bend 2 with proved cube rules and pruning-table generators, plus a Three.js workbench; requires Nix and Bend 2.0.37.
 - [bendSVM](https://github.com/CrocSwap/bendSVM) - Bounded Bend 2 to Solana SBF compiler and SDK exercised by token, vesting, exchange, and AMM applications with proved laws; requires a pinned Bend checkout and platform-tools.
 
+- [framebender](https://github.com/luiscleto/framebender) - VCF variant normalizer with machine-checked laws and comparisons against bcftools; requires Bend 2.0.40+, clang, libdeflate, and samtools.
+
 ## Benchmarks
 
 - [Official benchmarks](https://github.com/bendlang/bend/tree/main/bench) - Compiler, proof-checker, CPU, and GPU workloads used for Bend's published charts, including a parallel histogram benchmark with C, TypeScript, and Lean comparisons.
