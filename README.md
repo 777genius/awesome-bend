@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Last checked: **29 October 2026**. Latest stable release: [Bend 2.0.40](https://github.com/bendlang/bend/releases/tag/v2.0.40).
+Catalog last fully checked: **29 October 2026**. Latest stable release: [Bend 2.0.40](https://github.com/bendlang/bend/releases/tag/v2.0.40) (verified 11 November 2026).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
