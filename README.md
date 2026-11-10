@@ -127,6 +127,7 @@ The [weekly freshness report](https://github.com/777genius/awesome-bend/actions/
 - [Bendo](https://github.com/opencoredev/bendo) - Pre-alpha Hono-style web framework with routing, parsing, JSON, and validation proved in `LAWS.bend`, plus a typed TypeScript client; pins Bend 2.0.38 and is not published on the hub.
 - [BendTorch](https://github.com/nuxyel/BendTorch) - Typed layers with forward and backward passes, losses, optimizers and checkpoints over bend-ml's tensors, trained step for step against PyTorch twins on MNIST, a two-layer Llama and SmolLM2 (135M to 1.7B), with structural laws checked by `--verdict` and parallel CPU and GPU builds of the same layers, on the hub as `import bendtorch@2.0.2.0/main.bend`; requires Bend 2.0.40.
 
+- [bend-frame](https://github.com/lukaszsamson/bend-frame) - Experimental columnar dataframe library with lazy plans, schema checks, and CSV ETL; import from a checkout, tested with Bend 2.0.39.
 - [Element libraries](https://github.com/jonasporto/element-bend-libs) - Bend 2 browser-engine libraries for HTML, URLs, TLS, cryptography, HTTP, compression, and more; the HTML tree builder implements a subset. Hub `import element-html@0.1.0.0/parse.bend`.
 
 ## Tools
