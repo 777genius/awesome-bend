@@ -50,7 +50,7 @@ Compiler behavior and APIs change between releases. Check each package's documen
 
 Entries below identify pinned Hub packages and files. When using a reference in Bend source, add a module alias: `import name@version/file.bend as Lib`. Check each project's compiler requirements and tested versions; the Tools section includes compatibility matrices.
 
-The [weekly freshness report](https://github.com/777genius/awesome-bend/actions/workflows/freshness.yml) lists optional updates. Keeping a working pin for a documented compatibility reason is fine.
+The [daily freshness report](https://github.com/777genius/awesome-bend/actions/workflows/freshness.yml) lists optional updates. Keeping a working pin for a documented compatibility reason is fine.
 
 - [gauss](https://github.com/pjdotson/gauss) - Experimental unit-aware engineering calculation engine with SI dimensions.
 - [unsga3-bend](https://github.com/AppSprout-dev/unsga3-bend) - U-NSGA-III optimiser with constrained problems, on the hub as `import unified-nsga-iii@0.2.2.0/lib.bend`.

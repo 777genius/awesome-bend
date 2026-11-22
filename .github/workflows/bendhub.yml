@@ -19,7 +19,7 @@ on:
       - .github/workflows/bendhub.yml
       - .github/workflows/freshness.yml
   schedule:
-    - cron: '23 6 * * 1'
+    - cron: '23 6 * * *'
   workflow_dispatch:
 
 permissions:

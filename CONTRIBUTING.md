@@ -57,11 +57,11 @@ python3 scripts/check_bendhub.py
 
 This resolves the aliases, verifies the package manifests, and checks the referenced files' SHA-256 without executing packages. It can report problems in entries unrelated to your change. Publication and integrity do not establish compiler compatibility or proof correctness.
 
-PRs and pushes check added or changed imports. Changes to the integrity checker or its workflow, weekly runs, and manual runs check the whole catalog. If the base README is unavailable or cannot be parsed, CI explicitly falls back to a full check of the current catalog. A temporary source failure leaves a PR or push check unsuccessful so a changed import is never silently accepted without verification. Scheduled and manual audits report temporary outages as incomplete without requiring a README edit.
+PRs and pushes check added or changed imports. Changes to the integrity checker or its workflow, daily runs, and manual runs check the whole catalog. If the base README is unavailable or cannot be parsed, CI explicitly falls back to a full check of the current catalog. A temporary source failure leaves a PR or push check unsuccessful so a changed import is never silently accepted without verification. Scheduled and manual audits report temporary outages as incomplete without requiring a README edit.
 
 ## Version freshness
 
-The separate **Version freshness** workflow checks named Hub imports and the README's explicit `Latest stable release` claim for Bend. It runs weekly, manually, and when its checker, tests, or workflow change on `main`. Routine README edits do not launch another freshness audit, and PRs run only its offline regression tests. It reads metadata without installing, compiling, or running packages, and writes optional update candidates to the Actions job summary.
+The separate **Version freshness** workflow checks named Hub imports and the README's explicit `Latest stable release` claim for Bend. It runs daily, manually, and when its checker, tests, or workflow change on `main`. Routine README edits do not launch another freshness audit, and PRs run only its offline regression tests. It reads metadata without installing, compiling, or running packages, and writes optional update candidates to the Actions job summary.
 
 Newer versions are successful audit results. Temporary source failures leave an explicit incomplete report and one grouped warning; they do not block this maintenance workflow. Invalid metadata or input, missing published references, and checksum failures still fail the relevant check. Hash-only imports have no version ordering and are counted as outside freshness coverage. Compatibility prose and repository release versions need manual review.
 
