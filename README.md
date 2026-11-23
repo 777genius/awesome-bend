@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Catalog updated: **11 November 2026**. Latest stable release: [Bend 2.0.40](https://github.com/bendlang/bend/releases/tag/v2.0.40) (verified 11 November 2026).
+Catalog updated: **11 November 2026** (targeted additions reviewed 23 November 2026). Latest stable release: [Bend 2.0.40](https://github.com/bendlang/bend/releases/tag/v2.0.40) (verified 23 November 2026).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -193,6 +193,7 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 - [bend-cli](https://github.com/viridale/bend-cli) - Command-line interface library: one declaration yields help, typed argument decoding, shell completions, and man pages, with the behavior stated as Bend laws; on the hub as `import cli@0.3.0.0/cli.bend`, requires Bend 2.0.40+.
 - [bend-ipp](https://github.com/davidawad/bend-ipp) - Pure IPP (RFC 8010/8011) codec over byte lists, tested against Bend 2.0.38; not published on the hub.
 - [bend-iac](https://github.com/erayack/bend-iac) - Proof-oriented infrastructure-as-code planner for Cloudflare that returns an authorized, ordered plan or a blocked explanation, with three safety laws checked by `PROOF.bend`; uses a pinned Bend checkout.
+- [bendbis](https://github.com/hhefesto/bendbis) - Experimental Bend 2 parser and checker implemented in Bend and compared with upstream tests; it does not yet run programs, emit C, or provide its own `--verdict`.
 
 ## Packaging
 
@@ -264,6 +265,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 
 - [framebender](https://github.com/luiscleto/framebender) - VCF variant normalizer with machine-checked laws and comparisons against bcftools; requires Bend 2.0.40+, clang, libdeflate, and samtools.
 - [episteme](https://github.com/Emerging-Patterns/episteme) - Local retrieval over books, chats, and Git history, returning cited source paragraphs selected by reader models; its MCP server has no built-in authorization, and the default reader needs a CUDA GPU.
+- [Bend Agent Studio](https://github.com/jaykobdetar/bend-agent-studio) - Local browser studio for reproducible reinforcement-learning experiments, episode replay, and learner comparisons; training requires Bend 2.0.40 and Node.js 24+.
+- [wordle-bend](https://github.com/rbmr/wordle-bend) - Exact Wordle-style decision-tree solver with eight machine-checked laws, a CLI, and benchmarks; requires Bend 2.0.40 and Clang 19+, and search is exponential.
 
 ## Benchmarks
 
@@ -283,7 +286,7 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [X](https://x.com/bendlang) - Official account.
 - [Reddit](https://www.reddit.com/r/bendlang/) - Official subreddit.
 - [Issues](https://github.com/bendlang/bend/issues) - Bug reports and language discussion.
-- [Built with Bend](https://builtwithbend.com) - Human-reviewed directory of Bend 2 apps and demos ([repo](https://github.com/LVTD-LLC/built-with-bend)).
+- [Built with Bend](https://builtwithbend.com) - Independent project directory with source links ([repo](https://github.com/LVTD-LLC/built-with-bend)); check each project's Bend version because historical Bend 1 examples also appear.
 
 ## Related
 
