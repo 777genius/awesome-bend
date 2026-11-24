@@ -109,7 +109,7 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 
 - [Bendvy](https://github.com/dearlordylord/bendvy) - Experimental Bend 2 entity-component system with typed queries, schedules, deferred commands, and native/browser examples; its API remains in progress. Licensed MIT or Apache-2.0.
 
-- [Stelliferous](https://github.com/Kaz9487/Stelliferous) - F32 tensor library with source-level convolution proofs against a fixed FP32 specification, on the hub as `import stelliferous@0.0.3.0/tensor_f32.bend`; checked on official Bend 2.0.37. Its training package (convolution, batch norm, activation, and pool layers) is in the same package as `import stelliferous@0.0.3.0/tensor_training.bend`.
+- [Stelliferous](https://github.com/Kaz9487/Stelliferous) - F32 tensor library with source-level convolution proofs against a fixed FP32 specification, on the hub as `import stelliferous@0.0.3.0/tensor_f32.bend`; checked on official Bend 2.0.37; the upstream v0.0.4 release notes state that 0.0.3 cannot be imported on Bend 2.0.38 or newer. Its training package (convolution, batch norm, activation, and pool layers) is in the same package as `import stelliferous@0.0.3.0/tensor_training.bend`.
 - [bend-edit-distance](https://github.com/jware-solutions/bend-edit-distance) - Experimental Edlib-style edit distance and alignment library and CLI, on the hub as `import bend-edit-distance@0.2.2.0/lib.bend`; requires Bend 2.0.37+ and implements only part of Edlib.
 
 - [bend-sat](https://github.com/sebastian-griego/bend-sat) - Experimental SAT solver with watched literals, first-UIP learning, and a proved result checker with DPLL fallback; validated on a pinned Bend 2.0.37 macOS arm64 setup. No license file is provided.
@@ -129,6 +129,8 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 
 - [bend-frame](https://github.com/lukaszsamson/bend-frame) - Experimental columnar dataframe library with lazy plans, schema checks, and CSV ETL; import from a checkout, tested with Bend 2.0.39.
 - [Element libraries](https://github.com/jonasporto/element-bend-libs) - Bend 2 browser-engine libraries for HTML, URLs, TLS, cryptography, HTTP, compression, and more; the HTML tree builder implements a subset. Hub `import element-html@0.1.0.0/parse.bend`.
+
+- [bend-arrow](https://github.com/Cameron-Lyons/bend-arrow) - Table queries, Parquet read/write, and Arrow IPC streams in Bend 2.0.40, with native and PyArrow interoperability tests; SQL and Arrow type coverage are partial.
 
 ## Tools
 
@@ -194,6 +196,10 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 - [bend-ipp](https://github.com/davidawad/bend-ipp) - Pure IPP (RFC 8010/8011) codec over byte lists, tested against Bend 2.0.38; not published on the hub.
 - [bend-iac](https://github.com/erayack/bend-iac) - Proof-oriented infrastructure-as-code planner for Cloudflare that returns an authorized, ordered plan or a blocked explanation, with three safety laws checked by `PROOF.bend`; uses a pinned Bend checkout.
 - [bendbis](https://github.com/hhefesto/bendbis) - Experimental Bend 2 parser and checker implemented in Bend and compared with upstream tests; it does not yet run programs, emit C, or provide its own `--verdict`.
+
+- [bend-cache](https://github.com/bendlang/bend/tree/v2.0.40/tools/bend-cache) - Official development-only proof cache for `--check-only` using Bun; run the uncached compiler and `--verdict` before submission or merge.
+- [typed-sql](https://github.com/Cameron-Lyons/typed-sql) - Offline SQL schema checker, typed Bend function generator, and migration runner for SQLite and PostgreSQL, tested with Bend 2.0.40; supports a subset of SQL.
+- [Wirequill](https://github.com/Cameron-Lyons/wirequill) - Native protoc plugin written in Bend for proto3 types, binary codecs, and all four gRPC call shapes; tested on Linux with Bend 2.0.40 and protoc 36.2, with cleartext HTTP/2 transport.
 
 ## Packaging
 
