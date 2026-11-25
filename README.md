@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Catalog updated: **11 November 2026** (targeted additions reviewed 23 November 2026). Latest stable release: [Bend 2.0.40](https://github.com/bendlang/bend/releases/tag/v2.0.40) (verified 23 November 2026).
+Catalog updated: **11 November 2026** (targeted additions reviewed 23 November 2026). Latest stable release: [Bend 2.0.40](https://github.com/bendlang/bend/releases/tag/v2.0.40) (verified 25 November 2026).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -75,7 +75,7 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 - [ezaudio](https://github.com/Emerging-Patterns/ezaudio) - PCM clips, WAV codecs, and limited MPEG-1 Layer III support for Bend 2, on the hub as `import emerging-ezaudio@0.6.0.0/main.bend`; the earlier `mp3_pair` guarantee was withdrawn.
 - [ezimg](https://github.com/Emerging-Patterns/ezimg) - PNG and baseline JPEG codecs for Bend 2, on the hub as `import emerging-ezimg@1.4.0.0/main.bend`; JPEG defaults and the return type of `count` changed in this version.
 - [bend-collections](https://github.com/Giulio2002/bend-collections) - Verified containers, numeric utilities, and growing proved cryptography (SHA-3, BLAKE2/BLAKE3, Argon2id, ChaCha20-Poly1305, AES-GCM, X25519, Ed25519, secp256k1), on the hub as `import bend-collections@1.0.0.0/src/containers/hash_table.bend`.
-- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.8.1.0/nat.bend`.
+- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.8.1.0/nat.bend`; upstream 0.8.1.1 adds package documentation without API changes and confirms the older pin still works on Bend 2.0.40.
 - [BendSR](https://github.com/k3ybladewielder/BendSR) - Parallel symbolic regression, on the hub as `import 0x07516e23611e5287ce89bcff661be83f/BendSR.bend`.
 - [bend_tensors](https://hub.bend-lang.com/n/bend-tensors) - Dense linear algebra with shapes in the types, on the hub as `import bend-tensors@0.0.0.2/bend_tensors.bend`.
 - [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.6.1 targets Bend 2.0.36 (0.6.0 remains for Bend 2.0.35).
@@ -109,7 +109,7 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 
 - [Bendvy](https://github.com/dearlordylord/bendvy) - Experimental Bend 2 entity-component system with typed queries, schedules, deferred commands, and native/browser examples; its API remains in progress. Licensed MIT or Apache-2.0.
 
-- [Stelliferous](https://github.com/Kaz9487/Stelliferous) - F32 tensor library with source-level convolution proofs against a fixed FP32 specification, on the hub as `import stelliferous@0.0.3.0/tensor_f32.bend`; checked on official Bend 2.0.37; the upstream v0.0.4 release notes state that 0.0.3 cannot be imported on Bend 2.0.38 or newer. Its training package (convolution, batch norm, activation, and pool layers) is in the same package as `import stelliferous@0.0.3.0/tensor_training.bend`.
+- [Stelliferous](https://github.com/Kaz9487/Stelliferous) - F32 tensor library with source-level convolution proofs against a fixed FP32 specification, on the hub as `import stelliferous@0.0.3.0/tensor_f32.bend`; checked on official Bend 2.0.37; the upstream v0.0.4 release moves to Bend 2.0.40 and states that 0.0.3 cannot be imported on Bend 2.0.38 or newer. Its training package (convolution, batch norm, activation, and pool layers) is in the same package as `import stelliferous@0.0.3.0/tensor_training.bend`.
 - [bend-edit-distance](https://github.com/jware-solutions/bend-edit-distance) - Experimental Edlib-style edit distance and alignment library and CLI, on the hub as `import bend-edit-distance@0.2.2.0/lib.bend`; requires Bend 2.0.37+ and implements only part of Edlib.
 
 - [bend-sat](https://github.com/sebastian-griego/bend-sat) - Experimental SAT solver with watched literals, first-UIP learning, and a proved result checker with DPLL fallback; validated on a pinned Bend 2.0.37 macOS arm64 setup. No license file is provided.
@@ -201,6 +201,8 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 - [typed-sql](https://github.com/Cameron-Lyons/typed-sql) - Offline SQL schema checker, typed Bend function generator, and migration runner for SQLite and PostgreSQL, tested with Bend 2.0.40; supports a subset of SQL.
 - [Wirequill](https://github.com/Cameron-Lyons/wirequill) - Native protoc plugin written in Bend for proto3 types, binary codecs, and all four gRPC call shapes; tested on Linux with Bend 2.0.40 and protoc 36.2, with cleartext HTTP/2 transport.
 
+- [RustyBends](https://github.com/Josephur/RustyBends) - Cargo build helper that checks Bend 2 laws, locks and mutation-tests them, and emits a subset of pure functions and data types as Rust; the generated Rust is tested separately and kernel checking is configurable.
+
 ## Packaging
 
 Do not use nixpkgs `bend`. That package is Bend 1.
@@ -226,6 +228,8 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bend2-intro-with-life](https://github.com/Nasu726/bend2-intro-with-life) - Japanese beginner's book that teaches Bend 2 by building a Game of Life, with downloadable PDF and sample code.
 - [bend2-spike](https://github.com/YSRKEN/bend2-spike) - Japanese Bend 2 verification notes: a small proved HTTP server, language probes, benchmark data, and slides covering Bend 2.0.34-2.0.36.
 - [bend-pitfalls](https://github.com/rofrol/bend-pitfalls) - Single-file list of Bend 2 language and compiler pitfalls found in real projects, each entry tagged with the compiler version it was seen with.
+
+- [Bend 2 proof workflow](https://builtwithbend.com/blog/bend-2-proof-workflow) - Worked example with positive and negative controls, tested with Bend 2.0.39 on Linux x86-64; the ordinary checker accepted the proof, but the separate kernel verdict failed.
 
 ## Demos
 
@@ -274,17 +278,25 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [Bend Agent Studio](https://github.com/jaykobdetar/bend-agent-studio) - Local browser studio for reproducible reinforcement-learning experiments, episode replay, and learner comparisons; training requires Bend 2.0.40 and Node.js 24+.
 - [wordle-bend](https://github.com/rbmr/wordle-bend) - Exact Wordle-style decision-tree solver with eight machine-checked laws, a CLI, and benchmarks; requires Bend 2.0.40 and Clang 19+, and search is exponential.
 
+- [Ember: Bend Grounds](https://github.com/apodgaiko/bend-grounds-demo) - Local four-player autobattler with a Bend 2 engine, bots, native HTTP server, browser UI, and agent API; uses a pinned upstream compiler checkout and a macOS development baseline.
+- [bend-freecell](https://github.com/JosePedroDias/bend-freecell) - Freecell rules, terminal game, parallel beam-search solver, and HTTP server in Bend 2, with finite deal laws and a Python reference; beam search is not a completeness proof.
+
 ## Benchmarks
 
 - [Official benchmarks](https://github.com/bendlang/bend/tree/main/bench) - Compiler, proof-checker, CPU, and GPU workloads used for Bend's published charts, including a parallel histogram benchmark with C, TypeScript, and Lean comparisons.
 - [bend-bench](https://github.com/wakamex/bend-bench) - Independent CPU/OpenMP and GPU/CUDA comparisons, with reproducible output checks and separate startup and workload measurements. Non-ML results measure Bend 2.0.3, with a separate 2.0.26 comparison; newer ML comparisons against PyTorch use pinned upstream main.
 - [eco-bench](https://github.com/amage-si/eco-bench) - Reproducible AMAGE Eco and GPUI comparisons with raw logs and methodology; measured on Bend 2.0.35 with X11/XWayland, without native Wayland results.
 
+- [Bend checker eval](https://github.com/bendlang/checker-eval) - Official 20-task experiment comparing Claude Opus 5.5 with and without checker feedback, with per-task records and a kernel-verdict acceptance gate.
+- [FlashProve verifier](https://github.com/AbdelStark/fv-flashprove-bend-verifier) - CPU verifier for FlashProve inference proofs with paired Lean and Bend benchmarks and public fixtures; pins Bend 2.0.40, and a general proof of Bend-to-Lean acceptance equivalence remains open.
+
 ## Papers
 
 - [BendTT](https://github.com/bendlang/bend/blob/main/paper/BendTT.pdf) - Affine dependent type theory.
 - [BendRT](https://github.com/bendlang/bend/blob/main/paper/BendRT.pdf) - Parallel runtime for CPUs and GPUs.
 - [bendtt.lean](https://github.com/bendlang/bend/blob/main/bend2/bendtt.lean) - BendTT kernel and its proofs in Lean, used to recheck proofs with `bend PROOF.bend --verdict`.
+
+- [Características Funcionais na Verificação de Propriedades em Bend 2](https://github.com/Mateus-Gabardo/bend2-verification) - Portuguese academic case study of an inventory-reservation regression missed by five unit tests but caught by two general laws; [implementation and logs](https://github.com/Mateus-Gabardo/bend2-verification-impl) use Bend 2.0.40.
 
 ## Community
 
