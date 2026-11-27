@@ -77,7 +77,7 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 - [ezaudio](https://github.com/Emerging-Patterns/ezaudio) - PCM clips, WAV codecs, and limited MPEG-1 Layer III support for Bend 2, on the hub as `import emerging-ezaudio@0.6.0.0/main.bend`; the earlier `mp3_pair` guarantee was withdrawn.
 - [ezimg](https://github.com/Emerging-Patterns/ezimg) - PNG and baseline JPEG codecs for Bend 2, on the hub as `import emerging-ezimg@1.4.0.0/main.bend`; JPEG defaults and the return type of `count` changed in this version.
 - [bend-collections](https://github.com/Giulio2002/bend-collections) - Verified containers, numeric utilities, and growing proved cryptography (SHA-3, BLAKE2/BLAKE3, Argon2id, ChaCha20-Poly1305, AES-GCM, X25519, Ed25519, secp256k1), on the hub as `import bend-collections@1.0.0.0/src/containers/hash_table.bend`.
-- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.8.1.0/nat.bend`; upstream 0.8.1.1 adds package documentation without API changes and confirms the older pin still works on Bend 2.0.40.
+- [bend-mathlib](https://github.com/bendlib/bendlib) - Machine-checked arithmetic, list, sorting, string, and algebra lemmas, on the hub as `import bend-mathlib@0.8.1.0/nat.bend`; upstream 0.8.1.1 confirms the older pin still works on Bend 2.0.40; 0.8.2.0 adds 29 reversed lemmas and is checked with Bend 2.0.40.
 - [BendSR](https://github.com/k3ybladewielder/BendSR) - Parallel symbolic regression, on the hub as `import 0x07516e23611e5287ce89bcff661be83f/BendSR.bend`.
 - [bend_tensors](https://hub.bend-lang.com/n/bend-tensors) - Dense linear algebra with shapes in the types, on the hub as `import bend-tensors@0.0.0.2/bend_tensors.bend`.
 - [stiff](https://github.com/fraylabs/stiff) - Experimental native HTTP, routing, streaming, and SQLite-backed local state; version 0.6.1 targets Bend 2.0.36 (0.6.0 remains for Bend 2.0.35).
@@ -138,7 +138,7 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 
 ## Tools
 
-- [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension, on the hub as `import bolt@1.28.0.0/main.bend`.
+- [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension, on the hub as `import bolt@1.28.0.0/main.bend`; upstream releases starting at 1.65.0 use `bolt check` and `bolt format` in place of the old lint and format commands.
 - [tree-sitter-bend2](https://github.com/nicolas-abril/tree-sitter-bend2) - Tree-sitter grammar with highlight, symbol, and indent queries.
 - [bend2-fuzzer](https://github.com/nicolas-abril/bend2-fuzzer) - Differential fuzzer for Bend's interpreter, JavaScript and C backends, with optional Metal and CUDA checks.
 - [bend-fmt-lsp](https://github.com/bendlang/bend/tree/main/tools/bend-fmt-lsp) - Official formatting-only language server (full document, no diagnostics).
@@ -291,6 +291,9 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 
 - [cl-cordis](https://github.com/nohzafk/cl-cordis) - SBCL component framework with Bend 2.0.40 decision cores for activation, dependency changes, and reversible effect ledgers; the emitted Lisp runs without Bend and proofs cover the decision cores, not all host effects.
 
+- [sudoku-engine-bend](https://github.com/sh4869221b/sudoku-engine-bend) - Sudoku solver, generator, difficulty rater, and CLI with source proofs, independent tests, and a checksum-locked Linux x86-64 toolchain using Bend 2.0.40.
+- [bend2-life](https://github.com/dicenull/bend2-life) - Conway's Game of Life with a proved bit-packed transition core, standalone browser demo, and native macOS application; uses Bend 2.0.40.
+
 ## Benchmarks
 
 - [Official benchmarks](https://github.com/bendlang/bend/tree/main/bench) - Compiler, proof-checker, CPU, and GPU workloads used for Bend's published charts, including a parallel histogram benchmark with C, TypeScript, and Lean comparisons.
@@ -298,7 +301,9 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [eco-bench](https://github.com/amage-si/eco-bench) - Reproducible AMAGE Eco and GPUI comparisons with raw logs and methodology; measured on Bend 2.0.35 with X11/XWayland, without native Wayland results.
 
 - [Bend checker eval](https://github.com/bendlang/checker-eval) - Official 20-task experiment comparing Claude Opus 5.5 with and without checker feedback, with per-task records and a kernel-verdict acceptance gate.
-- [FlashProve verifier](https://github.com/AbdelStark/fv-flashprove-bend-verifier) - CPU verifier for FlashProve inference proofs with paired Lean and Bend benchmarks and public fixtures; pins Bend 2.0.40, and a general proof of Bend-to-Lean acceptance equivalence remains open.
+- [FlashProve verifier](https://github.com/AbdelStark/flashprove-bend-verifier) - CPU verifier for FlashProve inference proofs with paired Lean and Bend benchmarks and public fixtures; pins Bend 2.0.40, and a general proof of Bend-to-Lean acceptance equivalence remains open.
+
+- [bend-groth16](https://github.com/0xAndoroid/bend-groth16/tree/main/bend2) - BN254 Groth16 prover in Bend 2.0.5 with arkworks reference checks and CPU, Metal, and CUDA measurements; the [published comparisons](https://github.com/0xAndoroid/bend-groth16/blob/main/docs/benchmarks.md) report substantial end-to-end performance deficits against established provers.
 
 ## Papers
 
