@@ -6,7 +6,7 @@
 
 This list is **current Bend**: `bendlang/bend`, 2.0.x. It is not Bend 1 (`HigherOrderCO/Bend1`, `cargo install bend-lang`, `bend run-cu`).
 
-Catalog updated: **11 November 2026** (targeted additions reviewed 23 November 2026). Latest stable release: [Bend 2.0.40](https://github.com/bendlang/bend/releases/tag/v2.0.40) (verified 25 November 2026).
+Catalog updated: **11 November 2026** (targeted additions reviewed 23 November 2026). Latest stable release: [Bend 2.0.40](https://github.com/bendlang/bend/releases/tag/v2.0.40) (verified 28 November 2026).
 
 ```sh
 curl -fsSL https://bend-lang.com/install.sh | sh
@@ -34,9 +34,11 @@ Compiler behavior and APIs change between releases. Check each package's documen
 
 - [Bend](https://github.com/bendlang/bend) - Compiler, `Base` library, guide, demos, and papers.
 - [Lab](https://bend-lang.com/#lab) - In-browser playground.
-- [Hub](https://hub.bend-lang.com) - Content-hash registry with optional names (`import name@version/file.bend`), search, hot/new, and posts. `?hub=` can point a local hub at the same page.
+- [Hub](https://hub.bend-lang.com/packages) - Content-hash registry with optional names (`import name@version/file.bend`), search, and hot/new rankings; [news and posts](https://hub.bend-lang.com/) are listed separately. `?hub=` can point a local hub at the same page.
 - [BendAI](https://bend-lang.com/bendai) - Official proving agent for `LAWS.bend` / `PROOF.bend`.
 - [Base](https://github.com/bendlang/bend/blob/main/bend2/base.bend) - Bundled standard library, also printed by `bend base`.
+
+- [BendHub guide](https://hub.bend-lang.com/guide) - Official publishing, naming, laws, and foreign-code guidance, with a separate [public API reference](https://hub.bend-lang.com/api).
 
 ## Catalog
 
@@ -136,6 +138,8 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 
 - [bend_html](https://github.com/gramrconsulting/bend_html) - Pure typed HTML construction and rendering with proved escaping and list and table shape laws; raw markup is an explicit escape hatch, and the separate kernel verdict has not been run.
 
+- [bend-tpu](https://github.com/hu00yan/bend-tpu) - Experimental tensor offload over TCP from Bend 2 to a JAX worker on Google TPU, with a NumPy fallback and protocol laws; not a native compiler backend, and the colocated TPU configuration lacks end-to-end timing results.
+
 ## Tools
 
 - [bolt](https://github.com/Emerging-Patterns/bolt) - Linter, checker, and LSP written in Bend, with a VS Code extension, on the hub as `import bolt@1.28.0.0/main.bend`; upstream releases starting at 1.65.0 use `bolt check` and `bolt format` in place of the old lint and format commands.
@@ -211,6 +215,10 @@ The [daily freshness report](https://github.com/777genius/awesome-bend/actions/w
 - [bendsidecar](https://github.com/Gwushor/bendsidecar) - Go library for running Bend 2 programs in separate processes, with cached or prebuilt binaries, timeouts, and file transport; experimental Unix support with Go 1.27 and Bend 2.0.40.
 - [Bend syntax for TerminalCode](https://github.com/Tim-kieboom/trcode-plugin-bend-syntax) - Syntax highlighting plugin using a WebAssembly Tree-sitter grammar for Bend 2.0.36; requires TerminalCode 0.11.0 or newer.
 
+- [bend2lean](https://github.com/alstrup/bend2lean) - Translates pure Bend definitions and proofs to Lean 4 for independent kernel checking; skips effectful and unsupported definitions, and was tested with Bend commit `0e2f38f7` and Lean 4.35.
+- [bend-lint-rules](https://github.com/davidawad/bend-lint-rules) - Additional dead-definition, complexity, and call-graph lint rules for the upstream bend-lint, with fixtures and a Rust wrapper; pins Bend 2.0.38.
+- [pubend](https://github.com/drawmeanelephant/pubend) - Markdown publication compiler with graph validation, link resolution, deterministic HTML output, and ordinary checker proofs on Bend 2.0.40; the separate kernel verdict is not green.
+
 ## Packaging
 
 Do not use nixpkgs `bend`. That package is Bend 1.
@@ -238,6 +246,9 @@ Do not use nixpkgs `bend`. That package is Bend 1.
 - [bend-pitfalls](https://github.com/rofrol/bend-pitfalls) - Single-file list of Bend 2 language and compiler pitfalls found in real projects, each entry tagged with the compiler version it was seen with.
 
 - [Bend 2 proof workflow](https://builtwithbend.com/blog/bend-2-proof-workflow) - Worked example with positive and negative controls, tested with Bend 2.0.39 on Linux x86-64; the ordinary checker accepted the proof, but the separate kernel verdict failed.
+
+- [Bend 2 CPU parallelism](https://builtwithbend.com/blog/bend-2-cpu-parallelism) - Native range-sum exercise with deliberately incorrect partitions, checked on Bend 2.0.40 across requested CPU thread counts; not a performance benchmark.
+- [Bend 2 file I/O](https://builtwithbend.com/blog/bend-2-file-io) - Native file creation, read-back, close, and failure-control walkthrough on Bend 2.0.40 for Linux x86-64.
 
 ## Demos
 
